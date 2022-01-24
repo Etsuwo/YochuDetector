@@ -11,6 +11,7 @@
 		5AD4F0F2279B0923008BD0A0 /* SelectSourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD4F0F1279B0923008BD0A0 /* SelectSourceView.swift */; };
 		5AD4F0F4279B0925008BD0A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AD4F0F3279B0925008BD0A0 /* Assets.xcassets */; };
 		5AD4F0F7279B0925008BD0A0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AD4F0F6279B0925008BD0A0 /* Preview Assets.xcassets */; };
+		5AD4F0FF279B0E47008BD0A0 /* SelectSourceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD4F0FE279B0E47008BD0A0 /* SelectSourceViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		5AD4F0F3279B0925008BD0A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5AD4F0F6279B0925008BD0A0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5AD4F0F8279B0925008BD0A0 /* YochuDetector2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YochuDetector2.entitlements; sourceTree = "<group>"; };
+		5AD4F0FE279B0E47008BD0A0 /* SelectSourceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSourceViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			children = (
 				5AD4F0EF279B0923008BD0A0 /* YochuDetector2App.swift */,
 				5AD4F0F1279B0923008BD0A0 /* SelectSourceView.swift */,
+				5AD4F0FE279B0E47008BD0A0 /* SelectSourceViewModel.swift */,
 				5AD4F0F3279B0925008BD0A0 /* Assets.xcassets */,
 				5AD4F0F8279B0925008BD0A0 /* YochuDetector2.entitlements */,
 				5AD4F0F5279B0925008BD0A0 /* Preview Content */,
@@ -140,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5AD4F0F2279B0923008BD0A0 /* SelectSourceView.swift in Sources */,
+				5AD4F0FF279B0E47008BD0A0 /* SelectSourceViewModel.swift in Sources */,
 				5AD4F0F0279B0923008BD0A0 /* YochuDetector2App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
