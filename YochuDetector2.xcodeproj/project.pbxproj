@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5AC2BAC927A2667300C0B88A /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC2BAC827A2667300C0B88A /* RootView.swift */; };
 		5AD4F0F0279B0923008BD0A0 /* YochuDetector2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD4F0EF279B0923008BD0A0 /* YochuDetector2App.swift */; };
 		5AD4F0F2279B0923008BD0A0 /* SelectSourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD4F0F1279B0923008BD0A0 /* SelectSourceView.swift */; };
 		5AD4F0F4279B0925008BD0A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AD4F0F3279B0925008BD0A0 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5AC2BAC827A2667300C0B88A /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		5AD4F0EC279B0923008BD0A0 /* YochuDetector2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YochuDetector2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AD4F0EF279B0923008BD0A0 /* YochuDetector2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YochuDetector2App.swift; sourceTree = "<group>"; };
 		5AD4F0F1279B0923008BD0A0 /* SelectSourceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSourceView.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 			children = (
 				5AF4F438279F01C9001041CB /* Extension */,
 				5AD4F0EF279B0923008BD0A0 /* YochuDetector2App.swift */,
+				5AC2BAC827A2667300C0B88A /* RootView.swift */,
 				5AD4F0F1279B0923008BD0A0 /* SelectSourceView.swift */,
 				5AD4F0FE279B0E47008BD0A0 /* SelectSourceViewModel.swift */,
 				5AD4F0F3279B0925008BD0A0 /* Assets.xcassets */,
@@ -162,6 +165,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AC2BAC927A2667300C0B88A /* RootView.swift in Sources */,
 				5AD4F0F2279B0923008BD0A0 /* SelectSourceView.swift in Sources */,
 				5AF4F437279F00C7001041CB /* NSOpenPanel+Extension.swift in Sources */,
 				5AF4F43F279F09B8001041CB /* TrimmingView.swift in Sources */,
