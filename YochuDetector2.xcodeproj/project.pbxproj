@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5AC2BAC927A2667300C0B88A /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC2BAC827A2667300C0B88A /* RootView.swift */; };
+		5AC2BACB27A2674700C0B88A /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC2BACA27A2674700C0B88A /* RootViewModel.swift */; };
 		5AD4F0F0279B0923008BD0A0 /* YochuDetector2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD4F0EF279B0923008BD0A0 /* YochuDetector2App.swift */; };
 		5AD4F0F2279B0923008BD0A0 /* SelectSourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD4F0F1279B0923008BD0A0 /* SelectSourceView.swift */; };
 		5AD4F0F4279B0925008BD0A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AD4F0F3279B0925008BD0A0 /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		5AC2BAC827A2667300C0B88A /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		5AC2BACA27A2674700C0B88A /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		5AD4F0EC279B0923008BD0A0 /* YochuDetector2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YochuDetector2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AD4F0EF279B0923008BD0A0 /* YochuDetector2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YochuDetector2App.swift; sourceTree = "<group>"; };
 		5AD4F0F1279B0923008BD0A0 /* SelectSourceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSourceView.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				5AD4F0F5279B0925008BD0A0 /* Preview Content */,
 				5AF4F43A279F0222001041CB /* OpenPanelHandler.swift */,
 				5AF4F43E279F09B8001041CB /* TrimmingView.swift */,
+				5AC2BACA27A2674700C0B88A /* RootViewModel.swift */,
 			);
 			path = YochuDetector2;
 			sourceTree = "<group>";
@@ -172,6 +175,7 @@
 				5AF4F43B279F0222001041CB /* OpenPanelHandler.swift in Sources */,
 				5AD4F0FF279B0E47008BD0A0 /* SelectSourceViewModel.swift in Sources */,
 				5AF4F43D279F08C1001041CB /* String+Extension.swift in Sources */,
+				5AC2BACB27A2674700C0B88A /* RootViewModel.swift in Sources */,
 				5AD4F0F0279B0923008BD0A0 /* YochuDetector2App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
