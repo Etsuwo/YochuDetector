@@ -8,7 +8,13 @@
 import SwiftUI
 
 struct SelectSourceView: View {
-    @State var text: String = ""
+    private let viewModel = SelectSourceViewModel()
+    @ObservedObject private var viewState: SelectSourceViewModel.ViewState
+    
+    init() {
+        self.viewState = viewModel.viewState
+    }
+    
     var body: some View {
         VStack {
             Spacer()
@@ -18,9 +24,9 @@ struct SelectSourceView: View {
                 Spacer()
             }
             HStack {
-                TextField("hogehgoe", text: $text)
+                TextField("入力フォルダを選んでね", text: $viewState.inputDirectory)
                 Button(action: {
-                    // TODO: 入力フォルダ選択
+                    viewModel.onTapInputSelectButton()
                 }, label: {
                     Text("select")
                 })
@@ -33,9 +39,9 @@ struct SelectSourceView: View {
                 Spacer()
             }
             HStack {
-                TextField("hogehgeo", text: $text)
+                TextField("出力フォルダを選んでね", text: $viewState.outputDirectory)
                 Button(action: {
-                    // TODO: 出力フォルダ選択
+                    viewModel.onTapOutputSelectButton()
                 }, label: {
                     Text("select")
                 })

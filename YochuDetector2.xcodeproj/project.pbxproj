@@ -47,6 +47,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5AC2BACC27A2677700C0B88A /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				5AC2BACF27A267A900C0B88A /* Trimming */,
+				5AC2BACE27A2679000C0B88A /* SelectSource */,
+				5AC2BACD27A2678100C0B88A /* Root */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		5AC2BACD27A2678100C0B88A /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				5AC2BACA27A2674700C0B88A /* RootViewModel.swift */,
+				5AC2BAC827A2667300C0B88A /* RootView.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		5AC2BACE27A2679000C0B88A /* SelectSource */ = {
+			isa = PBXGroup;
+			children = (
+				5AD4F0FE279B0E47008BD0A0 /* SelectSourceViewModel.swift */,
+				5AD4F0F1279B0923008BD0A0 /* SelectSourceView.swift */,
+			);
+			path = SelectSource;
+			sourceTree = "<group>";
+		};
+		5AC2BACF27A267A900C0B88A /* Trimming */ = {
+			isa = PBXGroup;
+			children = (
+				5AF4F43E279F09B8001041CB /* TrimmingView.swift */,
+			);
+			path = Trimming;
+			sourceTree = "<group>";
+		};
+		5AC2BAD027A267BB00C0B88A /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				5AF4F43A279F0222001041CB /* OpenPanelHandler.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		5AC2BAD127A268B100C0B88A /* App */ = {
+			isa = PBXGroup;
+			children = (
+				5AD4F0EF279B0923008BD0A0 /* YochuDetector2App.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		5AD4F0E3279B0923008BD0A0 = {
 			isa = PBXGroup;
 			children = (
@@ -66,17 +118,13 @@
 		5AD4F0EE279B0923008BD0A0 /* YochuDetector2 */ = {
 			isa = PBXGroup;
 			children = (
+				5AC2BAD127A268B100C0B88A /* App */,
+				5AC2BAD027A267BB00C0B88A /* Common */,
+				5AC2BACC27A2677700C0B88A /* Screens */,
 				5AF4F438279F01C9001041CB /* Extension */,
-				5AD4F0EF279B0923008BD0A0 /* YochuDetector2App.swift */,
-				5AC2BAC827A2667300C0B88A /* RootView.swift */,
-				5AD4F0F1279B0923008BD0A0 /* SelectSourceView.swift */,
-				5AD4F0FE279B0E47008BD0A0 /* SelectSourceViewModel.swift */,
 				5AD4F0F3279B0925008BD0A0 /* Assets.xcassets */,
 				5AD4F0F8279B0925008BD0A0 /* YochuDetector2.entitlements */,
 				5AD4F0F5279B0925008BD0A0 /* Preview Content */,
-				5AF4F43A279F0222001041CB /* OpenPanelHandler.swift */,
-				5AF4F43E279F09B8001041CB /* TrimmingView.swift */,
-				5AC2BACA27A2674700C0B88A /* RootViewModel.swift */,
 			);
 			path = YochuDetector2;
 			sourceTree = "<group>";
