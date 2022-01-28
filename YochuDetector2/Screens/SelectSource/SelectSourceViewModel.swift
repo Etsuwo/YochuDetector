@@ -30,4 +30,8 @@ final class SelectSourceViewModel {
         viewState.outputDirectory = url?.absoluteString ?? ""
         viewState.isActiveNextButton = viewState.inputDirectory.isNotEmpty && viewState.outputDirectory.isNotEmpty
     }
+    
+    func onTapNextButton() {
+        NotificationCenter.default.post(name: .transitionTrimming, object: nil)
+    }
 }

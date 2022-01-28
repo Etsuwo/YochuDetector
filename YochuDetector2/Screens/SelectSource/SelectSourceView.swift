@@ -50,7 +50,7 @@ struct SelectSourceView: View {
             HStack {
                 Spacer()
                 Button(action: {
-                    // TODO: 画面遷移
+                    viewModel.onTapNextButton()
                 }, label: {
                     Text("Next")
                 })

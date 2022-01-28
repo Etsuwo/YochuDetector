@@ -10,6 +10,7 @@ import SwiftUI
 struct TrimmingView: View {
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            .frame(width: 500, height: 500, alignment: .center)
     }
 }
 

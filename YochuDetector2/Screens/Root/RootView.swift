@@ -6,10 +6,22 @@
 //
 
 import SwiftUI
+import Combine
 
 struct RootView: View {
+    
+    private let viewModel = RootViewModel()
+    @ObservedObject var viewState: RootViewModel.ViewState
+    
+    init() {
+        viewState = viewModel.viewState
+    }
+    
     var body: some View {
-        SelectSourceView()
+        switch viewState.displayView {
+        case .selectSource: SelectSourceView()
+        case .trimming: TrimmingView()
+        }
     }
 }
 

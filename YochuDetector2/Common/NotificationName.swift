@@ -11,7 +11,7 @@ enum NotificationName: String {
 }
 
 extension Notification.Name {
-    static let didUserLoggedIn = NotificationName.transitionTrimming.name
+    static let transitionTrimming = NotificationName.transitionTrimming.name
 }
 
 extension NotificationName {
