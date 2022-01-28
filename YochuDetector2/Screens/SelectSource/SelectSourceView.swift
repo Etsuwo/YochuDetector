@@ -25,6 +25,7 @@ struct SelectSourceView: View {
             }
             HStack {
                 TextField("入力フォルダを選んでね", text: $viewState.inputDirectory)
+                    .disabled(true)
                 Button(action: {
                     viewModel.onTapInputSelectButton()
                 }, label: {
@@ -40,6 +41,7 @@ struct SelectSourceView: View {
             }
             HStack {
                 TextField("出力フォルダを選んでね", text: $viewState.outputDirectory)
+                    .disabled(true)
                 Button(action: {
                     viewModel.onTapOutputSelectButton()
                 }, label: {
