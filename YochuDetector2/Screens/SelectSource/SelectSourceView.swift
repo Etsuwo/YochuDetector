@@ -54,6 +54,7 @@ struct SelectSourceView: View {
                 }, label: {
                     Text("Next")
                 })
+                    .disabled(!viewState.isActiveNextButton)
             }
             Spacer()
                 .frame(height: 24)
