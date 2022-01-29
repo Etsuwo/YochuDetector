@@ -18,15 +18,18 @@ final class SelectSourceViewModel {
     
     private(set) var viewState = ViewState()
     private let panelHandler = OpenPanelHandler()
+    private let dataStore = AnalyzeSettingStore.shared
     
     func onTapInputSelectButton() {
         let url = panelHandler.openSelectDirectoryPanel()
+        dataStore.inputUrl = url
         viewState.inputDirectory = url?.absoluteString ?? ""
         viewState.isActiveNextButton = viewState.inputDirectory.isNotEmpty && viewState.outputDirectory.isNotEmpty
     }
     
     func onTapOutputSelectButton() {
         let url = panelHandler.openSelectDirectoryPanel()
+        dataStore.outputUrl = url
         viewState.outputDirectory = url?.absoluteString ?? ""
         viewState.isActiveNextButton = viewState.inputDirectory.isNotEmpty && viewState.outputDirectory.isNotEmpty
     }

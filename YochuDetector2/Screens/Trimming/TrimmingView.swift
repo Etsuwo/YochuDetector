@@ -8,9 +8,16 @@
 import SwiftUI
 
 struct TrimmingView: View {
+    
+    private let viewModel = TrimmingViewModel()
+    @ObservedObject private var viewState: TrimmingViewModel.ViewState
+    
+    init() {
+        viewState = viewModel.viewState
+    }
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-            .frame(width: 500, height: 500, alignment: .center)
+        Image(nsImage: NSImage.withOptionalURL(url: viewState.url))
     }
 }
 
