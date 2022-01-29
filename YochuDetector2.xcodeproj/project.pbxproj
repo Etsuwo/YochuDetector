@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5ABEF6A327A4E78F00B1B5F9 /* TrimmingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABEF6A227A4E78F00B1B5F9 /* TrimmingViewModel.swift */; };
+		5ABEF6A527A4E82A00B1B5F9 /* AnalyzeSettingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABEF6A427A4E82A00B1B5F9 /* AnalyzeSettingStore.swift */; };
 		5AC2BAC927A2667300C0B88A /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC2BAC827A2667300C0B88A /* RootView.swift */; };
 		5AC2BACB27A2674700C0B88A /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC2BACA27A2674700C0B88A /* RootViewModel.swift */; };
 		5AC2BAD327A26C3300C0B88A /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC2BAD227A26C3300C0B88A /* NotificationName.swift */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		5ABEF6A227A4E78F00B1B5F9 /* TrimmingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrimmingViewModel.swift; sourceTree = "<group>"; };
+		5ABEF6A427A4E82A00B1B5F9 /* AnalyzeSettingStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzeSettingStore.swift; sourceTree = "<group>"; };
 		5AC2BAC827A2667300C0B88A /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		5AC2BACA27A2674700C0B88A /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		5AC2BAD227A26C3300C0B88A /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			children = (
 				5AF4F43A279F0222001041CB /* OpenPanelHandler.swift */,
 				5AC2BAD227A26C3300C0B88A /* NotificationName.swift */,
+				5ABEF6A427A4E82A00B1B5F9 /* AnalyzeSettingStore.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 				5AF4F43F279F09B8001041CB /* TrimmingView.swift in Sources */,
 				5AF4F43B279F0222001041CB /* OpenPanelHandler.swift in Sources */,
 				5AD4F0FF279B0E47008BD0A0 /* SelectSourceViewModel.swift in Sources */,
+				5ABEF6A527A4E82A00B1B5F9 /* AnalyzeSettingStore.swift in Sources */,
 				5ABEF6A327A4E78F00B1B5F9 /* TrimmingViewModel.swift in Sources */,
 				5AF4F43D279F08C1001041CB /* String+Extension.swift in Sources */,
 				5AC2BACB27A2674700C0B88A /* RootViewModel.swift in Sources */,
