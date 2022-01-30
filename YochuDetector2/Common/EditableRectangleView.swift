@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct EditableRectangleView: View {
-    @State var topSpacerHeight: CGFloat = 50
-    @State var bottomSpacerHeight: CGFloat = 50
-    @State var leadingSpacerWidth: CGFloat = 50
-    @State var trailingSpacerWidth: CGFloat = 50
+    @State private(set) var topSpacerHeight: CGFloat = 50
+    @State private(set) var bottomSpacerHeight: CGFloat = 50
+    @State private(set) var leadingSpacerWidth: CGFloat = 50
+    @State private(set) var trailingSpacerWidth: CGFloat = 50
     private let frame: CGFloat = 20
     private let spacing: CGFloat = 0
     let minFrame: CGFloat = 100
     
-    func tapTopLeading(viewSize: CGSize) -> some Gesture {
+    private func tapTopLeading(viewSize: CGSize) -> some Gesture {
         DragGesture()
             .onChanged { value in
                 updateLeadingSpace(rectangleSize: viewSize, transitionX: value.translation.width)
@@ -24,14 +24,14 @@ struct EditableRectangleView: View {
             }
     }
     
-    func tapTopCenter(viewSize: CGSize) -> some Gesture {
+    private func tapTopCenter(viewSize: CGSize) -> some Gesture {
         DragGesture()
             .onChanged { value in
                 updateTopSpace(rectangleSize: viewSize, transitionY: value.translation.height)
             }
     }
     
-    func tapTopTrailing(viewSize: CGSize) -> some Gesture {
+    private func tapTopTrailing(viewSize: CGSize) -> some Gesture {
         DragGesture()
             .onChanged { value in
                 updateTopSpace(rectangleSize: viewSize, transitionY: value.translation.height)
@@ -39,14 +39,14 @@ struct EditableRectangleView: View {
             }
     }
     
-    func tapCenterLeading(viewSize: CGSize) -> some Gesture {
+    private func tapCenterLeading(viewSize: CGSize) -> some Gesture {
         DragGesture()
             .onChanged { value in
                 updateLeadingSpace(rectangleSize: viewSize, transitionX: value.translation.width)
             }
     }
     
-    func tapCenterCenter(viewSize: CGSize) -> some Gesture {
+    private func tapCenterCenter(viewSize: CGSize) -> some Gesture {
         DragGesture()
             .onChanged { value in
                 let transitionX = value.translation.width
@@ -62,14 +62,14 @@ struct EditableRectangleView: View {
             }
     }
     
-    func tapCenterTrailing(viewSize: CGSize) -> some Gesture {
+    private func tapCenterTrailing(viewSize: CGSize) -> some Gesture {
         DragGesture()
             .onChanged { value in
                 updateTrailingSpace(rectangleSize: viewSize, transitionX: value.translation.width)
             }
     }
     
-    func tapBottomLeading(viewSize: CGSize) -> some Gesture {
+    private func tapBottomLeading(viewSize: CGSize) -> some Gesture {
         DragGesture()
             .onChanged { value in
                 updateLeadingSpace(rectangleSize: viewSize, transitionX: value.translation.width)
@@ -77,14 +77,14 @@ struct EditableRectangleView: View {
             }
     }
     
-    func tapBottomCenter(viewSize: CGSize) -> some Gesture {
+    private func tapBottomCenter(viewSize: CGSize) -> some Gesture {
         DragGesture()
             .onChanged { value in
                 updateBottomSpace(rectangleSize: viewSize, transitionY: value.translation.height)
             }
     }
     
-    func tapBottomTrailing(viewSize: CGSize) -> some Gesture {
+    private func tapBottomTrailing(viewSize: CGSize) -> some Gesture {
         DragGesture()
             .onChanged { value in
                 updateTrailingSpace(rectangleSize: viewSize, transitionX: value.translation.width)
@@ -92,28 +92,28 @@ struct EditableRectangleView: View {
             }
     }
     
-    func updateLeadingSpace(rectangleSize: CGSize, transitionX: CGFloat) {
+    private func updateLeadingSpace(rectangleSize: CGSize, transitionX: CGFloat) {
         if rectangleSize.width - transitionX > minFrame,
            leadingSpacerWidth + transitionX > 0 {
             leadingSpacerWidth += transitionX
         }
     }
     
-    func updateBottomSpace(rectangleSize: CGSize, transitionY: CGFloat) {
+    private func updateBottomSpace(rectangleSize: CGSize, transitionY: CGFloat) {
         if rectangleSize.height + transitionY > minFrame,
            bottomSpacerHeight - transitionY > 0 {
             bottomSpacerHeight -= transitionY
         }
     }
     
-    func updateTrailingSpace(rectangleSize: CGSize, transitionX: CGFloat) {
+    private func updateTrailingSpace(rectangleSize: CGSize, transitionX: CGFloat) {
         if rectangleSize.width + transitionX > minFrame,
            trailingSpacerWidth - transitionX > 0 {
             trailingSpacerWidth -= transitionX
         }
     }
     
-    func updateTopSpace(rectangleSize: CGSize, transitionY: CGFloat) {
+    private func updateTopSpace(rectangleSize: CGSize, transitionY: CGFloat) {
         if rectangleSize.height - transitionY > minFrame,
            topSpacerHeight + transitionY > 0 {
             topSpacerHeight += transitionY
