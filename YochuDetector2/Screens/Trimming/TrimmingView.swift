@@ -18,7 +18,8 @@ struct TrimmingView: View {
     
     var body: some View {
         VStack {
-            Image(nsImage: NSImage.withOptionalURL(url: viewState.url))
+            CropView(image: NSImage.withOptionalURL(url: viewState.url))
+                .frame(maxWidth: .infinity)
             Spacer()
             Button(action: {
                 viewModel.onTapGoButton()

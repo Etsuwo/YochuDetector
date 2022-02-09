@@ -11,12 +11,18 @@ struct CropView: View {
     
     let image: NSImage
     let editableRectangleView = EditableRectangleView()
-    
+    var cropPreviewImage: Image {
+        Image(nsImage: self.image)
+    }
     
     var body: some View {
-        ZStack {
-            Image(nsImage: image)
-            editableRectangleView
+        GeometryReader { geometry in
+            ZStack(alignment: .center) {
+                cropPreviewImage
+                    .resizable()
+                editableRectangleView
+            }
+            .aspectRatio(image.size.width / image.size.height, contentMode: .fit)
         }
     }
 }
