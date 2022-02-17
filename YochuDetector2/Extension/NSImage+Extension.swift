@@ -14,6 +14,12 @@ extension NSImage {
         return CIImage(data: imageData)
     }
     
+    var cgImage: CGImage? {
+            guard let imageData = self.tiffRepresentation else { return nil }
+            guard let sourceData = CGImageSourceCreateWithData(imageData as CFData, nil) else { return nil }
+            return CGImageSourceCreateImageAtIndex(sourceData, 0, nil)
+        }
+    
     static func withOptionalURL(url: URL?) -> NSImage {
         var image = NSImage()
         if let url = url {
@@ -28,5 +34,11 @@ extension NSImage {
         self.lockFocus()
         rectangleNsImage.draw(in: rect)
         self.unlockFocus()
+    }
+    
+    func crop(to rect: CGRect) -> NSImage {
+        guard let cgImage = self.cgImage,
+              let croppedCgImage = cgImage.cropping(to: rect) else { fatalError() }
+        return NSImage(cgImage: croppedCgImage, size: rect.size)
     }
 }

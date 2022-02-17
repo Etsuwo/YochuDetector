@@ -15,6 +15,9 @@ final class TrimmingViewModel {
     
     final class ViewState: ObservableObject {
         @Published var url: URL?
+        @Published var croppedImage = NSImage()
+        @Published var cropViewIsHidden = false
+        @Published var croppedViewIsHidden = true
     }
     
     private let dataStore = AnalyzeSettingStore.shared
@@ -22,6 +25,8 @@ final class TrimmingViewModel {
     private let ciContext = CIContext()
     private var urls: [URL] = []
     private var nsImage = NSImage()
+    private var cropRect = CGRect()
+    private var cropViewSize = CGSize()
     
     private(set) var viewState = ViewState()
     
@@ -38,6 +43,24 @@ final class TrimmingViewModel {
         } catch {
             print(error.localizedDescription)
         }
+    }
+    
+    func updateCropArea(rect: CGRect) {
+        cropRect = rect
+    }
+    
+    func updateCropViewSize(size: CGSize) {
+        cropViewSize = size
+    }
+    
+    func onTapTrimButton(image: NSImage) {
+        let x = cropRect.origin.x * image.size.width / cropViewSize.width
+        let y = cropRect.origin.y * image.size.height / cropViewSize.height
+        let width = cropRect.size.width * image.size.width / cropViewSize.width
+        let height = cropRect.size.height * image.size.height / cropViewSize.height
+        viewState.croppedImage = image.crop(to: CGRect(origin: CGPoint(x: x, y: y), size: CGSize(width: width, height: height)))
+        viewState.cropViewIsHidden = true
+        viewState.croppedViewIsHidden = false
     }
     
     func onTapGoButton() {

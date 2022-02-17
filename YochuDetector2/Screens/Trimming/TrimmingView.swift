@@ -10,6 +10,12 @@ import SwiftUI
 struct TrimmingView: View {
     
     private let viewModel = TrimmingViewModel()
+    private var image: NSImage {
+        NSImage.withOptionalURL(url: viewState.url)
+    }
+    private var cropView: CropView {
+        CropView(image: image)
+    }
     @ObservedObject private var viewState: TrimmingViewModel.ViewState
     
     init() {
@@ -18,11 +24,26 @@ struct TrimmingView: View {
     
     var body: some View {
         VStack {
-            CropView(image: NSImage.withOptionalURL(url: viewState.url))
-                .frame(maxWidth: .infinity)
+            GeometryReader { geometry in
+                ZStack {
+                    cropView
+                        .frame(maxWidth: .infinity)
+                        .onPreferenceChange(EditableRectangleFrameKey.self, perform: {
+                            viewModel.updateCropArea(rect: $0)
+                        })
+                        .onPreferenceChange(EditableRectangleViewSizeKey.self, perform: {
+                            viewModel.updateCropViewSize(size: $0)
+                        })
+                        .isHidden(viewState.cropViewIsHidden)
+                    Image(nsImage: viewState.croppedImage)
+                        .resizable()
+                        .scaledToFit()
+                        .isHidden(viewState.croppedViewIsHidden)
+                }
+            }
             Spacer()
             Button(action: {
-                viewModel.onTapGoButton()
+                viewModel.onTapTrimButton(image: image)
             }, label: {
                 Text("GO!!!!!")
             })

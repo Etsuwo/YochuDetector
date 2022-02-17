@@ -185,6 +185,8 @@ struct EditableRectangleView: View {
                                 .frame(height: frame)
                             }
                         }
+                        .preference(key: EditableRectangleFrameKey.self, value: CGRect(origin: CGPoint(x: leadingSpacerWidth, y: topSpacerHeight), size: geometry.size))
+                        .preference(key: EditableRectangleViewSizeKey.self, value: CGSize(width: leadingSpacerWidth + trailingSpacerWidth + geometry.size.width, height: topSpacerHeight + bottomSpacerHeight + geometry.size.height))
                     }
                     Spacer()
                         .frame(width: trailingSpacerWidth)
@@ -198,5 +200,19 @@ struct EditableRectangleView: View {
 struct EditableRectangleView_Previews: PreviewProvider {
     static var previews: some View {
         EditableRectangleView()
+    }
+}
+
+struct EditableRectangleFrameKey: PreferenceKey {
+    static var defaultValue: CGRect = CGRect(x: 0, y: 0, width: 0, height: 0)
+    static func reduce(value: inout CGRect, nextValue: () -> CGRect) {
+        value = nextValue()
+    }
+}
+
+struct EditableRectangleViewSizeKey: PreferenceKey {
+    static var defaultValue: CGSize = CGSize(width: 0, height: 0)
+    static func reduce(value: inout CGSize, nextValue: () -> CGSize) {
+        value = nextValue()
     }
 }
