@@ -85,6 +85,25 @@
 			path = Modifier;
 			sourceTree = "<group>";
 		};
+		5A6B0D1B27C4ADBA0098E47C /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				5A98541627A629C200A5AC40 /* CropView.swift */,
+				5ABEF6B127A525D200B1B5F9 /* EditableRectangleView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		5A6B0D1C27C4ADCC0098E47C /* Analyze */ = {
+			isa = PBXGroup;
+			children = (
+				5A8DFA9327A669DB0053636F /* YOLO.swift */,
+				5A8DFA9527A66A520053636F /* Helpers.swift */,
+				5A6B0D1927C474760098E47C /* YochuAnalyzer.swift */,
+			);
+			path = Analyze;
+			sourceTree = "<group>";
+		};
 		5A8DFA8E27A652B40053636F /* MLModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,14 +163,11 @@
 		5AC2BAD027A267BB00C0B88A /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				5A6B0D1C27C4ADCC0098E47C /* Analyze */,
+				5A6B0D1B27C4ADBA0098E47C /* UI */,
 				5AF4F43A279F0222001041CB /* OpenPanelHandler.swift */,
 				5AC2BAD227A26C3300C0B88A /* NotificationName.swift */,
 				5ABEF6A427A4E82A00B1B5F9 /* AnalyzeSettingStore.swift */,
-				5ABEF6B127A525D200B1B5F9 /* EditableRectangleView.swift */,
-				5A98541627A629C200A5AC40 /* CropView.swift */,
-				5A8DFA9327A669DB0053636F /* YOLO.swift */,
-				5A8DFA9527A66A520053636F /* Helpers.swift */,
-				5A6B0D1927C474760098E47C /* YochuAnalyzer.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
