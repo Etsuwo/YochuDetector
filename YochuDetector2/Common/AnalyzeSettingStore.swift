@@ -14,5 +14,5 @@ final class AnalyzeSettingStore {
     
     var inputUrl: URL?
     var outputUrl: URL?
-    var analyzedImage: NSImage?
+    var analyzeInfos: [AnalyzeInfo] = []
 }

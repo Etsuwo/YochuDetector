@@ -8,8 +8,17 @@
 import SwiftUI
 
 struct ResultView: View {
+    let store = AnalyzeSettingStore.shared
+    
     var body: some View {
-        Image(nsImage: AnalyzeSettingStore.shared.analyzedImage!)
+        ScrollView(.vertical, showsIndicators: true) {
+            VStack {
+                Image(nsImage: store.analyzeInfos[0].image)
+                Image(nsImage: store.analyzeInfos[1].image)
+                Image(nsImage: store.analyzeInfos[2].image)
+            }
+        }
+        .frame(height: 800)
     }
 }
 

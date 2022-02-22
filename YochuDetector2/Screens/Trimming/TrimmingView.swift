@@ -57,6 +57,13 @@ struct TrimmingView: View {
                 })
                     .isHidden(viewState.croppedViewIsHidden)
                 Spacer()
+                Button(action: {
+                    viewModel.onTapGoButton()
+                }, label: {
+                    Text("GO!!!!!")
+                })
+                Spacer()
+                    .frame(width: 24)
             }
             .padding()
         }
