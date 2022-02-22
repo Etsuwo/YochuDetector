@@ -66,6 +66,14 @@ struct TrimmingView: View {
                     .frame(width: 24)
             }
             .padding()
+            Spacer()
+            HStack {
+                Spacer()
+                Text("試験官の数：")
+                TextField("入力してね", text: $viewState.numOfTargetInSection)
+                Spacer()
+            }
+            .padding()
         }
         
     }

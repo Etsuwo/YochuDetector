@@ -18,6 +18,7 @@ final class TrimmingViewModel {
         @Published var croppedImage = NSImage()
         @Published var cropViewIsHidden = false
         @Published var croppedViewIsHidden = true
+        @Published var numOfTargetInSection = "0"
     }
     
     private let dataStore = AnalyzeSettingStore.shared
