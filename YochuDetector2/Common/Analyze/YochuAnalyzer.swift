@@ -45,6 +45,33 @@ final class YochuAnalyzer {
             }
         }
     }
+    
+    /// 検出した矩形がどの試験管のものか解析する
+    /// - Parameters:
+    ///   - imageWidth: 入力画像幅
+    ///   - targetNum: 試験官の数
+    ///   - boundingBoxes: 検出した矩形の配列
+    /// - Returns: どの試験官に対する矩形か対応関係を持った配列、矩形がない場所はnil
+    func assignBoundingBoxes(imageWidth: CGFloat, targetNum: Int, boundingBoxes: [CGRect]) -> [CGRect?]{
+        let step = imageWidth / CGFloat(targetNum)
+        var activityList: [CGRect?] = []
+        for _ in 0..<targetNum {
+            activityList.append(nil)
+        }
+        boundingBoxes.forEach { boundingBox in
+            var left: CGFloat = 0
+            var right = step
+            for count in 0..<targetNum {
+                if left...right ~= boundingBox.midX {
+                    activityList[count] = boundingBox
+                    break
+                }
+                left = right
+                right += step
+            }
+        }
+        return activityList
+    }
 }
 
 struct AnalyzeInfo {
