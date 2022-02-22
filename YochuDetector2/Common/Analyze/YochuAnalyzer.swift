@@ -9,12 +9,16 @@ import Foundation
 import AppKit
 
 final class YochuAnalyzer {
-    static let shared = YochuAnalyzer()
-    private init() {}
     
     private let ciContext = CIContext()
     private let yolo = YOLO()
     private var analyzeInfos: [AnalyzeInfo] = []
+    private var activityArray: [[CGRect?]] = []
+    var setting: AnalyzerSetting
+    
+    init(setting: AnalyzerSetting) {
+        self.setting = setting
+    }
     
     func start(with urls: [URL], rect: CGRect, completion: (([AnalyzeInfo]) -> Void)) {
         urls.forEach { url in

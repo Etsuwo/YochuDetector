@@ -22,7 +22,7 @@ final class TrimmingViewModel {
     }
     
     private let dataStore = AnalyzeSettingStore.shared
-    private let analyzer = YochuAnalyzer.shared
+    private let analyzer = YochuAnalyzer(setting: AnalyzerSetting())
     private var urls: [URL] = []
     private var cropRect = CGRect()
     private var cropViewSize = CGSize()
