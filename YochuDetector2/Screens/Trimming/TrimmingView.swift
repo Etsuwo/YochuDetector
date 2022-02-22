@@ -42,11 +42,23 @@ struct TrimmingView: View {
                 }
             }
             Spacer()
-            Button(action: {
-                viewModel.onTapTrimButton(image: image)
-            }, label: {
-                Text("GO!!!!!")
-            })
+            HStack {
+                Spacer()
+                Button(action: {
+                    viewModel.onTapTrimButton(image: image)
+                }, label: {
+                    Text("切り取る")
+                })
+                    .isHidden(viewState.cropViewIsHidden)
+                Button(action: {
+                    viewModel.onTapReturnButton()
+                }, label: {
+                    Text("戻す")
+                })
+                    .isHidden(viewState.croppedViewIsHidden)
+                Spacer()
+            }
+            .padding()
         }
         
     }

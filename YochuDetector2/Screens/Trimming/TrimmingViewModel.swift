@@ -63,6 +63,11 @@ final class TrimmingViewModel {
         viewState.croppedViewIsHidden = false
     }
     
+    func onTapReturnButton() {
+        viewState.cropViewIsHidden = false
+        viewState.croppedViewIsHidden = true
+    }
+    
     func onTapGoButton() {
         let image = CIImage(contentsOf: urls.first!)!
         let resultImage = image.nsImage
