@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 import AppKit
 
 final class YochuAnalyzer {
@@ -14,6 +15,9 @@ final class YochuAnalyzer {
     private let yolo = YOLO()
     private var analyzeInfos: [AnalyzeInfo] = []
     private var activityArray: [[CGRect?]] = []
+    let startPublifher = PassthroughSubject<Int, Never>()
+    let endPublisher = PassthroughSubject<Void, Never>()
+    let progressPublisher = PassthroughSubject<Int, Never>()
     var setting: AnalyzerSetting
     
     init(setting: AnalyzerSetting) {
@@ -56,16 +60,16 @@ final class YochuAnalyzer {
     ///   - targetNum: 試験官の数
     ///   - boundingBoxes: 検出した矩形の配列
     /// - Returns: どの試験官に対する矩形か対応関係を持った配列、矩形がない場所はnil
-    func assignBoundingBoxes(imageWidth: CGFloat, targetNum: Int, boundingBoxes: [CGRect]) -> [CGRect?]{
-        let step = imageWidth / CGFloat(targetNum)
+    func assignBoundingBoxes(imageWidth: CGFloat, boundingBoxes: [CGRect]) -> [CGRect?]{
+        let step = imageWidth / CGFloat(setting.numberOfTarget)
         var activityList: [CGRect?] = []
-        for _ in 0..<targetNum {
+        for _ in 0..<setting.numberOfTarget {
             activityList.append(nil)
         }
         boundingBoxes.forEach { boundingBox in
             var left: CGFloat = 0
             var right = step
-            for count in 0..<targetNum {
+            for count in 0..<setting.numberOfTarget {
                 if left...right ~= boundingBox.midX {
                     activityList[count] = boundingBox
                     break

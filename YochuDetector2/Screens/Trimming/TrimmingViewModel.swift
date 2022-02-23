@@ -70,6 +70,8 @@ final class TrimmingViewModel {
     }
     
     func onTapGoButton() {
+        guard let numOfTarget = Int(viewState.numOfTargetInSection) else { return } // TODO: エラー処理
+        analyzer.setting = AnalyzerSetting(numberOfTarget: numOfTarget)
         analyzer.start(with: urls, rect: modifiedRect, completion: { infos in
             NotificationCenter.default.post(name: .transitionResult, object: nil)
             AnalyzeSettingStore.shared.analyzeInfos = infos
