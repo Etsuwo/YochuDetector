@@ -23,59 +23,65 @@ struct TrimmingView: View {
     }
     
     var body: some View {
-        VStack {
-            GeometryReader { geometry in
-                ZStack {
-                    cropView
-                        .frame(maxWidth: .infinity)
-                        .onPreferenceChange(EditableRectangleFrameKey.self, perform: {
-                            viewModel.updateCropArea(rect: $0)
-                        })
-                        .onPreferenceChange(EditableRectangleViewSizeKey.self, perform: {
-                            viewModel.updateCropViewSize(size: $0)
-                        })
-                        .isHidden(viewState.cropViewIsHidden)
-                    Image(nsImage: viewState.croppedImage)
-                        .resizable()
-                        .scaledToFit()
-                        .isHidden(viewState.croppedViewIsHidden)
+        ZStack {
+            VStack {
+                GeometryReader { geometry in
+                    ZStack {
+                        cropView
+                            .frame(maxWidth: .infinity)
+                            .onPreferenceChange(EditableRectangleFrameKey.self, perform: {
+                                viewModel.updateCropArea(rect: $0)
+                            })
+                            .onPreferenceChange(EditableRectangleViewSizeKey.self, perform: {
+                                viewModel.updateCropViewSize(size: $0)
+                            })
+                            .isHidden(viewState.cropViewIsHidden)
+                        Image(nsImage: viewState.croppedImage)
+                            .resizable()
+                            .scaledToFit()
+                            .isHidden(viewState.croppedViewIsHidden)
+                    }
                 }
+                Spacer()
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        viewModel.onTapTrimButton(image: image)
+                    }, label: {
+                        Text("切り取る")
+                    })
+                        .isHidden(viewState.cropViewIsHidden)
+                    Button(action: {
+                        viewModel.onTapReturnButton()
+                    }, label: {
+                        Text("戻す")
+                    })
+                        .isHidden(viewState.croppedViewIsHidden)
+                    Spacer()
+                    Button(action: {
+                        viewModel.onTapGoButton()
+                    }, label: {
+                        Text("GO!!!!!")
+                    })
+                    Spacer()
+                        .frame(width: 24)
+                }
+                .padding()
+                Spacer()
+                HStack {
+                    Spacer()
+                    Text("試験官の数：")
+                    TextField("入力してね", text: $viewState.numOfTargetInSection)
+                    Spacer()
+                }
+                .padding()
             }
-            Spacer()
-            HStack {
-                Spacer()
-                Button(action: {
-                    viewModel.onTapTrimButton(image: image)
-                }, label: {
-                    Text("切り取る")
-                })
-                    .isHidden(viewState.cropViewIsHidden)
-                Button(action: {
-                    viewModel.onTapReturnButton()
-                }, label: {
-                    Text("戻す")
-                })
-                    .isHidden(viewState.croppedViewIsHidden)
-                Spacer()
-                Button(action: {
-                    viewModel.onTapGoButton()
-                }, label: {
-                    Text("GO!!!!!")
-                })
-                Spacer()
-                    .frame(width: 24)
-            }
-            .padding()
-            Spacer()
-            HStack {
-                Spacer()
-                Text("試験官の数：")
-                TextField("入力してね", text: $viewState.numOfTargetInSection)
-                Spacer()
-            }
-            .padding()
+            ProgressView("Analyzing...", value: viewState.currentProgressValue, total: viewState.totalProgressValue)
+                .isHidden(viewState.isHiddenProgressView)
+                .frame(maxWidth: .infinity)
+                .padding()
+                .padding()
         }
-        
     }
 }
 

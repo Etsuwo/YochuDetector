@@ -15,17 +15,16 @@ final class YochuAnalyzer {
     private let yolo = YOLO()
     private var analyzeInfos: [AnalyzeInfo] = []
     private var activityArray: [[CGRect?]] = []
-    let startPublifher = PassthroughSubject<Int, Never>()
-    let endPublisher = PassthroughSubject<Void, Never>()
-    let progressPublisher = PassthroughSubject<Int, Never>()
+    let endPublisher = PassthroughSubject<[AnalyzeInfo], Never>()
+    let progressPublisher = PassthroughSubject<Double, Never>()
     var setting: AnalyzerSetting
     
     init(setting: AnalyzerSetting) {
         self.setting = setting
     }
     
-    func start(with urls: [URL], rect: CGRect, completion: (([AnalyzeInfo]) -> Void)) {
-        urls.forEach { url in
+    func start(with urls: [URL], rect: CGRect) {
+        for (index, url) in urls.enumerated() {
             let nsImage = NSImage.withOptionalURL(url: url)
             let croppedImage = nsImage.crop(to: rect)
             guard let ciImage = croppedImage.ciImage else { return }
@@ -49,9 +48,10 @@ final class YochuAnalyzer {
                     modifiedBoundingBoxes.append(rect)
                 }
                 analyzeInfos.append(AnalyzeInfo(image: croppedImage, boundingBoxes: modifiedBoundingBoxes))
-                completion(analyzeInfos)
             }
+            progressPublisher.send(Double(index + 1))
         }
+        endPublisher.send(analyzeInfos)
     }
     
     /// 検出した矩形がどの試験管のものか解析する

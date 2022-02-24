@@ -15,7 +15,7 @@ class YOLO {
 
   // Tweak these values to get more or fewer predictions.
   let confidenceThreshold: Float = 0.3
-  let iouThreshold: Float = 0.45
+  let iouThreshold: Float = 0.2
 
   struct Prediction {
     let classIndex: Int
