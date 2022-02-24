@@ -173,9 +173,9 @@
 		5AC2BAD027A267BB00C0B88A /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				5AC331B027C72C32002B2BAE /* File */,
 				5A6B0D1C27C4ADCC0098E47C /* Analyze */,
 				5A6B0D1B27C4ADBA0098E47C /* UI */,
-				5AF4F43A279F0222001041CB /* OpenPanelHandler.swift */,
 				5AC2BAD227A26C3300C0B88A /* NotificationName.swift */,
 				5ABEF6A427A4E82A00B1B5F9 /* AnalyzeSettingStore.swift */,
 			);
@@ -196,6 +196,14 @@
 				5AC331AE27C72537002B2BAE /* ViewModel.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		5AC331B027C72C32002B2BAE /* File */ = {
+			isa = PBXGroup;
+			children = (
+				5AF4F43A279F0222001041CB /* OpenPanelHandler.swift */,
+			);
+			path = File;
 			sourceTree = "<group>";
 		};
 		5AD4F0E3279B0923008BD0A0 = {
