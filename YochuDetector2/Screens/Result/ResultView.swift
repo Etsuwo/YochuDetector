@@ -8,17 +8,24 @@
 import SwiftUI
 
 struct ResultView: View {
-    let store = AnalyzeSettingStore.shared
+    let viewModel = ResultViewModel()
     
     var body: some View {
-        ScrollView(.vertical, showsIndicators: true) {
-            VStack {
-                Image(nsImage: store.analyzeInfos[0].image)
-                Image(nsImage: store.analyzeInfos[1].image)
-                Image(nsImage: store.analyzeInfos[2].image)
-            }
+        VStack {
+            Spacer()
+            Text("Complete")
+                .font(.title)
+                .padding()
+            Text("Outputに指定したフォルダから解析結果を確認してください")
+            Spacer()
+            Button(action: {
+                viewModel.onTapBackTrimming()
+            }, label: {
+                Text("トリミングへ戻る")
+            })
+                .padding()
         }
-        .frame(height: 800)
+        .frame(minWidth: 200, maxWidth: .infinity, minHeight: 100, maxHeight: .infinity)
     }
 }
 
