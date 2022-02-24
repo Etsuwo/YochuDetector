@@ -27,6 +27,7 @@
 		5AC2BACB27A2674700C0B88A /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC2BACA27A2674700C0B88A /* RootViewModel.swift */; };
 		5AC2BAD327A26C3300C0B88A /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC2BAD227A26C3300C0B88A /* NotificationName.swift */; };
 		5AC331AB27C72121002B2BAE /* ResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC331AA27C72121002B2BAE /* ResultViewModel.swift */; };
+		5AC331AF27C72537002B2BAE /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC331AE27C72537002B2BAE /* ViewModel.swift */; };
 		5AD4F0F0279B0923008BD0A0 /* YochuDetector2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD4F0EF279B0923008BD0A0 /* YochuDetector2App.swift */; };
 		5AD4F0F2279B0923008BD0A0 /* SelectSourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD4F0F1279B0923008BD0A0 /* SelectSourceView.swift */; };
 		5AD4F0F4279B0925008BD0A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AD4F0F3279B0925008BD0A0 /* Assets.xcassets */; };
@@ -59,6 +60,7 @@
 		5AC2BACA27A2674700C0B88A /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		5AC2BAD227A26C3300C0B88A /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		5AC331AA27C72121002B2BAE /* ResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewModel.swift; sourceTree = "<group>"; };
+		5AC331AE27C72537002B2BAE /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		5AD4F0EC279B0923008BD0A0 /* YochuDetector2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YochuDetector2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AD4F0EF279B0923008BD0A0 /* YochuDetector2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YochuDetector2App.swift; sourceTree = "<group>"; };
 		5AD4F0F1279B0923008BD0A0 /* SelectSourceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSourceView.swift; sourceTree = "<group>"; };
@@ -188,6 +190,14 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		5AC331AD27C7251F002B2BAE /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				5AC331AE27C72537002B2BAE /* ViewModel.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		5AD4F0E3279B0923008BD0A0 = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +219,7 @@
 			children = (
 				5AC2BAD127A268B100C0B88A /* App */,
 				5AC2BAD027A267BB00C0B88A /* Common */,
+				5AC331AD27C7251F002B2BAE /* Protocol */,
 				5AC2BACC27A2677700C0B88A /* Screens */,
 				5AF4F438279F01C9001041CB /* Extension */,
 				5A62254627BDE12500B1122F /* Modifier */,
@@ -316,6 +327,7 @@
 				5AC2BAC927A2667300C0B88A /* RootView.swift in Sources */,
 				5A8DFA9427A669DB0053636F /* YOLO.swift in Sources */,
 				5ABF6C8B27A84C1A001B8FDE /* yolos.mlmodel in Sources */,
+				5AC331AF27C72537002B2BAE /* ViewModel.swift in Sources */,
 				5A8DFA9227A65BC30053636F /* Yolov3.mlmodel in Sources */,
 				5AB5EB4E27C53F700018AB20 /* Array+Extension.swift in Sources */,
 				5AD4F0F2279B0923008BD0A0 /* SelectSourceView.swift in Sources */,
