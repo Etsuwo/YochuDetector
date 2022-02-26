@@ -35,7 +35,7 @@ struct SelectSourceView: View {
             Spacer()
                 .frame(height: 24)
             HStack {
-                Text("Input Source")
+                Text("Output Source")
                     .padding(.horizontal)
                 Spacer()
             }
