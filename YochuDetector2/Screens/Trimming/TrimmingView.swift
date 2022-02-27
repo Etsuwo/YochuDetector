@@ -61,7 +61,7 @@ struct TrimmingView: View {
                     Button(action: {
                         viewModel.onTapGoButton()
                     }, label: {
-                        Text("GO!!!!!")
+                        Text("解析開始")
                     })
                     Spacer()
                         .frame(width: 24)
