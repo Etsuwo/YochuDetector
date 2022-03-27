@@ -22,7 +22,7 @@ final class AnalyzeDataStore {
     
     /// 写真ごとのデータを保持
     struct AnalyzedData {
-        let image: NSImage
+        let imageURL: URL
         let boundingBoxes: [CGRect?]
     }
     
@@ -33,8 +33,8 @@ final class AnalyzeDataStore {
         let boundingBoxes: [CGRect?]
     }
     
-    func register(image: NSImage, boudingBoxes: [CGRect?]) {
-        analyzedDatas.append(AnalyzedData(image: image, boundingBoxes: boudingBoxes))
+    func register(imageURL: URL, boudingBoxes: [CGRect?]) {
+        analyzedDatas.append(AnalyzedData(imageURL: imageURL, boundingBoxes: boudingBoxes))
     }
     
     func register(wadaringAt: Int?, stopAt: Int?, boundingBoxes: [CGRect?]) {

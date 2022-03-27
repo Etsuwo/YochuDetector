@@ -15,6 +15,7 @@ final class YochuAnalyzer {
     private let yolo = YOLO()
     private var analyzeInfos: [AnalyzeInfo] = []
     private var activityArray: [[CGRect?]] = []
+    private let imageSaver = ImageSaver()
     private let dataStore = AnalyzeDataStore()
     let endPublisher = PassthroughSubject<[AnalyzeInfo], Never>()
     let progressPublisher = PassthroughSubject<Double, Never>()
@@ -48,10 +49,14 @@ final class YochuAnalyzer {
                     croppedImage.addBoundingRectangle(with: rect)
                     modifiedBoundingBoxes.append(rect)
                 }
-                analyzeInfos.append(AnalyzeInfo(image: croppedImage, boundingBoxes: modifiedBoundingBoxes))
+                let outputURL = imageSaver.save(image: croppedImage, fileName: url.lastPathComponent, to: AnalyzeSettingStore.shared.outputUrl!)
+                let separatedBoudingBoxes = assignBoundingBoxes(imageWidth: croppedImage.size.width, boundingBoxes: modifiedBoundingBoxes)
+                dataStore.register(imageURL: outputURL, boudingBoxes: separatedBoudingBoxes)
+                //analyzeInfos.append(AnalyzeInfo(image: croppedImage, boundingBoxes: modifiedBoundingBoxes))
             }
             progressPublisher.send(Double(index + 1))
         }
+        analyze()
         endPublisher.send(analyzeInfos)
     }
     
@@ -82,7 +87,7 @@ final class YochuAnalyzer {
         return activityList
     }
     
-    func analyze() {
+    private func analyze() {
         let detectedDatas = dataStore.trnseposeActivitiesData
         for (index, detectedData) in detectedDatas.enumerated() {
             let startAt = analyzeWandaring(detectedData: detectedData)

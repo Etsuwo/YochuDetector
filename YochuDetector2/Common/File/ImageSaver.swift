@@ -9,7 +9,7 @@ import Foundation
 import AppKit
 
 final class ImageSaver {
-    func save(image: NSImage, fileName: String, to output: URL) {
+    func save(image: NSImage, fileName: String, to output: URL) -> URL {
         let url = output.appendingPathComponent(fileName)
         guard let cgImage = image.cgImage else { fatalError() }
         let rep = NSBitmapImageRep(cgImage: cgImage)
@@ -19,5 +19,6 @@ final class ImageSaver {
         } catch {
             fatalError(error.localizedDescription)
         }
+        return url
     }
 }
