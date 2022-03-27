@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A16766627CBAFA9009A8B70 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A16766527CBAFA9009A8B70 /* ImageSaver.swift */; };
 		5A62254827BDE15E00B1122F /* Hidden.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A62254727BDE15E00B1122F /* Hidden.swift */; };
 		5A6B0D1A27C474760098E47C /* YochuAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6B0D1927C474760098E47C /* YochuAnalyzer.swift */; };
 		5A8DFA9227A65BC30053636F /* Yolov3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DFA9127A65BC30053636F /* Yolov3.mlmodel */; };
@@ -40,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A16766527CBAFA9009A8B70 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 		5A62254727BDE15E00B1122F /* Hidden.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hidden.swift; sourceTree = "<group>"; };
 		5A6B0D1927C474760098E47C /* YochuAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YochuAnalyzer.swift; sourceTree = "<group>"; };
 		5A8DFA9127A65BC30053636F /* Yolov3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Yolov3.mlmodel; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				5AF4F43A279F0222001041CB /* OpenPanelHandler.swift */,
+				5A16766527CBAFA9009A8B70 /* ImageSaver.swift */,
 			);
 			path = File;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				5AD4F0F2279B0923008BD0A0 /* SelectSourceView.swift in Sources */,
 				5A6B0D1A27C474760098E47C /* YochuAnalyzer.swift in Sources */,
 				5ABF6C8D27A84E33001B8FDE /* yolo.mlmodel in Sources */,
+				5A16766627CBAFA9009A8B70 /* ImageSaver.swift in Sources */,
 				5AF4F437279F00C7001041CB /* NSOpenPanel+Extension.swift in Sources */,
 				5AC2BAD327A26C3300C0B88A /* NotificationName.swift in Sources */,
 				5AF4F43F279F09B8001041CB /* TrimmingView.swift in Sources */,
