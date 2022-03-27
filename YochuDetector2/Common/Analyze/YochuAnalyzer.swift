@@ -15,6 +15,7 @@ final class YochuAnalyzer {
     private let yolo = YOLO()
     private var analyzeInfos: [AnalyzeInfo] = []
     private var activityArray: [[CGRect?]] = []
+    private let dataStore = AnalyzeDataStore()
     let endPublisher = PassthroughSubject<[AnalyzeInfo], Never>()
     let progressPublisher = PassthroughSubject<Double, Never>()
     var setting: AnalyzerSetting
@@ -79,6 +80,75 @@ final class YochuAnalyzer {
             }
         }
         return activityList
+    }
+    
+    func analyze() {
+        let detectedDatas = dataStore.trnseposeActivitiesData
+        for (index, detectedData) in detectedDatas.enumerated() {
+            let startAt = analyzeWandaring(detectedData: detectedData)
+            let stopAt = analyzeStop(detectedData: detectedData)
+            dataStore.register(wadaringAt: startAt, stopAt: stopAt, boundingBoxes: detectedData)
+        }
+    }
+    
+    /// ワンダリング行動の検出
+    /// - Parameter detectedData: 幼虫一匹分の行動データ配列
+    /// - Returns: ワンダリング行動のスタート時間（単位は分）、してなかったらnil
+    private func analyzeWandaring(detectedData: [CGRect?]) -> Int? {
+        let experimentHours = detectedData.count / setting.oneHour
+        var preSectionTotal = 0
+        var firstSectionTotal = 0
+        var secondSectionTotal = 0
+        
+        for hour in 0..<experimentHours {
+            let start = hour * setting.oneHour
+            preSectionTotal = firstSectionTotal
+            firstSectionTotal = secondSectionTotal
+            let secondSection = detectedData[start ..< start + setting.oneHour]
+            secondSectionTotal = secondSection.reduce(into: 0) {
+                $0 += $1 != nil ? 1 : 0
+            }
+            if firstSectionTotal >= setting.wandaringThreshold,
+               secondSectionTotal >= setting.wandaringThreshold {
+                return calcWandaringStart(preSectionTotal, firstSectionTotal, preStart: (hour - 2) * 60)
+            }
+        }
+        return nil
+    }
+    
+    private func calcWandaringStart(_ preSectionTotal: Int, _ firstSectionTotal: Int, preStart: Int) -> Int {
+        (setting.wandaringThreshold - preSectionTotal) * (60 / (firstSectionTotal - preSectionTotal)) + preStart
+    }
+    
+    /// ワンダリング行動の停止時間の算出
+    /// - Parameter detectedData: 幼虫一匹の行動データ配列
+    /// - Returns: 終了時間、単位は分、止まってなかったらnil
+    private func analyzeStop(detectedData: [CGRect?]) -> Int? {
+        for (index, rect) in detectedData.enumerated() {
+            if index + setting.stopThreshold > detectedData.count {
+                break
+            }
+            
+            if let rect = rect {
+                for count in 1...setting.stopThreshold {
+                    if count == setting.stopThreshold {
+                        return index * setting.interval
+                    }
+                    if let compareRect = detectedData[index + count] {
+                        let buffer = CGFloat(setting.stopRectBuffer)
+                        let xRange = rect.midX - buffer ... rect.midX + buffer
+                        let yRange = rect.midY - buffer ... rect.midY + buffer
+                        
+                        if !xRange.contains(compareRect.midX) ||
+                            !yRange.contains(compareRect.midY) {
+                            break   // まだ動いてる
+                        }
+                    }
+                }
+            }
+        }
+        
+        return nil // 止まってない
     }
 }
 

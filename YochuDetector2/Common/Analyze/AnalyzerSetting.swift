@@ -19,4 +19,5 @@ struct AnalyzerSetting {
     var stopThreshold: Int {
         30 / interval
     }
+    private(set) var stopRectBuffer: Int = 20
 }
