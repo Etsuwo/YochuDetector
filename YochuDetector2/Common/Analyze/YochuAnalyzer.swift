@@ -57,6 +57,7 @@ final class YochuAnalyzer {
             progressPublisher.send(Double(index + 1))
         }
         analyze()
+        CSVHandler().write(resultDatas: dataStore.resultDatas, to: AnalyzeSettingStore.shared.outputUrl!)
         endPublisher.send(analyzeInfos)
     }
     

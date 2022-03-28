@@ -11,7 +11,7 @@ import AppKit
 final class AnalyzeDataStore {
     
     private var analyzedDatas: [AnalyzedData] = []
-    private var resultDatas: [ResultData] = []
+    private(set) var resultDatas: [ResultData] = []
     
     var trnseposeActivitiesData: [[CGRect?]] {
         let activitiesData = analyzedDatas.reduce(into: []) {
