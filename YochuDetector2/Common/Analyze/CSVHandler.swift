@@ -19,18 +19,21 @@ final class CSVHandler {
         
         // ヘッダー作成
         outputString += ","
-        for count in 1 ... resultDatas[0].boundingBoxes.count {
+        for count in 0 ..< resultDatas[0].boundingBoxes.count {
             outputString += "\(DateComponentsFormatter.headerString(from: Double(count * 2 * 60))),"
         }
-        outputString += "\n"
+        outputString += "wandaringAt,stopAt,\n"
         
         // 本体作成
         for (index, resultData) in resultDatas.enumerated() {
             let joinedString = resultData.boundingBoxes.map {
                 $0 != nil ? String(format:"(%.1f %.1f)", $0!.midX, $0!.midY) : ""
             }.joined(separator: ",")
-            outputString += "\(index + 1),\(joinedString)\n"
+            let wandaringAt = DateComponentsFormatter.headerString(from: Double((resultData.wandaringAt ?? 0) * 60))
+            let stopAt = DateComponentsFormatter.headerString(from: Double((resultData.stopAt ?? 0) * 60))
+            outputString += "\(index + 1),\(joinedString),\(wandaringAt),\(stopAt),\n"
         }
+        
         let fileName = makeCSVFileName()
         let url = outputUrl.appendingPathComponent(fileName)
         write(data: outputString, to: url)
