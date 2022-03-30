@@ -149,7 +149,7 @@ final class YochuAnalyzer {
                             !yRange.contains(compareRect.midY) {
                             break   // まだ動いてる
                         }
-                    }
+                    } else { break }
                 }
             }
         }
