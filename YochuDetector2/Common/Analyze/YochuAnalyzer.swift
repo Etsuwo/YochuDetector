@@ -25,6 +25,17 @@ final class YochuAnalyzer {
         self.setting = setting
     }
     
+    // 作業用
+    func crop(with urls: [URL], rect: CGRect) {
+        for (index ,url) in urls.enumerated() {
+            let nsImage = NSImage.withOptionalURL(url: url)
+            let cropImage = nsImage.crop(to: rect)
+            imageSaver.save(image: cropImage, fileName: url.lastPathComponent, to: AnalyzeSettingStore.shared.outputUrl!)
+            progressPublisher.send(Double(index + 1))
+        }
+        endPublisher.send(analyzeInfos)
+    }
+    
     func start(with urls: [URL], rect: CGRect) {
         for (index, url) in urls.enumerated() {
             let nsImage = NSImage.withOptionalURL(url: url)

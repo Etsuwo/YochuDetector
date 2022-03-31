@@ -96,6 +96,7 @@ final class TrimmingViewModel {
         DispatchQueue.global().async { [weak self] in
             guard let strongSelf = self else { return }
             strongSelf.analyzer.start(with: strongSelf.urls, rect: strongSelf.modifiedRect)
+            //strongSelf.analyzer.crop(with: strongSelf.urls, rect: strongSelf.modifiedRect)
         }
     }
 }
