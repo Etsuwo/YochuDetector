@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AppKit
 
 final class AnalyzeSettingStore {
     static let shared = AnalyzeSettingStore()
@@ -13,4 +14,5 @@ final class AnalyzeSettingStore {
     
     var inputUrl: URL?
     var outputUrl: URL?
+    var analyzedImage: NSImage?
 }

@@ -7,13 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5A8DFA8B27A64E6A0053636F /* Yolov3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DFA8A27A64E6A0053636F /* Yolov3.mlmodel */; };
 		5A8DFA8D27A64FFF0053636F /* MLHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DFA8C27A64FFF0053636F /* MLHandler.swift */; };
+		5A8DFA9227A65BC30053636F /* Yolov3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DFA9127A65BC30053636F /* Yolov3.mlmodel */; };
+		5A8DFA9427A669DB0053636F /* YOLO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DFA9327A669DB0053636F /* YOLO.swift */; };
+		5A8DFA9627A66A520053636F /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DFA9527A66A520053636F /* Helpers.swift */; };
 		5A98541727A629C200A5AC40 /* CropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A98541627A629C200A5AC40 /* CropView.swift */; };
+		5AB5C75F27A7D99E0046EF1D /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C75E27A7D99E0046EF1D /* ResultView.swift */; };
 		5ABEF6A327A4E78F00B1B5F9 /* TrimmingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABEF6A227A4E78F00B1B5F9 /* TrimmingViewModel.swift */; };
 		5ABEF6A527A4E82A00B1B5F9 /* AnalyzeSettingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABEF6A427A4E82A00B1B5F9 /* AnalyzeSettingStore.swift */; };
 		5ABEF6A727A4F21000B1B5F9 /* NSImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABEF6A627A4F21000B1B5F9 /* NSImage+Extension.swift */; };
 		5ABEF6B227A525D200B1B5F9 /* EditableRectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABEF6B127A525D200B1B5F9 /* EditableRectangleView.swift */; };
+		5ABF6C8B27A84C1A001B8FDE /* yolos.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5ABF6C8A27A84C1A001B8FDE /* yolos.mlmodel */; };
+		5ABF6C8D27A84E33001B8FDE /* yolo.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5ABF6C8C27A84E33001B8FDE /* yolo.mlmodel */; };
+		5ABF6C8F27A8FAF9001B8FDE /* CIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABF6C8E27A8FAF9001B8FDE /* CIImage+Extension.swift */; };
 		5AC2BAC927A2667300C0B88A /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC2BAC827A2667300C0B88A /* RootView.swift */; };
 		5AC2BACB27A2674700C0B88A /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC2BACA27A2674700C0B88A /* RootViewModel.swift */; };
 		5AC2BAD327A26C3300C0B88A /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC2BAD227A26C3300C0B88A /* NotificationName.swift */; };
@@ -29,13 +35,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5A8DFA8A27A64E6A0053636F /* Yolov3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Yolov3.mlmodel; sourceTree = "<group>"; };
 		5A8DFA8C27A64FFF0053636F /* MLHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLHandler.swift; sourceTree = "<group>"; };
+		5A8DFA9127A65BC30053636F /* Yolov3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Yolov3.mlmodel; sourceTree = "<group>"; };
+		5A8DFA9327A669DB0053636F /* YOLO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YOLO.swift; sourceTree = "<group>"; };
+		5A8DFA9527A66A520053636F /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		5A98541627A629C200A5AC40 /* CropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropView.swift; sourceTree = "<group>"; };
+		5AB5C75E27A7D99E0046EF1D /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		5ABEF6A227A4E78F00B1B5F9 /* TrimmingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrimmingViewModel.swift; sourceTree = "<group>"; };
 		5ABEF6A427A4E82A00B1B5F9 /* AnalyzeSettingStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzeSettingStore.swift; sourceTree = "<group>"; };
 		5ABEF6A627A4F21000B1B5F9 /* NSImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Extension.swift"; sourceTree = "<group>"; };
 		5ABEF6B127A525D200B1B5F9 /* EditableRectangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableRectangleView.swift; sourceTree = "<group>"; };
+		5ABF6C8A27A84C1A001B8FDE /* yolos.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = yolos.mlmodel; sourceTree = "<group>"; };
+		5ABF6C8C27A84E33001B8FDE /* yolo.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = yolo.mlmodel; sourceTree = "<group>"; };
+		5ABF6C8E27A8FAF9001B8FDE /* CIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CIImage+Extension.swift"; sourceTree = "<group>"; };
 		5AC2BAC827A2667300C0B88A /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		5AC2BACA27A2674700C0B88A /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		5AC2BAD227A26C3300C0B88A /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
@@ -66,14 +78,25 @@
 		5A8DFA8E27A652B40053636F /* MLModels */ = {
 			isa = PBXGroup;
 			children = (
-				5A8DFA8A27A64E6A0053636F /* Yolov3.mlmodel */,
+				5ABF6C8A27A84C1A001B8FDE /* yolos.mlmodel */,
+				5A8DFA9127A65BC30053636F /* Yolov3.mlmodel */,
+				5ABF6C8C27A84E33001B8FDE /* yolo.mlmodel */,
 			);
 			path = MLModels;
+			sourceTree = "<group>";
+		};
+		5AB5C75D27A7D9800046EF1D /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				5AB5C75E27A7D99E0046EF1D /* ResultView.swift */,
+			);
+			path = Result;
 			sourceTree = "<group>";
 		};
 		5AC2BACC27A2677700C0B88A /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				5AB5C75D27A7D9800046EF1D /* Result */,
 				5AC2BACF27A267A900C0B88A /* Trimming */,
 				5AC2BACE27A2679000C0B88A /* SelectSource */,
 				5AC2BACD27A2678100C0B88A /* Root */,
@@ -117,6 +140,8 @@
 				5ABEF6B127A525D200B1B5F9 /* EditableRectangleView.swift */,
 				5A98541627A629C200A5AC40 /* CropView.swift */,
 				5A8DFA8C27A64FFF0053636F /* MLHandler.swift */,
+				5A8DFA9327A669DB0053636F /* YOLO.swift */,
+				5A8DFA9527A66A520053636F /* Helpers.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -174,6 +199,7 @@
 				5AF4F436279F00C7001041CB /* NSOpenPanel+Extension.swift */,
 				5AF4F43C279F08C1001041CB /* String+Extension.swift */,
 				5ABEF6A627A4F21000B1B5F9 /* NSImage+Extension.swift */,
+				5ABF6C8E27A8FAF9001B8FDE /* CIImage+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -249,15 +275,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				5ABEF6B227A525D200B1B5F9 /* EditableRectangleView.swift in Sources */,
+				5A8DFA9627A66A520053636F /* Helpers.swift in Sources */,
 				5AC2BAC927A2667300C0B88A /* RootView.swift in Sources */,
-				5A8DFA8B27A64E6A0053636F /* Yolov3.mlmodel in Sources */,
+				5A8DFA9427A669DB0053636F /* YOLO.swift in Sources */,
+				5ABF6C8B27A84C1A001B8FDE /* yolos.mlmodel in Sources */,
+				5A8DFA9227A65BC30053636F /* Yolov3.mlmodel in Sources */,
 				5AD4F0F2279B0923008BD0A0 /* SelectSourceView.swift in Sources */,
+				5ABF6C8D27A84E33001B8FDE /* yolo.mlmodel in Sources */,
 				5AF4F437279F00C7001041CB /* NSOpenPanel+Extension.swift in Sources */,
 				5AC2BAD327A26C3300C0B88A /* NotificationName.swift in Sources */,
 				5AF4F43F279F09B8001041CB /* TrimmingView.swift in Sources */,
 				5ABEF6A727A4F21000B1B5F9 /* NSImage+Extension.swift in Sources */,
+				5ABF6C8F27A8FAF9001B8FDE /* CIImage+Extension.swift in Sources */,
 				5AF4F43B279F0222001041CB /* OpenPanelHandler.swift in Sources */,
 				5AD4F0FF279B0E47008BD0A0 /* SelectSourceViewModel.swift in Sources */,
+				5AB5C75F27A7D99E0046EF1D /* ResultView.swift in Sources */,
 				5ABEF6A527A4E82A00B1B5F9 /* AnalyzeSettingStore.swift in Sources */,
 				5ABEF6A327A4E78F00B1B5F9 /* TrimmingViewModel.swift in Sources */,
 				5AF4F43D279F08C1001041CB /* String+Extension.swift in Sources */,

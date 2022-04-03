@@ -17,7 +17,16 @@ struct TrimmingView: View {
     }
     
     var body: some View {
-        Image(nsImage: NSImage.withOptionalURL(url: viewState.url))
+        VStack {
+            Image(nsImage: NSImage.withOptionalURL(url: viewState.url))
+            Spacer()
+            Button(action: {
+                viewModel.onTapGoButton()
+            }, label: {
+                Text("GO!!!!!")
+            })
+        }
+        
     }
 }
 

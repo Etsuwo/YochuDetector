@@ -8,10 +8,12 @@
 import Foundation
 enum NotificationName: String {
     case transitionTrimming
+    case transitionResult
 }
 
 extension Notification.Name {
     static let transitionTrimming = NotificationName.transitionTrimming.name
+    static let transitionResult = NotificationName.transitionResult.name
 }
 
 extension NotificationName {

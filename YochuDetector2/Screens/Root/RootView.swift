@@ -21,6 +21,7 @@ struct RootView: View {
         switch viewState.displayView {
         case .selectSource: SelectSourceView()
         case .trimming: TrimmingView()
+        case .result: ResultView()
         }
     }
 }
