@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5A8DFA8D27A64FFF0053636F /* MLHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DFA8C27A64FFF0053636F /* MLHandler.swift */; };
 		5A8DFA9227A65BC30053636F /* Yolov3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DFA9127A65BC30053636F /* Yolov3.mlmodel */; };
 		5A8DFA9427A669DB0053636F /* YOLO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DFA9327A669DB0053636F /* YOLO.swift */; };
 		5A8DFA9627A66A520053636F /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DFA9527A66A520053636F /* Helpers.swift */; };
@@ -35,7 +34,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5A8DFA8C27A64FFF0053636F /* MLHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLHandler.swift; sourceTree = "<group>"; };
 		5A8DFA9127A65BC30053636F /* Yolov3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Yolov3.mlmodel; sourceTree = "<group>"; };
 		5A8DFA9327A669DB0053636F /* YOLO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YOLO.swift; sourceTree = "<group>"; };
 		5A8DFA9527A66A520053636F /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
@@ -139,7 +137,6 @@
 				5ABEF6A427A4E82A00B1B5F9 /* AnalyzeSettingStore.swift */,
 				5ABEF6B127A525D200B1B5F9 /* EditableRectangleView.swift */,
 				5A98541627A629C200A5AC40 /* CropView.swift */,
-				5A8DFA8C27A64FFF0053636F /* MLHandler.swift */,
 				5A8DFA9327A669DB0053636F /* YOLO.swift */,
 				5A8DFA9527A66A520053636F /* Helpers.swift */,
 			);
@@ -293,7 +290,6 @@
 				5ABEF6A527A4E82A00B1B5F9 /* AnalyzeSettingStore.swift in Sources */,
 				5ABEF6A327A4E78F00B1B5F9 /* TrimmingViewModel.swift in Sources */,
 				5AF4F43D279F08C1001041CB /* String+Extension.swift in Sources */,
-				5A8DFA8D27A64FFF0053636F /* MLHandler.swift in Sources */,
 				5AC2BACB27A2674700C0B88A /* RootViewModel.swift in Sources */,
 				5AD4F0F0279B0923008BD0A0 /* YochuDetector2App.swift in Sources */,
 				5A98541727A629C200A5AC40 /* CropView.swift in Sources */,
