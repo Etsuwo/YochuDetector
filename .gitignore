@@ -133,5 +133,6 @@ iOSInjectionProject/
 !*.xcodeproj/xcshareddata/
 !*.xcworkspace/contents.xcworkspacedata
 **/xcshareddata/WorkspaceSettings.xcsettings
+YochuDetector2.xcodeproj/project.xcworkspace/xcuserdata/etsushiotani.xcuserdatad/UserInterfaceState.xcuserstate
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,swift,xcode
