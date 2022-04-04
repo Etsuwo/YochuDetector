@@ -46,9 +46,8 @@ final class TrimmingViewModel {
             .assign(to: &viewState.$currentProgressValue)
         analyzer.endPublisher
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: {[weak self] infos in
+            .sink(receiveValue: {[weak self] in
                 self?.viewState.isHiddenProgressView = true
-                AnalyzeSettingStore.shared.analyzeInfos = infos
                 NotificationCenter.default.post(name: .transitionResult, object: nil)
             })
             .store(in: &cancellables)
