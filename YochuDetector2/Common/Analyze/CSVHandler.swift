@@ -18,11 +18,11 @@ final class CSVHandler {
         var outputString = ""
         
         // ヘッダー作成
-        outputString += ","
+        outputString += ",wandaringAt,stopAt,"
         for count in 0 ..< resultDatas[0].boundingBoxes.count {
             outputString += "\(DateComponentsFormatter.headerString(from: Double(count * 2 * 60))),"
         }
-        outputString += "wandaringAt,stopAt,\n"
+        outputString += "\n"
         
         // 本体作成
         for (index, resultData) in resultDatas.enumerated() {
@@ -31,7 +31,7 @@ final class CSVHandler {
             }.joined(separator: ",")
             let wandaringAt = DateComponentsFormatter.headerString(from: Double((resultData.wandaringAt ?? 0) * 60))
             let stopAt = DateComponentsFormatter.headerString(from: Double((resultData.stopAt ?? 0) * 60))
-            outputString += "\(index + 1),\(joinedString),\(wandaringAt),\(stopAt),\n"
+            outputString += "\(index + 1),\(wandaringAt),\(stopAt),\(joinedString),\n"
         }
         
         let fileName = makeCSVFileName()
