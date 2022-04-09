@@ -38,7 +38,7 @@ extension CIImage {
             origin = CGPoint(x: 0, y: 0)
         } else {
             resize = CGSize(width: size.width, height: self.extent.size.height / self.extent.size.width * size.width)
-            origin = CGPoint(x: 0, y: size.height - resize.height)
+            origin = CGPoint(x: 0, y: 0)
         }
         
         let cgImage = self.toCGImage(context: context)

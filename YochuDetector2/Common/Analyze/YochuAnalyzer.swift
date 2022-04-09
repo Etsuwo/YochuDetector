@@ -41,29 +41,22 @@ final class YochuAnalyzer {
                 let nsImage = NSImage.withOptionalURL(url: url)
                 let croppedImage = nsImage.crop(to: rect)
                 guard let ciImage = croppedImage.ciImage else { return }
-                let scaledImage = ciImage.resizeWithWhiteBackground(context: ciContext, size: CGSize(width: YOLO.inputWidth, height: YOLO.inputHeight))
-                guard let pixelBuffer = scaledImage.toPixelBuffer(context: ciContext) else { return }
-                if let boundingBoxes = try? yolo.predict(image: pixelBuffer) {
+                //let scaledImage = ciImage.resizeWithWhiteBackground(context: ciContext, size: CGSize(width: YOLO.inputWidth, height: YOLO.inputHeight))
+                //guard let pixelBuffer = ciImage.toPixelBuffer(context: ciContext) else { return }
+                yolo.predict(image: ciImage) { [weak self] observations in
+                    guard let strongSelf = self else { return }
                     var modifiedBoundingBoxes: [CGRect] = []
-                    for boundingBox in boundingBoxes {
-                        // 元画像に矩形を表示するための補正
-                        let inputSize = croppedImage.size.height > croppedImage.size.width ? CGSize(width: croppedImage.size.width / croppedImage.size.height * 640, height: 640) : CGSize(width: 640, height: croppedImage.size.height / croppedImage.size.width * 640)
-
-                        let x = boundingBox.rect.origin.x * croppedImage.size.width / inputSize.width
-                        let y = boundingBox.rect.origin.y * croppedImage.size.height / inputSize.height
-                        let width = boundingBox.rect.width * croppedImage.size.width / inputSize.width
-                        let height = boundingBox.rect.height * croppedImage.size.height / inputSize.height
-                        
-                        let origin = CGPoint(x: x, y: croppedImage.size.height - y - height)
-                        let size = CGSize(width: width, height: height)
+                    for observation in observations {
+                        let boudingBox = observation.boundingBox
+                        let origin = CGPoint(x: boudingBox.origin.x * croppedImage.size.width, y: boudingBox.origin.y * croppedImage.size.height)
+                        let size = CGSize(width: boudingBox.size.width * croppedImage.size.width, height: boudingBox.size.height * croppedImage.size.height)
                         let rect = CGRect(origin: origin, size: size)
                         croppedImage.addBoundingRectangle(with: rect)
                         modifiedBoundingBoxes.append(rect)
                     }
-                    let outputURL = imageSaver.save(image: croppedImage, fileName: url.lastPathComponent, to: AnalyzeSettingStore.shared.outputUrl!)
-                    let separatedBoudingBoxes = assignBoundingBoxes(imageWidth: croppedImage.size.width, boundingBoxes: modifiedBoundingBoxes)
-                    dataStore.register(imageURL: outputURL, boudingBoxes: separatedBoudingBoxes)
-                    //analyzeInfos.append(AnalyzeInfo(image: croppedImage, boundingBoxes: modifiedBoundingBoxes))
+                    let outputURL = strongSelf.imageSaver.save(image: croppedImage, fileName: url.lastPathComponent, to: AnalyzeSettingStore.shared.outputUrl!)
+                    let separatedBoudingBoxes = strongSelf.assignBoundingBoxes(imageWidth: croppedImage.size.width, boundingBoxes: modifiedBoundingBoxes)
+                    strongSelf.dataStore.register(imageURL: outputURL, boudingBoxes: separatedBoudingBoxes)
                 }
                 progressPublisher.send(Double(index + 1))
             }
