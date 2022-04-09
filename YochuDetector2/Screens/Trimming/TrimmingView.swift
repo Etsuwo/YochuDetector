@@ -71,7 +71,7 @@ struct TrimmingView: View {
                 HStack {
                     Spacer()
                     Button(action: {
-                        // 遷移処理
+                        viewModel.onTapBackToTopButton()
                     }, label: {
                         Text("TOPに戻る")
                     })

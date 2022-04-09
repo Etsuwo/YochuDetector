@@ -31,6 +31,11 @@ final class RootViewModel {
                 self?.viewState.displayView = .result
             })
             .store(in: &cancellables)
+        NotificationCenter.Publisher(center: .default, name: .transitionSelectSource)
+            .sink(receiveValue: {[weak self] _ in
+                self?.viewState.displayView = .selectSource
+            })
+            .store(in: &cancellables)
     }
 }
 

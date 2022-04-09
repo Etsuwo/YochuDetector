@@ -98,4 +98,8 @@ final class TrimmingViewModel {
             //strongSelf.analyzer.crop(with: strongSelf.urls, rect: strongSelf.modifiedRect)
         }
     }
+    
+    func onTapBackToTopButton() {
+        NotificationCenter.default.post(name: .transitionSelectSource, object: nil)
+    }
 }
