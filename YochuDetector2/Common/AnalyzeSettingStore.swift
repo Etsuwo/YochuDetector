@@ -14,5 +14,4 @@ final class AnalyzeSettingStore {
     
     var inputUrl: URL?
     var outputUrl: URL?
-    var analyzeInfos: [AnalyzeInfo] = []
 }
