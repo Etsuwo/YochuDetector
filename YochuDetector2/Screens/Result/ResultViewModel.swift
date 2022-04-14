@@ -11,4 +11,8 @@ final class ResultViewModel: ObservableObject {
     func onTapBackTrimming() {
         NotificationCenter.default.post(name: .transitionTrimming, object: nil)
     }
+    
+    func onTapBackTop() {
+        NotificationCenter.default.post(name: .transitionSelectSource, object: nil)
+    }
 }

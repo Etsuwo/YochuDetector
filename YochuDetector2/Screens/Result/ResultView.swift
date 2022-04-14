@@ -18,12 +18,23 @@ struct ResultView: View {
                 .padding()
             Text("Outputに指定したフォルダから解析結果を確認してください")
             Spacer()
-            Button(action: {
-                viewModel.onTapBackTrimming()
-            }, label: {
-                Text("トリミングへ戻る")
-            })
-                .padding()
+            HStack {
+                Button(action: {
+                    viewModel.onTapBackTrimming()
+                }, label: {
+                    Text("トリミングへ戻る")
+                })
+                Spacer()
+                    .frame(width: 24)
+                Button(action: {
+                    viewModel.onTapBackTop()
+                }, label: {
+                    Text("TOPへ戻る")
+                })
+            }
+            .padding(.horizontal, 24)
+            Spacer()
+                .frame(height: 24)
         }
         .frame(minWidth: 200, maxWidth: .infinity, minHeight: 100, maxHeight: .infinity)
     }

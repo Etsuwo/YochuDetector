@@ -11,9 +11,11 @@ import CoreImage
 import Vision
 import AppKit
 
+protocol TrimmingViewState: UnInteractiveLoadingViewState, ObservableObject {}
+
 final class TrimmingViewModel {
     
-    final class ViewState: ObservableObject {
+    final class ViewState: TrimmingViewState {
         @Published var url: URL?
         @Published var croppedImage = NSImage()
         @Published var cropViewIsHidden = false
@@ -97,5 +99,9 @@ final class TrimmingViewModel {
             strongSelf.analyzer.start(with: strongSelf.urls, rect: strongSelf.modifiedRect)
             //strongSelf.analyzer.crop(with: strongSelf.urls, rect: strongSelf.modifiedRect)
         }
+    }
+    
+    func onTapBackToTopButton() {
+        NotificationCenter.default.post(name: .transitionSelectSource, object: nil)
     }
 }

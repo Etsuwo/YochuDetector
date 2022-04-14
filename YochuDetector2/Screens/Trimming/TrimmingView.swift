@@ -58,13 +58,6 @@ struct TrimmingView: View {
                     })
                         .isHidden(viewState.croppedViewIsHidden)
                     Spacer()
-                    Button(action: {
-                        viewModel.onTapGoButton()
-                    }, label: {
-                        Text("解析開始")
-                    })
-                    Spacer()
-                        .frame(width: 24)
                 }
                 .padding()
                 Spacer()
@@ -75,12 +68,28 @@ struct TrimmingView: View {
                     Spacer()
                 }
                 .padding()
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        viewModel.onTapBackToTopButton()
+                    }, label: {
+                        Text("TOPに戻る")
+                    })
+                    Spacer()
+                        .frame(width: 8)
+                    Button(action: {
+                        viewModel.onTapGoButton()
+                    }, label: {
+                        Text("解析開始")
+                    })
+                    Spacer()
+                        .frame(width: 24)
+                }
+                Spacer()
+                    .frame(height: 24)
             }
-            ProgressView("Analyzing...", value: viewState.currentProgressValue, total: viewState.totalProgressValue)
-                .isHidden(viewState.isHiddenProgressView)
-                .frame(maxWidth: .infinity)
-                .padding()
-                .padding()
+            UnInteractiveLoadingView(viewState: viewState)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
 }
