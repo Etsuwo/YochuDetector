@@ -11,9 +11,11 @@ import CoreImage
 import Vision
 import AppKit
 
+protocol TrimmingViewState: UnInteractiveLoadingViewState {}
+
 final class TrimmingViewModel {
     
-    final class ViewState: ObservableObject {
+    final class ViewState: TrimmingViewState {
         @Published var url: URL?
         @Published var croppedImage = NSImage()
         @Published var cropViewIsHidden = false

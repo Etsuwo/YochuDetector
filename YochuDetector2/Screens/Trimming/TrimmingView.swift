@@ -88,14 +88,8 @@ struct TrimmingView: View {
                 Spacer()
                     .frame(height: 24)
             }
-            Color(CGColor.init(gray: 0.5, alpha: 0.5))
-                .isHidden(viewState.isHiddenProgressView)
+            UnInteractiveLoadingView(viewState: viewState)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-            ProgressView("Analyzing...", value: viewState.currentProgressValue, total: viewState.totalProgressValue)
-                .isHidden(viewState.isHiddenProgressView)
-                .frame(maxWidth: .infinity)
-                .padding()
-                .padding()
         }
     }
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5A16766627CBAFA9009A8B70 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A16766527CBAFA9009A8B70 /* ImageSaver.swift */; };
+		5A2E40412807DD4F00E7903C /* UnInteractiveLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E40402807DD4F00E7903C /* UnInteractiveLoadingView.swift */; };
 		5A3C635127F1D7EB00C86812 /* DateComponentsFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3C635027F1D7EB00C86812 /* DateComponentsFormatter+Extension.swift */; };
 		5A4D72C027FEEC090024A09C /* Yolov5.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D72BF27FEEC090024A09C /* Yolov5.mlmodel */; };
 		5A62254827BDE15E00B1122F /* Hidden.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A62254727BDE15E00B1122F /* Hidden.swift */; };
@@ -44,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		5A16766527CBAFA9009A8B70 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
+		5A2E40402807DD4F00E7903C /* UnInteractiveLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnInteractiveLoadingView.swift; sourceTree = "<group>"; };
 		5A3C635027F1D7EB00C86812 /* DateComponentsFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateComponentsFormatter+Extension.swift"; sourceTree = "<group>"; };
 		5A4D72BF27FEEC090024A09C /* Yolov5.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Yolov5.mlmodel; sourceTree = "<group>"; };
 		5A62254727BDE15E00B1122F /* Hidden.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hidden.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			children = (
 				5A98541627A629C200A5AC40 /* CropView.swift */,
 				5ABEF6B127A525D200B1B5F9 /* EditableRectangleView.swift */,
+				5A2E40402807DD4F00E7903C /* UnInteractiveLoadingView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				5ABF6C8F27A8FAF9001B8FDE /* CIImage+Extension.swift in Sources */,
 				5A62254827BDE15E00B1122F /* Hidden.swift in Sources */,
 				5AF4F43B279F0222001041CB /* OpenPanelHandler.swift in Sources */,
+				5A2E40412807DD4F00E7903C /* UnInteractiveLoadingView.swift in Sources */,
 				5A3C635127F1D7EB00C86812 /* DateComponentsFormatter+Extension.swift in Sources */,
 				5AA1E3CE27F0ABA3006E9D3C /* Date+Extension.swift in Sources */,
 				5AD4F0FF279B0E47008BD0A0 /* SelectSourceViewModel.swift in Sources */,
