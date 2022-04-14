@@ -124,6 +124,8 @@ iOSInjectionProject/
 # MLModel
 *.mlmodel
 
+# Framework
+opencv2.framework
 
 ## Gcc Patch
 /*.gcno
