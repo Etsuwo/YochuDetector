@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-protocol UnInteractiveLoadingViewState: ObservableObject {
+protocol UnInteractiveLoadingViewState {
     var isHiddenProgressView: Bool { get }
     var currentProgressValue: Double { get }
     var totalProgressValue: Double { get }
 }
 
-struct UnInteractiveLoadingView<T: UnInteractiveLoadingViewState>: View {
+struct UnInteractiveLoadingView<ViewState: UnInteractiveLoadingViewState & ObservableObject>: View {
     
-    @ObservedObject var viewState: T
+    @ObservedObject var viewState: ViewState
     
     var body: some View {
         ZStack {

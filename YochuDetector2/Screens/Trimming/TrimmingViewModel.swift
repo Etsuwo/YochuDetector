@@ -11,7 +11,7 @@ import CoreImage
 import Vision
 import AppKit
 
-protocol TrimmingViewState: UnInteractiveLoadingViewState {}
+protocol TrimmingViewState: UnInteractiveLoadingViewState, ObservableObject {}
 
 final class TrimmingViewModel {
     
