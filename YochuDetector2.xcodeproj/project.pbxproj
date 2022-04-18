@@ -36,10 +36,13 @@
 		5AD4F0F4279B0925008BD0A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AD4F0F3279B0925008BD0A0 /* Assets.xcassets */; };
 		5AD4F0F7279B0925008BD0A0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AD4F0F6279B0925008BD0A0 /* Preview Assets.xcassets */; };
 		5AD4F0FF279B0E47008BD0A0 /* SelectSourceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD4F0FE279B0E47008BD0A0 /* SelectSourceViewModel.swift */; };
-		5AE0B9882808142500442E13 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AE0B9872808141C00442E13 /* libc++.tbd */; };
-		5AE0B98A2808142E00442E13 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AE0B9892808142E00442E13 /* opencv2.framework */; };
 		5AE0B98E28082D7700442E13 /* AreaExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE0B98D28082D7700442E13 /* AreaExtractor.swift */; };
+		5AE38C24280C4C34003E8366 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AE38C23280C4C2A003E8366 /* libc++.tbd */; };
 		5AE3EFCB27EFF6AA005C416A /* AnalyzeDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE3EFCA27EFF6AA005C416A /* AnalyzeDataStore.swift */; };
+		5AEC9701280C562100C41B49 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AEC9700280C562100C41B49 /* opencv2.framework */; };
+		5AEC97AC280C688800C41B49 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AEC97AB280C688800C41B49 /* Accelerate.framework */; };
+		5AEC97AE280C689B00C41B49 /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AEC97AD280C689B00C41B49 /* OpenCL.framework */; };
+		5AEC97B0280C6B1D00C41B49 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AEC97AF280C6B1D00C41B49 /* AVFoundation.framework */; };
 		5AF4F437279F00C7001041CB /* NSOpenPanel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF4F436279F00C7001041CB /* NSOpenPanel+Extension.swift */; };
 		5AF4F43B279F0222001041CB /* OpenPanelHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF4F43A279F0222001041CB /* OpenPanelHandler.swift */; };
 		5AF4F43D279F08C1001041CB /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF4F43C279F08C1001041CB /* String+Extension.swift */; };
@@ -78,10 +81,13 @@
 		5AD4F0F6279B0925008BD0A0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5AD4F0F8279B0925008BD0A0 /* YochuDetector2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YochuDetector2.entitlements; sourceTree = "<group>"; };
 		5AD4F0FE279B0E47008BD0A0 /* SelectSourceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSourceViewModel.swift; sourceTree = "<group>"; };
-		5AE0B9872808141C00442E13 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
-		5AE0B9892808142E00442E13 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		5AE0B98D28082D7700442E13 /* AreaExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaExtractor.swift; sourceTree = "<group>"; };
+		5AE38C23280C4C2A003E8366 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		5AE3EFCA27EFF6AA005C416A /* AnalyzeDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzeDataStore.swift; sourceTree = "<group>"; };
+		5AEC9700280C562100C41B49 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
+		5AEC97AB280C688800C41B49 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		5AEC97AD280C689B00C41B49 /* OpenCL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenCL.framework; path = System/Library/Frameworks/OpenCL.framework; sourceTree = SDKROOT; };
+		5AEC97AF280C6B1D00C41B49 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		5AF4F436279F00C7001041CB /* NSOpenPanel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSOpenPanel+Extension.swift"; sourceTree = "<group>"; };
 		5AF4F43A279F0222001041CB /* OpenPanelHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenPanelHandler.swift; sourceTree = "<group>"; };
 		5AF4F43C279F08C1001041CB /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -93,8 +99,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5AE0B98A2808142E00442E13 /* opencv2.framework in Frameworks */,
-				5AE0B9882808142500442E13 /* libc++.tbd in Frameworks */,
+				5AEC97AC280C688800C41B49 /* Accelerate.framework in Frameworks */,
+				5AEC97AE280C689B00C41B49 /* OpenCL.framework in Frameworks */,
+				5AEC97B0280C6B1D00C41B49 /* AVFoundation.framework in Frameworks */,
+				5AEC9701280C562100C41B49 /* opencv2.framework in Frameworks */,
+				5AE38C24280C4C34003E8366 /* libc++.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,7 +239,7 @@
 			children = (
 				5AD4F0EE279B0923008BD0A0 /* YochuDetector2 */,
 				5AD4F0ED279B0923008BD0A0 /* Products */,
-				5AE0B9862808141C00442E13 /* Frameworks */,
+				5AE38C16280C0144003E8366 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -267,11 +276,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		5AE0B9862808141C00442E13 /* Frameworks */ = {
+		5AE38C16280C0144003E8366 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5AE0B9892808142E00442E13 /* opencv2.framework */,
-				5AE0B9872808141C00442E13 /* libc++.tbd */,
+				5AEC97AF280C6B1D00C41B49 /* AVFoundation.framework */,
+				5AEC97AD280C689B00C41B49 /* OpenCL.framework */,
+				5AEC97AB280C688800C41B49 /* Accelerate.framework */,
+				5AEC9700280C562100C41B49 /* opencv2.framework */,
+				5AE38C23280C4C2A003E8366 /* libc++.tbd */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -532,13 +544,20 @@
 					"$(PROJECT_DIR)",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/opencv/lib",
+					/usr/local/lib/,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.emoshu.otani.etsushi.YochuDetector2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -564,13 +583,20 @@
 					"$(PROJECT_DIR)",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/opencv/lib",
+					/usr/local/lib/,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.emoshu.otani.etsushi.YochuDetector2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
