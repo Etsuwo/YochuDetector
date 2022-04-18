@@ -15,6 +15,7 @@
 		5A6B0D1A27C474760098E47C /* YochuAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6B0D1927C474760098E47C /* YochuAnalyzer.swift */; };
 		5A8DFA9227A65BC30053636F /* Yolov3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DFA9127A65BC30053636F /* Yolov3.mlmodel */; };
 		5A8DFA9427A669DB0053636F /* YOLO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DFA9327A669DB0053636F /* YOLO.swift */; };
+		5A8E0D94280CFC3D00A1BAFD /* AreaExtractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8E0D93280CFC3D00A1BAFD /* AreaExtractorTest.swift */; };
 		5A98541727A629C200A5AC40 /* CropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A98541627A629C200A5AC40 /* CropView.swift */; };
 		5AA1E3CC27F0A0EB006E9D3C /* CSVHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA1E3CB27F0A0EB006E9D3C /* CSVHandler.swift */; };
 		5AA1E3CE27F0ABA3006E9D3C /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA1E3CD27F0ABA3006E9D3C /* Date+Extension.swift */; };
@@ -49,6 +50,16 @@
 		5AF4F43F279F09B8001041CB /* TrimmingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF4F43E279F09B8001041CB /* TrimmingView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5A8E0D95280CFC3D00A1BAFD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5AD4F0E4279B0923008BD0A0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5AD4F0EB279B0923008BD0A0;
+			remoteInfo = YochuDetector2;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		5A16766527CBAFA9009A8B70 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 		5A2E40402807DD4F00E7903C /* UnInteractiveLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnInteractiveLoadingView.swift; sourceTree = "<group>"; };
@@ -58,6 +69,8 @@
 		5A6B0D1927C474760098E47C /* YochuAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YochuAnalyzer.swift; sourceTree = "<group>"; };
 		5A8DFA9127A65BC30053636F /* Yolov3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Yolov3.mlmodel; sourceTree = "<group>"; };
 		5A8DFA9327A669DB0053636F /* YOLO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YOLO.swift; sourceTree = "<group>"; };
+		5A8E0D91280CFC3D00A1BAFD /* YochuDetector2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YochuDetector2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A8E0D93280CFC3D00A1BAFD /* AreaExtractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaExtractorTest.swift; sourceTree = "<group>"; };
 		5A98541627A629C200A5AC40 /* CropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropView.swift; sourceTree = "<group>"; };
 		5AA1E3CB27F0A0EB006E9D3C /* CSVHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVHandler.swift; sourceTree = "<group>"; };
 		5AA1E3CD27F0ABA3006E9D3C /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
@@ -95,6 +108,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5A8E0D8E280CFC3D00A1BAFD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5AD4F0E9279B0923008BD0A0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -148,6 +168,14 @@
 				5A8DFA9127A65BC30053636F /* Yolov3.mlmodel */,
 			);
 			path = MLModels;
+			sourceTree = "<group>";
+		};
+		5A8E0D92280CFC3D00A1BAFD /* YochuDetector2Tests */ = {
+			isa = PBXGroup;
+			children = (
+				5A8E0D93280CFC3D00A1BAFD /* AreaExtractorTest.swift */,
+			);
+			path = YochuDetector2Tests;
 			sourceTree = "<group>";
 		};
 		5AB5C75D27A7D9800046EF1D /* Result */ = {
@@ -238,6 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				5AD4F0EE279B0923008BD0A0 /* YochuDetector2 */,
+				5A8E0D92280CFC3D00A1BAFD /* YochuDetector2Tests */,
 				5AD4F0ED279B0923008BD0A0 /* Products */,
 				5AE38C16280C0144003E8366 /* Frameworks */,
 			);
@@ -247,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				5AD4F0EC279B0923008BD0A0 /* YochuDetector2.app */,
+				5A8E0D91280CFC3D00A1BAFD /* YochuDetector2Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -305,6 +335,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5A8E0D90280CFC3D00A1BAFD /* YochuDetector2Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5A8E0D99280CFC3E00A1BAFD /* Build configuration list for PBXNativeTarget "YochuDetector2Tests" */;
+			buildPhases = (
+				5A8E0D8D280CFC3D00A1BAFD /* Sources */,
+				5A8E0D8E280CFC3D00A1BAFD /* Frameworks */,
+				5A8E0D8F280CFC3D00A1BAFD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5A8E0D96280CFC3D00A1BAFD /* PBXTargetDependency */,
+			);
+			name = YochuDetector2Tests;
+			productName = YochuDetector2Tests;
+			productReference = 5A8E0D91280CFC3D00A1BAFD /* YochuDetector2Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		5AD4F0EB279B0923008BD0A0 /* YochuDetector2 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5AD4F0FB279B0925008BD0A0 /* Build configuration list for PBXNativeTarget "YochuDetector2" */;
@@ -329,9 +377,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1300;
+				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
+					5A8E0D90280CFC3D00A1BAFD = {
+						CreatedOnToolsVersion = 13.3;
+						TestTargetID = 5AD4F0EB279B0923008BD0A0;
+					};
 					5AD4F0EB279B0923008BD0A0 = {
 						CreatedOnToolsVersion = 13.0;
 					};
@@ -351,11 +403,19 @@
 			projectRoot = "";
 			targets = (
 				5AD4F0EB279B0923008BD0A0 /* YochuDetector2 */,
+				5A8E0D90280CFC3D00A1BAFD /* YochuDetector2Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5A8E0D8F280CFC3D00A1BAFD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5AD4F0EA279B0923008BD0A0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -368,6 +428,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5A8E0D8D280CFC3D00A1BAFD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A8E0D94280CFC3D00A1BAFD /* AreaExtractorTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5AD4F0E8279B0923008BD0A0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -410,7 +478,51 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		5A8E0D96280CFC3D00A1BAFD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5AD4F0EB279B0923008BD0A0 /* YochuDetector2 */;
+			targetProxy = 5A8E0D95280CFC3D00A1BAFD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		5A8E0D97280CFC3E00A1BAFD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZF824CFGPA;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.324etsushi.YochuDetector2Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YochuDetector2.app/Contents/MacOS/YochuDetector2";
+			};
+			name = Debug;
+		};
+		5A8E0D98280CFC3E00A1BAFD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZF824CFGPA;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.324etsushi.YochuDetector2Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YochuDetector2.app/Contents/MacOS/YochuDetector2";
+			};
+			name = Release;
+		};
 		5AD4F0F9279B0925008BD0A0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -607,6 +719,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5A8E0D99280CFC3E00A1BAFD /* Build configuration list for PBXNativeTarget "YochuDetector2Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A8E0D97280CFC3E00A1BAFD /* Debug */,
+				5A8E0D98280CFC3E00A1BAFD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5AD4F0E7279B0923008BD0A0 /* Build configuration list for PBXProject "YochuDetector2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
