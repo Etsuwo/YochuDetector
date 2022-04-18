@@ -15,6 +15,7 @@ final class YochuAnalyzer {
     private let yolo = YOLO()
     private var activityArray: [[CGRect?]] = []
     private let imageSaver = ImageSaver()
+    private let areaExtractor = AreaExtractor()
     private let dataStore = AnalyzeDataStore()
     let endPublisher = PassthroughSubject<Void, Never>()
     let progressPublisher = PassthroughSubject<Double, Never>()
@@ -29,7 +30,8 @@ final class YochuAnalyzer {
         for (index ,url) in urls.enumerated() {
             let nsImage = NSImage.withOptionalURL(url: url)
             let cropImage = nsImage.crop(to: rect)
-            imageSaver.save(image: cropImage, fileName: url.lastPathComponent, to: AnalyzeSettingStore.shared.outputUrl!)
+            let extractedImage = AreaExtractor().extractFeed(from: cropImage)
+            imageSaver.save(image: extractedImage, fileName: url.lastPathComponent, to: AnalyzeSettingStore.shared.outputUrl!)
             progressPublisher.send(Double(index + 1))
         }
         endPublisher.send()
@@ -40,9 +42,8 @@ final class YochuAnalyzer {
             autoreleasepool {
                 let nsImage = NSImage.withOptionalURL(url: url)
                 let croppedImage = nsImage.crop(to: rect)
-                guard let ciImage = croppedImage.ciImage else { return }
-                //let scaledImage = ciImage.resizeWithWhiteBackground(context: ciContext, size: CGSize(width: YOLO.inputWidth, height: YOLO.inputHeight))
-                //guard let pixelBuffer = ciImage.toPixelBuffer(context: ciContext) else { return }
+                let sourceImage = areaExtractor.extractFeed(from: croppedImage)
+                guard let ciImage = sourceImage.ciImage else { return }
                 yolo.predict(image: ciImage) { [weak self] observations in
                     guard let strongSelf = self else { return }
                     var modifiedBoundingBoxes: [CGRect] = []

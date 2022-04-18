@@ -15,6 +15,7 @@
 		5A6B0D1A27C474760098E47C /* YochuAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6B0D1927C474760098E47C /* YochuAnalyzer.swift */; };
 		5A8DFA9227A65BC30053636F /* Yolov3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DFA9127A65BC30053636F /* Yolov3.mlmodel */; };
 		5A8DFA9427A669DB0053636F /* YOLO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DFA9327A669DB0053636F /* YOLO.swift */; };
+		5A8E0D94280CFC3D00A1BAFD /* AreaExtractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8E0D93280CFC3D00A1BAFD /* AreaExtractorTest.swift */; };
 		5A98541727A629C200A5AC40 /* CropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A98541627A629C200A5AC40 /* CropView.swift */; };
 		5AA1E3CC27F0A0EB006E9D3C /* CSVHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA1E3CB27F0A0EB006E9D3C /* CSVHandler.swift */; };
 		5AA1E3CE27F0ABA3006E9D3C /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA1E3CD27F0ABA3006E9D3C /* Date+Extension.swift */; };
@@ -36,12 +37,28 @@
 		5AD4F0F4279B0925008BD0A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AD4F0F3279B0925008BD0A0 /* Assets.xcassets */; };
 		5AD4F0F7279B0925008BD0A0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AD4F0F6279B0925008BD0A0 /* Preview Assets.xcassets */; };
 		5AD4F0FF279B0E47008BD0A0 /* SelectSourceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD4F0FE279B0E47008BD0A0 /* SelectSourceViewModel.swift */; };
+		5AE0B98E28082D7700442E13 /* AreaExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE0B98D28082D7700442E13 /* AreaExtractor.swift */; };
+		5AE38C24280C4C34003E8366 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AE38C23280C4C2A003E8366 /* libc++.tbd */; };
 		5AE3EFCB27EFF6AA005C416A /* AnalyzeDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE3EFCA27EFF6AA005C416A /* AnalyzeDataStore.swift */; };
+		5AEC9701280C562100C41B49 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AEC9700280C562100C41B49 /* opencv2.framework */; };
+		5AEC97AC280C688800C41B49 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AEC97AB280C688800C41B49 /* Accelerate.framework */; };
+		5AEC97AE280C689B00C41B49 /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AEC97AD280C689B00C41B49 /* OpenCL.framework */; };
+		5AEC97B0280C6B1D00C41B49 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AEC97AF280C6B1D00C41B49 /* AVFoundation.framework */; };
 		5AF4F437279F00C7001041CB /* NSOpenPanel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF4F436279F00C7001041CB /* NSOpenPanel+Extension.swift */; };
 		5AF4F43B279F0222001041CB /* OpenPanelHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF4F43A279F0222001041CB /* OpenPanelHandler.swift */; };
 		5AF4F43D279F08C1001041CB /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF4F43C279F08C1001041CB /* String+Extension.swift */; };
 		5AF4F43F279F09B8001041CB /* TrimmingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF4F43E279F09B8001041CB /* TrimmingView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5A8E0D95280CFC3D00A1BAFD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5AD4F0E4279B0923008BD0A0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5AD4F0EB279B0923008BD0A0;
+			remoteInfo = YochuDetector2;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		5A16766527CBAFA9009A8B70 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
@@ -52,6 +69,8 @@
 		5A6B0D1927C474760098E47C /* YochuAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YochuAnalyzer.swift; sourceTree = "<group>"; };
 		5A8DFA9127A65BC30053636F /* Yolov3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Yolov3.mlmodel; sourceTree = "<group>"; };
 		5A8DFA9327A669DB0053636F /* YOLO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YOLO.swift; sourceTree = "<group>"; };
+		5A8E0D91280CFC3D00A1BAFD /* YochuDetector2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YochuDetector2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A8E0D93280CFC3D00A1BAFD /* AreaExtractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaExtractorTest.swift; sourceTree = "<group>"; };
 		5A98541627A629C200A5AC40 /* CropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropView.swift; sourceTree = "<group>"; };
 		5AA1E3CB27F0A0EB006E9D3C /* CSVHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVHandler.swift; sourceTree = "<group>"; };
 		5AA1E3CD27F0ABA3006E9D3C /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
@@ -75,7 +94,13 @@
 		5AD4F0F6279B0925008BD0A0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5AD4F0F8279B0925008BD0A0 /* YochuDetector2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YochuDetector2.entitlements; sourceTree = "<group>"; };
 		5AD4F0FE279B0E47008BD0A0 /* SelectSourceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSourceViewModel.swift; sourceTree = "<group>"; };
+		5AE0B98D28082D7700442E13 /* AreaExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaExtractor.swift; sourceTree = "<group>"; };
+		5AE38C23280C4C2A003E8366 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		5AE3EFCA27EFF6AA005C416A /* AnalyzeDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzeDataStore.swift; sourceTree = "<group>"; };
+		5AEC9700280C562100C41B49 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
+		5AEC97AB280C688800C41B49 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		5AEC97AD280C689B00C41B49 /* OpenCL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenCL.framework; path = System/Library/Frameworks/OpenCL.framework; sourceTree = SDKROOT; };
+		5AEC97AF280C6B1D00C41B49 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		5AF4F436279F00C7001041CB /* NSOpenPanel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSOpenPanel+Extension.swift"; sourceTree = "<group>"; };
 		5AF4F43A279F0222001041CB /* OpenPanelHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenPanelHandler.swift; sourceTree = "<group>"; };
 		5AF4F43C279F08C1001041CB /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -83,10 +108,22 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5A8E0D8E280CFC3D00A1BAFD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5AD4F0E9279B0923008BD0A0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AEC97AC280C688800C41B49 /* Accelerate.framework in Frameworks */,
+				5AEC97AE280C689B00C41B49 /* OpenCL.framework in Frameworks */,
+				5AEC97B0280C6B1D00C41B49 /* AVFoundation.framework in Frameworks */,
+				5AEC9701280C562100C41B49 /* opencv2.framework in Frameworks */,
+				5AE38C24280C4C34003E8366 /* libc++.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +156,7 @@
 				5AB5EB4F27C542790018AB20 /* AnalyzerSetting.swift */,
 				5AE3EFCA27EFF6AA005C416A /* AnalyzeDataStore.swift */,
 				5AA1E3CB27F0A0EB006E9D3C /* CSVHandler.swift */,
+				5AE0B98D28082D7700442E13 /* AreaExtractor.swift */,
 			);
 			path = Analyze;
 			sourceTree = "<group>";
@@ -130,6 +168,14 @@
 				5A8DFA9127A65BC30053636F /* Yolov3.mlmodel */,
 			);
 			path = MLModels;
+			sourceTree = "<group>";
+		};
+		5A8E0D92280CFC3D00A1BAFD /* YochuDetector2Tests */ = {
+			isa = PBXGroup;
+			children = (
+				5A8E0D93280CFC3D00A1BAFD /* AreaExtractorTest.swift */,
+			);
+			path = YochuDetector2Tests;
 			sourceTree = "<group>";
 		};
 		5AB5C75D27A7D9800046EF1D /* Result */ = {
@@ -220,7 +266,9 @@
 			isa = PBXGroup;
 			children = (
 				5AD4F0EE279B0923008BD0A0 /* YochuDetector2 */,
+				5A8E0D92280CFC3D00A1BAFD /* YochuDetector2Tests */,
 				5AD4F0ED279B0923008BD0A0 /* Products */,
+				5AE38C16280C0144003E8366 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -228,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				5AD4F0EC279B0923008BD0A0 /* YochuDetector2.app */,
+				5A8E0D91280CFC3D00A1BAFD /* YochuDetector2Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -257,6 +306,18 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		5AE38C16280C0144003E8366 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5AEC97AF280C6B1D00C41B49 /* AVFoundation.framework */,
+				5AEC97AD280C689B00C41B49 /* OpenCL.framework */,
+				5AEC97AB280C688800C41B49 /* Accelerate.framework */,
+				5AEC9700280C562100C41B49 /* opencv2.framework */,
+				5AE38C23280C4C2A003E8366 /* libc++.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5AF4F438279F01C9001041CB /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,6 +335,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5A8E0D90280CFC3D00A1BAFD /* YochuDetector2Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5A8E0D99280CFC3E00A1BAFD /* Build configuration list for PBXNativeTarget "YochuDetector2Tests" */;
+			buildPhases = (
+				5A8E0D8D280CFC3D00A1BAFD /* Sources */,
+				5A8E0D8E280CFC3D00A1BAFD /* Frameworks */,
+				5A8E0D8F280CFC3D00A1BAFD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5A8E0D96280CFC3D00A1BAFD /* PBXTargetDependency */,
+			);
+			name = YochuDetector2Tests;
+			productName = YochuDetector2Tests;
+			productReference = 5A8E0D91280CFC3D00A1BAFD /* YochuDetector2Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		5AD4F0EB279B0923008BD0A0 /* YochuDetector2 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5AD4F0FB279B0925008BD0A0 /* Build configuration list for PBXNativeTarget "YochuDetector2" */;
@@ -298,9 +377,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1300;
+				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
+					5A8E0D90280CFC3D00A1BAFD = {
+						CreatedOnToolsVersion = 13.3;
+						TestTargetID = 5AD4F0EB279B0923008BD0A0;
+					};
 					5AD4F0EB279B0923008BD0A0 = {
 						CreatedOnToolsVersion = 13.0;
 					};
@@ -320,11 +403,19 @@
 			projectRoot = "";
 			targets = (
 				5AD4F0EB279B0923008BD0A0 /* YochuDetector2 */,
+				5A8E0D90280CFC3D00A1BAFD /* YochuDetector2Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5A8E0D8F280CFC3D00A1BAFD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5AD4F0EA279B0923008BD0A0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -337,6 +428,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5A8E0D8D280CFC3D00A1BAFD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A8E0D94280CFC3D00A1BAFD /* AreaExtractorTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5AD4F0E8279B0923008BD0A0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -357,6 +456,7 @@
 				5AC2BAD327A26C3300C0B88A /* NotificationName.swift in Sources */,
 				5AF4F43F279F09B8001041CB /* TrimmingView.swift in Sources */,
 				5ABEF6A727A4F21000B1B5F9 /* NSImage+Extension.swift in Sources */,
+				5AE0B98E28082D7700442E13 /* AreaExtractor.swift in Sources */,
 				5ABF6C8F27A8FAF9001B8FDE /* CIImage+Extension.swift in Sources */,
 				5A62254827BDE15E00B1122F /* Hidden.swift in Sources */,
 				5AF4F43B279F0222001041CB /* OpenPanelHandler.swift in Sources */,
@@ -378,7 +478,51 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		5A8E0D96280CFC3D00A1BAFD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5AD4F0EB279B0923008BD0A0 /* YochuDetector2 */;
+			targetProxy = 5A8E0D95280CFC3D00A1BAFD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		5A8E0D97280CFC3E00A1BAFD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZF824CFGPA;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.324etsushi.YochuDetector2Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YochuDetector2.app/Contents/MacOS/YochuDetector2";
+			};
+			name = Debug;
+		};
+		5A8E0D98280CFC3E00A1BAFD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZF824CFGPA;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.324etsushi.YochuDetector2Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YochuDetector2.app/Contents/MacOS/YochuDetector2";
+			};
+			name = Release;
+		};
 		5AD4F0F9279B0925008BD0A0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -504,17 +648,28 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"YochuDetector2/Preview Content\"";
-				DEVELOPMENT_TEAM = GQNLWGH93C;
+				DEVELOPMENT_TEAM = ZF824CFGPA;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/opencv/lib",
+					/usr/local/lib/,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.emoshu.otani.etsushi.YochuDetector2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -532,17 +687,28 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"YochuDetector2/Preview Content\"";
-				DEVELOPMENT_TEAM = GQNLWGH93C;
+				DEVELOPMENT_TEAM = ZF824CFGPA;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/opencv/lib",
+					/usr/local/lib/,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.emoshu.otani.etsushi.YochuDetector2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -553,6 +719,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5A8E0D99280CFC3E00A1BAFD /* Build configuration list for PBXNativeTarget "YochuDetector2Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A8E0D97280CFC3E00A1BAFD /* Debug */,
+				5A8E0D98280CFC3E00A1BAFD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5AD4F0E7279B0923008BD0A0 /* Build configuration list for PBXProject "YochuDetector2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
