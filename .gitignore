@@ -126,6 +126,7 @@ iOSInjectionProject/
 
 # Framework
 opencv2.framework
+opencv
 
 ## Gcc Patch
 /*.gcno
