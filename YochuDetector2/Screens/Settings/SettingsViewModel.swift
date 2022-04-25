@@ -50,13 +50,6 @@ final class SettingsViewModel {
               wandaringThreshold >= 1 else {
             return
         }
-        let setting = AnalyzerSetting(
-            interval: shootInterval,
-            wandaringMinute: wandaringThreshold,
-            stopMinute: stopThreshold,
-            stopRectBuffer: stopAllowableError,
-            confidenceThreshold: analyzeScoreThreshold
-        )
-        AnalyzeSettingStore.shared.analyzerSetting = setting
+        AnalyzeSettingStore.shared.analyzerSetting.update(interval: shootInterval, wandaringMinute: wandaringThreshold, stopMinute: stopThreshold, stopRectBuffer: stopAllowableError, confidenceThreshold: analyzeScoreThreshold)
     }
 }

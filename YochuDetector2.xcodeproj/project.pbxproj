@@ -22,6 +22,7 @@
 		5AAF6D3A2816AE2E002634CD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAF6D392816AE2E002634CD /* SettingsView.swift */; };
 		5AAF6D3C2816AE44002634CD /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAF6D3B2816AE44002634CD /* SettingsViewModel.swift */; };
 		5AAF6D3E2816C22A002634CD /* SettingField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAF6D3D2816C22A002634CD /* SettingField.swift */; };
+		5AAF6D402816DDED002634CD /* UserDefaultsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAF6D3F2816DDED002634CD /* UserDefaultsHandler.swift */; };
 		5AB5C75F27A7D99E0046EF1D /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C75E27A7D99E0046EF1D /* ResultView.swift */; };
 		5AB5EB4E27C53F700018AB20 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5EB4D27C53F700018AB20 /* Array+Extension.swift */; };
 		5AB5EB5027C542790018AB20 /* AnalyzerSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5EB4F27C542790018AB20 /* AnalyzerSetting.swift */; };
@@ -80,6 +81,7 @@
 		5AAF6D392816AE2E002634CD /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		5AAF6D3B2816AE44002634CD /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		5AAF6D3D2816C22A002634CD /* SettingField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingField.swift; sourceTree = "<group>"; };
+		5AAF6D3F2816DDED002634CD /* UserDefaultsHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHandler.swift; sourceTree = "<group>"; };
 		5AB5C75E27A7D99E0046EF1D /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		5AB5EB4D27C53F700018AB20 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		5AB5EB4F27C542790018AB20 /* AnalyzerSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzerSetting.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 				5A6B0D1B27C4ADBA0098E47C /* UI */,
 				5AC2BAD227A26C3300C0B88A /* NotificationName.swift */,
 				5ABEF6A427A4E82A00B1B5F9 /* AnalyzeSettingStore.swift */,
+				5AAF6D3F2816DDED002634CD /* UserDefaultsHandler.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -485,6 +488,7 @@
 				5AA1E3CE27F0ABA3006E9D3C /* Date+Extension.swift in Sources */,
 				5AD4F0FF279B0E47008BD0A0 /* SelectSourceViewModel.swift in Sources */,
 				5AC331AB27C72121002B2BAE /* ResultViewModel.swift in Sources */,
+				5AAF6D402816DDED002634CD /* UserDefaultsHandler.swift in Sources */,
 				5AB5C75F27A7D99E0046EF1D /* ResultView.swift in Sources */,
 				5ABEF6A527A4E82A00B1B5F9 /* AnalyzeSettingStore.swift in Sources */,
 				5AE3EFCB27EFF6AA005C416A /* AnalyzeDataStore.swift in Sources */,
