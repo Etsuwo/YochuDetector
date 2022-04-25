@@ -104,4 +104,8 @@ final class TrimmingViewModel {
     func onTapBackToTopButton() {
         NotificationCenter.default.post(name: .transitionSelectSource, object: nil)
     }
+    
+    func onTapGoSettingsButton() {
+        NotificationCenter.default.post(name: .transitionSettings, object: nil)
+    }
 }

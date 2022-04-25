@@ -19,6 +19,8 @@
 		5A98541727A629C200A5AC40 /* CropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A98541627A629C200A5AC40 /* CropView.swift */; };
 		5AA1E3CC27F0A0EB006E9D3C /* CSVHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA1E3CB27F0A0EB006E9D3C /* CSVHandler.swift */; };
 		5AA1E3CE27F0ABA3006E9D3C /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA1E3CD27F0ABA3006E9D3C /* Date+Extension.swift */; };
+		5AAF6D3A2816AE2E002634CD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAF6D392816AE2E002634CD /* SettingsView.swift */; };
+		5AAF6D3C2816AE44002634CD /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAF6D3B2816AE44002634CD /* SettingsViewModel.swift */; };
 		5AB5C75F27A7D99E0046EF1D /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C75E27A7D99E0046EF1D /* ResultView.swift */; };
 		5AB5EB4E27C53F700018AB20 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5EB4D27C53F700018AB20 /* Array+Extension.swift */; };
 		5AB5EB5027C542790018AB20 /* AnalyzerSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5EB4F27C542790018AB20 /* AnalyzerSetting.swift */; };
@@ -74,6 +76,8 @@
 		5A98541627A629C200A5AC40 /* CropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropView.swift; sourceTree = "<group>"; };
 		5AA1E3CB27F0A0EB006E9D3C /* CSVHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVHandler.swift; sourceTree = "<group>"; };
 		5AA1E3CD27F0ABA3006E9D3C /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		5AAF6D392816AE2E002634CD /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		5AAF6D3B2816AE44002634CD /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		5AB5C75E27A7D99E0046EF1D /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		5AB5EB4D27C53F700018AB20 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		5AB5EB4F27C542790018AB20 /* AnalyzerSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzerSetting.swift; sourceTree = "<group>"; };
@@ -178,6 +182,15 @@
 			path = YochuDetector2Tests;
 			sourceTree = "<group>";
 		};
+		5AAF6D382816AE17002634CD /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				5AAF6D392816AE2E002634CD /* SettingsView.swift */,
+				5AAF6D3B2816AE44002634CD /* SettingsViewModel.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		5AB5C75D27A7D9800046EF1D /* Result */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +203,7 @@
 		5AC2BACC27A2677700C0B88A /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				5AAF6D382816AE17002634CD /* Settings */,
 				5AB5C75D27A7D9800046EF1D /* Result */,
 				5AC2BACF27A267A900C0B88A /* Trimming */,
 				5AC2BACE27A2679000C0B88A /* SelectSource */,
@@ -445,6 +459,7 @@
 				5AB5EB5027C542790018AB20 /* AnalyzerSetting.swift in Sources */,
 				5AC2BAC927A2667300C0B88A /* RootView.swift in Sources */,
 				5A8DFA9427A669DB0053636F /* YOLO.swift in Sources */,
+				5AAF6D3A2816AE2E002634CD /* SettingsView.swift in Sources */,
 				5AC331AF27C72537002B2BAE /* ViewModel.swift in Sources */,
 				5A8DFA9227A65BC30053636F /* Yolov3.mlmodel in Sources */,
 				5AB5EB4E27C53F700018AB20 /* Array+Extension.swift in Sources */,
@@ -459,6 +474,7 @@
 				5AE0B98E28082D7700442E13 /* AreaExtractor.swift in Sources */,
 				5ABF6C8F27A8FAF9001B8FDE /* CIImage+Extension.swift in Sources */,
 				5A62254827BDE15E00B1122F /* Hidden.swift in Sources */,
+				5AAF6D3C2816AE44002634CD /* SettingsViewModel.swift in Sources */,
 				5AF4F43B279F0222001041CB /* OpenPanelHandler.swift in Sources */,
 				5A2E40412807DD4F00E7903C /* UnInteractiveLoadingView.swift in Sources */,
 				5A3C635127F1D7EB00C86812 /* DateComponentsFormatter+Extension.swift in Sources */,

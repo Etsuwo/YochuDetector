@@ -88,6 +88,20 @@ struct TrimmingView: View {
                 Spacer()
                     .frame(height: 24)
             }
+            VStack {
+                HStack {
+                    Spacer()
+                    Image(systemName: "gearshape")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                        .padding(.trailing, 24)
+                        .onTapGesture {
+                            viewModel.onTapGoSettingsButton()
+                        }
+                }
+                .padding(.top, 24)
+                Spacer()
+            }
             UnInteractiveLoadingView(viewState: viewState)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
