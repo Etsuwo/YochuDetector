@@ -14,6 +14,7 @@ final class SettingsViewModel {
         @Published var stopAllowableError: String
         @Published var shootInterval: String
         @Published var wandaringThreshold: String
+        @Published var showAlert: Bool = false
         
         init() {
             let setting = AnalyzeSettingStore.shared.analyzerSetting
@@ -23,7 +24,6 @@ final class SettingsViewModel {
             shootInterval = "\(setting.interval)"
             wandaringThreshold = "\(setting.wandaringMinute)"
         }
-        
     }
     
     private(set) var viewState = ViewState()
@@ -33,11 +33,20 @@ final class SettingsViewModel {
     }
     
     func onTapGo() {
-        register()
-        NotificationCenter.default.post(name: .transitionTrimming, object: nil)
+        do {
+            try register()
+            NotificationCenter.default.post(name: .transitionTrimming, object: nil)
+            
+        } catch {
+            viewState.showAlert = true
+        }
     }
     
-    private func register() { // エラー投げたい
+    func onTapAlertButton() {
+        viewState.showAlert = false
+    }
+    
+    private func register() throws { 
         guard let analyzeScoreThreshold = Int(viewState.analyzeScoreThreshold),
               (1...100).contains(analyzeScoreThreshold),
               let stopThreshold = Int(viewState.stopThreshold),
@@ -48,7 +57,7 @@ final class SettingsViewModel {
               shootInterval >= 1,
               let wandaringThreshold = Int(viewState.wandaringThreshold),
               wandaringThreshold >= 1 else {
-            return
+            throw NSError()
         }
         AnalyzeSettingStore.shared.analyzerSetting.update(interval: shootInterval, wandaringMinute: wandaringThreshold, stopMinute: stopThreshold, stopRectBuffer: stopAllowableError, confidenceThreshold: analyzeScoreThreshold)
     }

@@ -66,6 +66,12 @@ struct SettingsView: View {
                     Text("決定")
                 })
                 .padding(.horizontal)
+                .alert(isPresented: $viewState.showAlert, content: {
+                    Alert(title: Text("無効な入力があります"), dismissButton: .default(Text("OK"), action: {
+                        viewModel.onTapAlertButton()
+                    }))
+                    
+                })
             }
             .padding(.top)
             Spacer()
