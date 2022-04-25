@@ -20,7 +20,7 @@ final class TrimmingViewModel {
         @Published var croppedImage = NSImage()
         @Published var cropViewIsHidden = false
         @Published var croppedViewIsHidden = true
-        @Published var numOfTargetInSection = "0"
+        @Published var numOfTargetInSection = "1"
         @Published var currentProgressValue = 0.0
         @Published var totalProgressValue = 0.0
         @Published var isHiddenProgressView = true

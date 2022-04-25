@@ -82,6 +82,7 @@ struct TrimmingView: View {
                     }, label: {
                         Text("解析開始")
                     })
+                    .disabled(viewState.croppedViewIsHidden)
                     Spacer()
                         .frame(width: 24)
                 }
