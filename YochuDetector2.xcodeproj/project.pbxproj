@@ -21,6 +21,7 @@
 		5AA1E3CE27F0ABA3006E9D3C /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA1E3CD27F0ABA3006E9D3C /* Date+Extension.swift */; };
 		5AAF6D3A2816AE2E002634CD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAF6D392816AE2E002634CD /* SettingsView.swift */; };
 		5AAF6D3C2816AE44002634CD /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAF6D3B2816AE44002634CD /* SettingsViewModel.swift */; };
+		5AAF6D3E2816C22A002634CD /* SettingField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAF6D3D2816C22A002634CD /* SettingField.swift */; };
 		5AB5C75F27A7D99E0046EF1D /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C75E27A7D99E0046EF1D /* ResultView.swift */; };
 		5AB5EB4E27C53F700018AB20 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5EB4D27C53F700018AB20 /* Array+Extension.swift */; };
 		5AB5EB5027C542790018AB20 /* AnalyzerSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5EB4F27C542790018AB20 /* AnalyzerSetting.swift */; };
@@ -78,6 +79,7 @@
 		5AA1E3CD27F0ABA3006E9D3C /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		5AAF6D392816AE2E002634CD /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		5AAF6D3B2816AE44002634CD /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		5AAF6D3D2816C22A002634CD /* SettingField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingField.swift; sourceTree = "<group>"; };
 		5AB5C75E27A7D99E0046EF1D /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		5AB5EB4D27C53F700018AB20 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		5AB5EB4F27C542790018AB20 /* AnalyzerSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzerSetting.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 			children = (
 				5AAF6D392816AE2E002634CD /* SettingsView.swift */,
 				5AAF6D3B2816AE44002634CD /* SettingsViewModel.swift */,
+				5AAF6D3D2816C22A002634CD /* SettingField.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -469,6 +472,7 @@
 				5A16766627CBAFA9009A8B70 /* ImageSaver.swift in Sources */,
 				5AF4F437279F00C7001041CB /* NSOpenPanel+Extension.swift in Sources */,
 				5AC2BAD327A26C3300C0B88A /* NotificationName.swift in Sources */,
+				5AAF6D3E2816C22A002634CD /* SettingField.swift in Sources */,
 				5AF4F43F279F09B8001041CB /* TrimmingView.swift in Sources */,
 				5ABEF6A727A4F21000B1B5F9 /* NSImage+Extension.swift in Sources */,
 				5AE0B98E28082D7700442E13 /* AreaExtractor.swift in Sources */,
