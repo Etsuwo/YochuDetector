@@ -20,34 +20,34 @@ struct SettingsView: View {
         VStack {
             Spacer()
             SettingField(
-                title: "Analyze Socre Threshold",
+                title: "検出スコアの閾値",
                 placeholder: "Input Value between 1 to 100, default is 50",
                 value: $viewState.analyzeScoreThreshold
             )
             
             SettingField(
-                title: "Stop Threshold",
+                title: "幼虫の停止判定時間(分)",
                 placeholder: "Input Value more than 1, default is 30",
                 value: $viewState.stopThreshold
             )
             .padding(.top)
             
             SettingField(
-                title: "Stop Allowable Error",
+                title: "停止判定で許容する座標の誤差",
                 placeholder: "Input Value more than 0, default is 10",
                 value: $viewState.stopAllowableError
             )
             .padding(.top)
             
             SettingField(
-                title: "Wandaring Threshold",
+                title: "ワンダリング行動の判定時間(分)",
                 placeholder: "Input Value more than 1, default is 20",
                 value: $viewState.wandaringThreshold
             )
             .padding(.top)
             
             SettingField(
-                title: "Shooting Interval",
+                title: "撮影画像の間隔(分)",
                 placeholder: "Input Value more than 1, default is 2",
                 value: $viewState.shootInterval
             )
