@@ -11,6 +11,9 @@ import AppKit
 
 final class YochuAnalyzer {
     
+    static let shared = YochuAnalyzer()
+    private init() {}
+    
     private let ciContext = CIContext()
     private let yolo = YOLO()
     private var activityArray: [[CGRect?]] = []
@@ -19,11 +22,7 @@ final class YochuAnalyzer {
     private let dataStore = AnalyzeDataStore()
     let endPublisher = PassthroughSubject<Void, Never>()
     let progressPublisher = PassthroughSubject<Double, Never>()
-    var setting: AnalyzerSetting
-    
-    init(setting: AnalyzerSetting) {
-        self.setting = setting
-    }
+    var setting: AnalyzerSetting { AnalyzeSettingStore.shared.analyzerSetting }
     
     // 作業用
     func crop(with urls: [URL], rect: CGRect) {
@@ -37,7 +36,7 @@ final class YochuAnalyzer {
         endPublisher.send()
     }
     
-    func start(with urls: [URL], rect: CGRect) {
+    func start(with urls: [URL], rect: CGRect, numOfTarget: Int) {
         for (index, url) in urls.enumerated() {
             autoreleasepool {
                 let nsImage = NSImage.withOptionalURL(url: url)
@@ -56,7 +55,7 @@ final class YochuAnalyzer {
                         modifiedBoundingBoxes.append(rect)
                     }
                     let outputURL = strongSelf.imageSaver.save(image: croppedImage, fileName: url.lastPathComponent, to: AnalyzeSettingStore.shared.outputUrl!)
-                    let separatedBoudingBoxes = strongSelf.assignBoundingBoxes(imageWidth: croppedImage.size.width, boundingBoxes: modifiedBoundingBoxes)
+                    let separatedBoudingBoxes = strongSelf.assignBoundingBoxes(imageWidth: croppedImage.size.width, boundingBoxes: modifiedBoundingBoxes, numberOfTarget: numOfTarget)
                     strongSelf.dataStore.register(imageURL: outputURL, boudingBoxes: separatedBoudingBoxes)
                 }
                 progressPublisher.send(Double(index + 1))
@@ -73,16 +72,16 @@ final class YochuAnalyzer {
     ///   - targetNum: 試験官の数
     ///   - boundingBoxes: 検出した矩形の配列
     /// - Returns: どの試験官に対する矩形か対応関係を持った配列、矩形がない場所はnil
-    func assignBoundingBoxes(imageWidth: CGFloat, boundingBoxes: [CGRect]) -> [CGRect?]{
-        let step = imageWidth / CGFloat(setting.numberOfTarget)
+    func assignBoundingBoxes(imageWidth: CGFloat, boundingBoxes: [CGRect], numberOfTarget: Int) -> [CGRect?]{
+        let step = imageWidth / CGFloat(numberOfTarget)
         var activityList: [CGRect?] = []
-        for _ in 0..<setting.numberOfTarget {
+        for _ in 0..<numberOfTarget {
             activityList.append(nil)
         }
         boundingBoxes.forEach { boundingBox in
             var left: CGFloat = 0
             var right = step
-            for count in 0..<setting.numberOfTarget {
+            for count in 0..<numberOfTarget {
                 if left...right ~= boundingBox.midX {
                     activityList[count] = boundingBox
                     break

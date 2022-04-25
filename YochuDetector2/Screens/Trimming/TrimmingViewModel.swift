@@ -27,7 +27,7 @@ final class TrimmingViewModel {
     }
     
     private let dataStore = AnalyzeSettingStore.shared
-    private let analyzer = YochuAnalyzer(setting: AnalyzerSetting())
+    private let analyzer = YochuAnalyzer.shared
     private var cancellables = Set<AnyCancellable>()
     private var urls: [URL] = []
     private var cropRect = CGRect()
@@ -93,10 +93,9 @@ final class TrimmingViewModel {
     func onTapGoButton() {
         guard let numOfTarget = Int(viewState.numOfTargetInSection) else { return } // TODO: エラー処理
         viewState.isHiddenProgressView = false
-        analyzer.setting = AnalyzerSetting(numberOfTarget: numOfTarget)
         DispatchQueue.global().async { [weak self] in
             guard let strongSelf = self else { return }
-            strongSelf.analyzer.start(with: strongSelf.urls, rect: strongSelf.modifiedRect)
+            strongSelf.analyzer.start(with: strongSelf.urls, rect: strongSelf.modifiedRect, numOfTarget: numOfTarget)
             //strongSelf.analyzer.crop(with: strongSelf.urls, rect: strongSelf.modifiedRect)
         }
     }

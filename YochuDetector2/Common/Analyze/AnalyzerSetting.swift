@@ -9,15 +9,18 @@ import Foundation
 
 struct AnalyzerSetting {
     var interval: Int = 2
-    var numberOfTarget: Int = 0
+    var wandaringMinute: Int = 20
+    var stopMinute: Int = 30
+    var stopRectBuffer: Int = 10
+    var confidenceThreshold: Int = 50
+    
     var oneHour: Int {
         60 / interval
     }
     var wandaringThreshold: Int {
-        20 / interval
+        wandaringMinute / interval
     }
     var stopThreshold: Int {
-        30 / interval
+        stopMinute / interval
     }
-    private(set) var stopRectBuffer: Int = 20
 }

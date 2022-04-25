@@ -21,34 +21,34 @@ struct SettingsView: View {
             Spacer()
             SettingField(
                 title: "Analyze Socre Threshold",
-                placeholder: "Input Value between 0 to 100, default is 50",
+                placeholder: "Input Value between 1 to 100, default is 50",
                 value: $viewState.analyzeScoreThreshold
             )
             
             SettingField(
                 title: "Stop Threshold",
-                placeholder: "Input Value more than 0, default is 20",
+                placeholder: "Input Value more than 1, default is 30",
                 value: $viewState.stopThreshold
             )
             .padding(.top)
             
             SettingField(
                 title: "Stop Allowable Error",
-                placeholder: "Input Value more than 0, default is 20",
+                placeholder: "Input Value more than 0, default is 10",
                 value: $viewState.stopAllowableError
             )
             .padding(.top)
             
             SettingField(
                 title: "Wandaring Threshold",
-                placeholder: "Input Value more than 0, default is 20",
+                placeholder: "Input Value more than 1, default is 20",
                 value: $viewState.wandaringThreshold
             )
             .padding(.top)
             
             SettingField(
                 title: "Shooting Interval",
-                placeholder: "Input Value more than 0, default is 2",
+                placeholder: "Input Value more than 1, default is 2",
                 value: $viewState.shootInterval
             )
             .padding(.top)
@@ -56,12 +56,12 @@ struct SettingsView: View {
             HStack {
                 Spacer()
                 Button(action: {
-                    // 戻る
+                    viewModel.onTapBack()
                 }, label: {
                     Text("戻る")
                 })
                 Button(action: {
-                    // 決定
+                    viewModel.onTapGo()
                 }, label: {
                     Text("決定")
                 })
