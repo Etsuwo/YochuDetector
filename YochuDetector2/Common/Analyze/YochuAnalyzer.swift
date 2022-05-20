@@ -29,9 +29,24 @@ final class YochuAnalyzer {
         for (index ,url) in urls.enumerated() {
             let nsImage = NSImage.withOptionalURL(url: url)
             let cropImage = nsImage.crop(to: rect)
-            let extractedImage = AreaExtractor().extractFeed(from: cropImage)
-            imageSaver.save(image: extractedImage, fileName: url.lastPathComponent, to: AnalyzeSettingStore.shared.outputUrl!)
+            //let extractedImage = AreaExtractor().extractFeed(from: cropImage)
+            imageSaver.save(image: cropImage, fileName: url.lastPathComponent, to: AnalyzeSettingStore.shared.outputUrl!)
             progressPublisher.send(Double(index + 1))
+        }
+        endPublisher.send()
+    }
+    
+    func extract(with urls: [URL]) {
+        for threshold in 20...40 {
+            let output = AnalyzeSettingStore.shared.outputUrl?.appendingPathComponent("threshold_\(threshold)")
+            try! FileManager.default.createDirectory(at: output!, withIntermediateDirectories: true, attributes: nil)
+            for (index ,url) in urls.enumerated() {
+                let nsImage = NSImage.withOptionalURL(url: url)
+                //let cropImage = nsImage.crop(to: rect)
+                let extractedImage = AreaExtractor().extractFeed(from: nsImage, binaryThreshold: Double(threshold))
+                imageSaver.save(image: extractedImage, fileName: url.lastPathComponent, to: output!)
+                progressPublisher.send(Double(index + 1))
+            }
         }
         endPublisher.send()
     }

@@ -10,14 +10,14 @@ import AppKit
 import opencv2
 
 final class AreaExtractor {
-    func extractFeed(from image: NSImage) -> NSImage {
+    func extractFeed(from image: NSImage, binaryThreshold: Double = 20) -> NSImage {
         let mat = Mat(nsImage: image)
         let resultMat = Mat()
         var channels: [Mat] = []
         let areaThreshold = image.size.height * image.size.width * 0.05
-        let binaryThreshold: Double = 55 //TODO: 光と相談
+        //let binaryThreshold: Double = 20 //TODO: 光と相談
         
-        Imgproc.cvtColor(src: mat, dst: resultMat, code: .COLOR_RGB2HSV)
+        Imgproc.cvtColor(src: mat, dst: resultMat, code: .COLOR_BGR2HSV)
         Imgproc.GaussianBlur(src: resultMat, dst: resultMat, ksize: Size2i(width: 9, height: 9), sigmaX: 0)
         Core.split(m: resultMat, mv: &channels)
         Imgproc.threshold(src: channels[1], dst: resultMat, thresh: binaryThreshold, maxval: 255, type: ThresholdTypes.THRESH_BINARY)

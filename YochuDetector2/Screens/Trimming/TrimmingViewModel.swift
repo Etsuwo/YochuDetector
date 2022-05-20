@@ -97,6 +97,7 @@ final class TrimmingViewModel {
             guard let strongSelf = self else { return }
             strongSelf.analyzer.start(with: strongSelf.urls, rect: strongSelf.modifiedRect, numOfTarget: numOfTarget)
             //strongSelf.analyzer.crop(with: strongSelf.urls, rect: strongSelf.modifiedRect)
+            //strongSelf.analyzer.extract(with: strongSelf.urls)
         }
     }
     
