@@ -35,6 +35,7 @@ final class SelectSourceViewModel {
     }
     
     func onTapNextButton() {
+        viewState.isActiveNextButton = false
         NotificationCenter.default.post(name: .transitionTrimming, object: nil)
     }
 }

@@ -36,6 +36,11 @@ final class RootViewModel {
                 self?.viewState.displayView = .selectSource
             })
             .store(in: &cancellables)
+        NotificationCenter.Publisher(center: .default, name: .transitionSettings)
+            .sink(receiveValue: {[weak self] _ in
+                self?.viewState.displayView = .settings
+            })
+            .store(in: &cancellables)
     }
 }
 
@@ -43,4 +48,5 @@ enum ViewType {
     case selectSource
     case trimming
     case result
+    case settings
 }

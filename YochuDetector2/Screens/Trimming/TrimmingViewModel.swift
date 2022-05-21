@@ -20,14 +20,14 @@ final class TrimmingViewModel {
         @Published var croppedImage = NSImage()
         @Published var cropViewIsHidden = false
         @Published var croppedViewIsHidden = true
-        @Published var numOfTargetInSection = "0"
+        @Published var numOfTargetInSection = "1"
         @Published var currentProgressValue = 0.0
         @Published var totalProgressValue = 0.0
         @Published var isHiddenProgressView = true
     }
     
     private let dataStore = AnalyzeSettingStore.shared
-    private let analyzer = YochuAnalyzer(setting: AnalyzerSetting())
+    private let analyzer = YochuAnalyzer.shared
     private var cancellables = Set<AnyCancellable>()
     private var urls: [URL] = []
     private var cropRect = CGRect()
@@ -93,15 +93,19 @@ final class TrimmingViewModel {
     func onTapGoButton() {
         guard let numOfTarget = Int(viewState.numOfTargetInSection) else { return } // TODO: エラー処理
         viewState.isHiddenProgressView = false
-        analyzer.setting = AnalyzerSetting(numberOfTarget: numOfTarget)
         DispatchQueue.global().async { [weak self] in
             guard let strongSelf = self else { return }
-            strongSelf.analyzer.start(with: strongSelf.urls, rect: strongSelf.modifiedRect)
+            strongSelf.analyzer.start(with: strongSelf.urls, rect: strongSelf.modifiedRect, numOfTarget: numOfTarget)
             //strongSelf.analyzer.crop(with: strongSelf.urls, rect: strongSelf.modifiedRect)
+            //strongSelf.analyzer.extract(with: strongSelf.urls)
         }
     }
     
     func onTapBackToTopButton() {
         NotificationCenter.default.post(name: .transitionSelectSource, object: nil)
+    }
+    
+    func onTapGoSettingsButton() {
+        NotificationCenter.default.post(name: .transitionSettings, object: nil)
     }
 }

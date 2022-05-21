@@ -22,6 +22,7 @@ struct RootView: View {
         case .selectSource: SelectSourceView()
         case .trimming: TrimmingView()
         case .result: ResultView()
+        case .settings: SettingsView()
         }
     }
 }

@@ -7,17 +7,46 @@
 
 import Foundation
 
-struct AnalyzerSetting {
-    var interval: Int = 2
-    var numberOfTarget: Int = 0
+final class AnalyzerSetting {
+    
+    private let userDefaultsHandler = UserDefaultsHandler()
+    
+    var interval: Int {
+        userDefaultsHandler.getValue(key: .shootingInterval)
+    }
+    var wandaringMinute: Int {
+        userDefaultsHandler.getValue(key: .wandaringMinute)
+    }
+    var stopMinute: Int {
+        userDefaultsHandler.getValue(key: .stopMinute)
+    }
+    var stopRectBuffer: Int {
+        userDefaultsHandler.getValue(key: .stopRectBuffer)
+    }
+    var confidenceThreshold: Int {
+        userDefaultsHandler.getValue(key: .confidenceThreshold)
+    }
+    
+    var binaryThreshold: Int {
+        userDefaultsHandler.getValue(key: .binaryThreshold)
+    }
+    
     var oneHour: Int {
         60 / interval
     }
+    
     var wandaringThreshold: Int {
-        20 / interval
+        wandaringMinute / interval
     }
+    
     var stopThreshold: Int {
-        30 / interval
+        stopMinute / interval
     }
-    private(set) var stopRectBuffer: Int = 20
+    
+    func update(interval: Int, wandaringMinute: Int, stopMinute: Int, stopRectBuffer: Int, confidenceThreshold: Int, binaryThreshold: Int) {
+        let values = [interval, wandaringMinute, stopMinute, stopRectBuffer, confidenceThreshold, binaryThreshold]
+        for (index, key) in UserDefaults.KeyString.allCases.enumerated() {
+            userDefaultsHandler.setValue(value: values[index], key: key)
+        }
+    }
 }
