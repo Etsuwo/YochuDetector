@@ -56,7 +56,7 @@ final class YochuAnalyzer {
             autoreleasepool {
                 let nsImage = NSImage.withOptionalURL(url: url)
                 let croppedImage = nsImage.crop(to: rect)
-                let sourceImage = areaExtractor.extractFeed(from: croppedImage)
+                let sourceImage = areaExtractor.extractFeed(from: croppedImage, binaryThreshold: Double(setting.binaryThreshold))
                 guard let ciImage = sourceImage.ciImage else { return }
                 yolo.predict(image: ciImage) { [weak self] observations in
                     guard let strongSelf = self else { return }

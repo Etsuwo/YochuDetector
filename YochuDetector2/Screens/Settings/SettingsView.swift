@@ -53,6 +53,13 @@ struct SettingsView: View {
             )
             .padding(.top)
             
+            SettingField(
+                title: "エサ領域切り分け用の閾値",
+                placeholder: "Input Value between 1 to 100, default is 30",
+                value: $viewState.binaryThreshold
+            )
+            .padding(.top)
+            
             HStack {
                 Spacer()
                 Button(action: {

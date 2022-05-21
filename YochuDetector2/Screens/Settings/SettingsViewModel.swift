@@ -14,6 +14,7 @@ final class SettingsViewModel {
         @Published var stopAllowableError: String
         @Published var shootInterval: String
         @Published var wandaringThreshold: String
+        @Published var binaryThreshold: String
         @Published var showAlert: Bool = false
         
         init() {
@@ -23,6 +24,7 @@ final class SettingsViewModel {
             stopAllowableError = "\(setting.stopRectBuffer)"
             shootInterval = "\(setting.interval)"
             wandaringThreshold = "\(setting.wandaringMinute)"
+            binaryThreshold = "\(setting.binaryThreshold)"
         }
     }
     
@@ -56,9 +58,11 @@ final class SettingsViewModel {
               let shootInterval = Int(viewState.shootInterval),
               shootInterval >= 1,
               let wandaringThreshold = Int(viewState.wandaringThreshold),
-              wandaringThreshold >= 1 else {
+              wandaringThreshold >= 1,
+              let binaryThreshold = Int(viewState.binaryThreshold),
+              (1...100).contains(binaryThreshold) else {
             throw NSError()
         }
-        AnalyzeSettingStore.shared.analyzerSetting.update(interval: shootInterval, wandaringMinute: wandaringThreshold, stopMinute: stopThreshold, stopRectBuffer: stopAllowableError, confidenceThreshold: analyzeScoreThreshold)
+        AnalyzeSettingStore.shared.analyzerSetting.update(interval: shootInterval, wandaringMinute: wandaringThreshold, stopMinute: stopThreshold, stopRectBuffer: stopAllowableError, confidenceThreshold: analyzeScoreThreshold, binaryThreshold: binaryThreshold)
     }
 }

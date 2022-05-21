@@ -16,7 +16,8 @@ final class UserDefaultsHandler {
             UserDefaults.KeyString.wandaringMinute.rawValue: 20,
             UserDefaults.KeyString.stopMinute.rawValue: 30,
             UserDefaults.KeyString.stopRectBuffer.rawValue: 10,
-            UserDefaults.KeyString.confidenceThreshold.rawValue: 50
+            UserDefaults.KeyString.confidenceThreshold.rawValue: 50,
+            UserDefaults.KeyString.binaryThreshold.rawValue: 30
         ]
         userDefaults.register(defaults: defaults)
     }
@@ -38,5 +39,6 @@ extension UserDefaults {
         case stopMinute
         case stopRectBuffer
         case confidenceThreshold
+        case binaryThreshold
     }
 }

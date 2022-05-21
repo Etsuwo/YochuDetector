@@ -27,6 +27,10 @@ final class AnalyzerSetting {
         userDefaultsHandler.getValue(key: .confidenceThreshold)
     }
     
+    var binaryThreshold: Int {
+        userDefaultsHandler.getValue(key: .binaryThreshold)
+    }
+    
     var oneHour: Int {
         60 / interval
     }
@@ -39,8 +43,8 @@ final class AnalyzerSetting {
         stopMinute / interval
     }
     
-    func update(interval: Int, wandaringMinute: Int, stopMinute: Int, stopRectBuffer: Int, confidenceThreshold: Int) {
-        let values = [interval, wandaringMinute, stopMinute, stopRectBuffer, confidenceThreshold]
+    func update(interval: Int, wandaringMinute: Int, stopMinute: Int, stopRectBuffer: Int, confidenceThreshold: Int, binaryThreshold: Int) {
+        let values = [interval, wandaringMinute, stopMinute, stopRectBuffer, confidenceThreshold, binaryThreshold]
         for (index, key) in UserDefaults.KeyString.allCases.enumerated() {
             userDefaultsHandler.setValue(value: values[index], key: key)
         }
