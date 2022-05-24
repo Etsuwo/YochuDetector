@@ -37,17 +37,19 @@ final class YochuAnalyzer {
     }
     
     func extract(with urls: [URL]) {
-        for threshold in 20...40 {
-            let output = AnalyzeSettingStore.shared.outputUrl?.appendingPathComponent("threshold_\(threshold)")
+        //for threshold in 20...40 {
+            let output = AnalyzeSettingStore.shared.outputUrl?.appendingPathComponent("extract")
             try! FileManager.default.createDirectory(at: output!, withIntermediateDirectories: true, attributes: nil)
             for (index ,url) in urls.enumerated() {
-                let nsImage = NSImage.withOptionalURL(url: url)
-                //let cropImage = nsImage.crop(to: rect)
-                let extractedImage = AreaExtractor().extractFeed(from: nsImage, binaryThreshold: Double(threshold))
-                imageSaver.save(image: extractedImage, fileName: url.lastPathComponent, to: output!)
-                progressPublisher.send(Double(index + 1))
+                autoreleasepool {
+                    let nsImage = NSImage.withOptionalURL(url: url)
+                    //let cropImage = nsImage.crop(to: rect)
+                    let extractedImage = AreaExtractor().extractFeed(from: nsImage, binaryThreshold: 20)
+                    imageSaver.save(image: extractedImage, fileName: url.lastPathComponent, to: output!)
+                    progressPublisher.send(Double(index + 1))
+                }
             }
-        }
+       // }
         endPublisher.send()
     }
     
@@ -58,19 +60,20 @@ final class YochuAnalyzer {
                 let croppedImage = nsImage.crop(to: rect)
                 let sourceImage = areaExtractor.extractFeed(from: croppedImage, binaryThreshold: Double(setting.binaryThreshold))
                 guard let ciImage = sourceImage.ciImage else { return }
-                yolo.predict(image: ciImage) { [weak self] observations in
-                    guard let strongSelf = self else { return }
+                yolo.predict(image: ciImage) { [weak self, weak croppedImage] observations in
+                    guard let strongSelf = self,
+                          let strongCroppedImage = croppedImage else { return }
                     var modifiedBoundingBoxes: [CGRect] = []
                     for observation in observations {
                         let boudingBox = observation.boundingBox
-                        let origin = CGPoint(x: boudingBox.origin.x * croppedImage.size.width, y: boudingBox.origin.y * croppedImage.size.height)
-                        let size = CGSize(width: boudingBox.size.width * croppedImage.size.width, height: boudingBox.size.height * croppedImage.size.height)
+                        let origin = CGPoint(x: boudingBox.origin.x * strongCroppedImage.size.width, y: boudingBox.origin.y * strongCroppedImage.size.height)
+                        let size = CGSize(width: boudingBox.size.width * strongCroppedImage.size.width, height: boudingBox.size.height * strongCroppedImage.size.height)
                         let rect = CGRect(origin: origin, size: size)
-                        croppedImage.addBoundingRectangle(with: rect)
+                        strongCroppedImage.addBoundingRectangle(with: rect)
                         modifiedBoundingBoxes.append(rect)
                     }
-                    let outputURL = strongSelf.imageSaver.save(image: croppedImage, fileName: url.lastPathComponent, to: AnalyzeSettingStore.shared.outputUrl!)
-                    let separatedBoudingBoxes = strongSelf.assignBoundingBoxes(imageWidth: croppedImage.size.width, boundingBoxes: modifiedBoundingBoxes, numberOfTarget: numOfTarget)
+                    let outputURL = strongSelf.imageSaver.save(image: strongCroppedImage, fileName: url.lastPathComponent, to: AnalyzeSettingStore.shared.outputUrl!)
+                    let separatedBoudingBoxes = strongSelf.assignBoundingBoxes(imageWidth: strongCroppedImage.size.width, boundingBoxes: modifiedBoundingBoxes, numberOfTarget: numOfTarget)
                     strongSelf.dataStore.register(imageURL: outputURL, boudingBoxes: separatedBoudingBoxes)
                 }
                 progressPublisher.send(Double(index + 1))

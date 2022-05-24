@@ -30,6 +30,8 @@ final class AreaExtractor {
                 Imgproc.fillPoly(img: mat, pts: [contour], color: Scalar(0))
             }
         }
-        return mat.toNSImage()
+        let cgImage = mat.toCGImage()
+        let nsImage = NSImage(cgImage: cgImage, size: image.size)
+        return nsImage
     }
 }
