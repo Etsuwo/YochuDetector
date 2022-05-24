@@ -40,4 +40,10 @@ final class AnalyzeDataStore {
     func register(wadaringAt: Int?, stopAt: Int?, boundingBoxes: [CGRect?]) {
         resultDatas.append(ResultData(wandaringAt: wadaringAt, stopAt: stopAt, boundingBoxes: boundingBoxes))
     }
+    
+    /// データの消去
+    func flash() {
+        analyzedDatas = []
+        resultDatas = []
+    }
 }
