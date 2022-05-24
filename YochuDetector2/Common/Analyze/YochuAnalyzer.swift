@@ -36,7 +36,6 @@ final class YochuAnalyzer {
     }
     
     func extract(with urls: [URL]) {
-        //for threshold in 20...40 {
             let output = AnalyzeSettingStore.shared.outputUrl?.appendingPathComponent("extract")
             try! FileManager.default.createDirectory(at: output!, withIntermediateDirectories: true, attributes: nil)
             for (index ,url) in urls.enumerated() {
@@ -48,7 +47,6 @@ final class YochuAnalyzer {
                     progressPublisher.send(Double(index + 1))
                 }
             }
-       // }
         endPublisher.send()
     }
     

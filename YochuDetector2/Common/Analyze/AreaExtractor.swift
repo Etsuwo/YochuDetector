@@ -15,7 +15,6 @@ final class AreaExtractor {
         let resultMat = Mat()
         var channels: [Mat] = []
         let areaThreshold = image.size.height * image.size.width * 0.05
-        //let binaryThreshold: Double = 20 //TODO: 光と相談
         
         Imgproc.cvtColor(src: mat, dst: resultMat, code: .COLOR_BGR2HSV)
         Imgproc.GaussianBlur(src: resultMat, dst: resultMat, ksize: Size2i(width: 9, height: 9), sigmaX: 0)
@@ -30,6 +29,8 @@ final class AreaExtractor {
                 Imgproc.fillPoly(img: mat, pts: [contour], color: Scalar(0))
             }
         }
+        
+        // 直接MatからtoNSImage()使うとメモリリークする
         let cgImage = mat.toCGImage()
         let nsImage = NSImage(cgImage: cgImage, size: image.size)
         return nsImage
