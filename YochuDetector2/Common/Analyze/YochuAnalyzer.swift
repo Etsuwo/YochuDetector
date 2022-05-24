@@ -16,7 +16,6 @@ final class YochuAnalyzer {
     
     private let ciContext = CIContext()
     private let yolo = YOLO()
-    private var activityArray: [[CGRect?]] = []
     private let imageSaver = ImageSaver()
     private let areaExtractor = AreaExtractor()
     private let dataStore = AnalyzeDataStore()
@@ -54,6 +53,7 @@ final class YochuAnalyzer {
     }
     
     func start(with urls: [URL], rect: CGRect, numOfTarget: Int) {
+        dataStore.flash()
         for (index, url) in urls.enumerated() {
             autoreleasepool {
                 let nsImage = NSImage.withOptionalURL(url: url)
