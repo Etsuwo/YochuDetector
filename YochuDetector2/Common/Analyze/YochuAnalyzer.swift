@@ -113,7 +113,7 @@ final class YochuAnalyzer {
     
     private func analyze() {
         let detectedDatas = dataStore.trnseposeActivitiesData
-        for (index, detectedData) in detectedDatas.enumerated() {
+        for detectedData in detectedDatas {
             let startAt = analyzeWandaring(detectedData: detectedData)
             let stopAt = analyzeStop(detectedData: detectedData, stopThreshold: permanentDataStore.stopThreshold, buffer: CGFloat(permanentDataStore.stopRectBuffer), interval: permanentDataStore.interval, experimentStartAt: oneTimeDataStore.experimentStartAt)
             dataStore.register(wadaringAt: startAt, stopAt: stopAt, boundingBoxes: detectedData)
@@ -148,37 +148,6 @@ final class YochuAnalyzer {
     private func calcWandaringStart(_ preSectionTotal: Int, _ firstSectionTotal: Int, preStart: Int, experimentStartAt: Int) -> Int {
         (permanentDataStore.wandaringThreshold - preSectionTotal) * (60 / (firstSectionTotal - preSectionTotal)) + preStart + experimentStartAt
     }
-    
-    /// ワンダリング行動の停止時間の算出
-    /// - Parameter detectedData: 幼虫一匹の行動データ配列
-    /// - Returns: 終了時間、単位は分、止まってなかったらnil
-//    private func analyzeStop(detectedData: [CGRect?]) -> Int? {
-//        for (index, rect) in detectedData.enumerated() {
-//            if index + setting.stopThreshold > detectedData.count {
-//                break
-//            }
-//
-//            if let rect = rect {
-//                for count in 1...setting.stopThreshold {
-//                    if count == setting.stopThreshold {
-//                        return index * setting.interval
-//                    }
-//                    if let compareRect = detectedData[index + count] {
-//                        let buffer = CGFloat(setting.stopRectBuffer)
-//                        let xRange = rect.midX - buffer ... rect.midX + buffer
-//                        let yRange = rect.midY - buffer ... rect.midY + buffer
-//
-//                        if !xRange.contains(compareRect.midX) ||
-//                            !yRange.contains(compareRect.midY) {
-//                            break   // まだ動いてる
-//                        }
-//                    } else { break }
-//                }
-//            }
-//        }
-//
-//        return nil // 止まってない
-//    }
     
     /// ワンダリング行動の停止時間の算出、後ろから座標を確認する
     /// - Parameters:
