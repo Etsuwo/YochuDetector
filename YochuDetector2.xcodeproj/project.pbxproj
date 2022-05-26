@@ -11,6 +11,7 @@
 		5A2E40412807DD4F00E7903C /* UnInteractiveLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E40402807DD4F00E7903C /* UnInteractiveLoadingView.swift */; };
 		5A3C635127F1D7EB00C86812 /* DateComponentsFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3C635027F1D7EB00C86812 /* DateComponentsFormatter+Extension.swift */; };
 		5A4D72C027FEEC090024A09C /* Yolov5.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D72BF27FEEC090024A09C /* Yolov5.mlmodel */; };
+		5A5C35DE283F450F00F72536 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5C35DD283F450F00F72536 /* Double+Extension.swift */; };
 		5A62254827BDE15E00B1122F /* Hidden.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A62254727BDE15E00B1122F /* Hidden.swift */; };
 		5A6B0D1A27C474760098E47C /* YochuAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6B0D1927C474760098E47C /* YochuAnalyzer.swift */; };
 		5A8DFA9227A65BC30053636F /* Yolov3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DFA9127A65BC30053636F /* Yolov3.mlmodel */; };
@@ -69,6 +70,7 @@
 		5A2E40402807DD4F00E7903C /* UnInteractiveLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnInteractiveLoadingView.swift; sourceTree = "<group>"; };
 		5A3C635027F1D7EB00C86812 /* DateComponentsFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateComponentsFormatter+Extension.swift"; sourceTree = "<group>"; };
 		5A4D72BF27FEEC090024A09C /* Yolov5.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Yolov5.mlmodel; sourceTree = "<group>"; };
+		5A5C35DD283F450F00F72536 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		5A62254727BDE15E00B1122F /* Hidden.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hidden.swift; sourceTree = "<group>"; };
 		5A6B0D1927C474760098E47C /* YochuAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YochuAnalyzer.swift; sourceTree = "<group>"; };
 		5A8DFA9127A65BC30053636F /* Yolov3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Yolov3.mlmodel; sourceTree = "<group>"; };
@@ -348,6 +350,7 @@
 				5AB5EB4D27C53F700018AB20 /* Array+Extension.swift */,
 				5AA1E3CD27F0ABA3006E9D3C /* Date+Extension.swift */,
 				5A3C635027F1D7EB00C86812 /* DateComponentsFormatter+Extension.swift */,
+				5A5C35DD283F450F00F72536 /* Double+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -490,6 +493,7 @@
 				5AC331AB27C72121002B2BAE /* ResultViewModel.swift in Sources */,
 				5AAF6D402816DDED002634CD /* UserDefaultsHandler.swift in Sources */,
 				5AB5C75F27A7D99E0046EF1D /* ResultView.swift in Sources */,
+				5A5C35DE283F450F00F72536 /* Double+Extension.swift in Sources */,
 				5ABEF6A527A4E82A00B1B5F9 /* AnalyzeSettingStore.swift in Sources */,
 				5AE3EFCB27EFF6AA005C416A /* AnalyzeDataStore.swift in Sources */,
 				5ABEF6A327A4E78F00B1B5F9 /* TrimmingViewModel.swift in Sources */,

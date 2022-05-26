@@ -29,8 +29,8 @@ final class CSVHandler {
             let joinedString = resultData.boundingBoxes.map {
                 $0 != nil ? String(format:"(%.1f %.1f)", $0!.midX, $0!.midY) : ""
             }.joined(separator: ",")
-            let wandaringAt = DateComponentsFormatter.headerString(from: Double((resultData.wandaringAt ?? 0) * 60))
-            let stopAt = DateComponentsFormatter.headerString(from: Double((resultData.stopAt ?? 0) * 60))
+            let wandaringAt = Double(resultData.wandaringAt ?? 0).minuteToHour
+            let stopAt = Double(resultData.stopAt ?? 0).minuteToHour
             outputString += "\(index + 1),\(wandaringAt),\(stopAt),\(joinedString),\n"
         }
         
