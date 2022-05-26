@@ -20,6 +20,10 @@ final class SelectSourceViewModel {
     private let panelHandler = OpenPanelHandler()
     private let dataStore = AnalyzeSettingStore.shared
     
+    init() {
+        viewState.inputDirectory = dataStore.inputUrl?.absoluteString ?? ""
+    }
+    
     func onTapInputSelectButton() {
         let url = panelHandler.openSelectDirectoryPanel()
         dataStore.inputUrl = url
