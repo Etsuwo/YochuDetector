@@ -1,22 +1,16 @@
 //
-//  CSVHandler.swift
+//  ResultDataConverter.swift
 //  YochuDetector2
 //
-//  Created by Etsushi Otani on 2022/03/27.
+//  Created by Etsushi Otani on 2022/05/26.
 //
 
 import Foundation
 
-final class CSVHandler {
-    
-    /// 幼虫の検出位置をcsvとして出力する
-    /// - Parameters:
-    ///   - resultDatas: 解析結果データの配列
-    ///   - outputUrl: csvの出力URL
-    func write(resultDatas: [AnalyzeDataStore.ResultData], to outputUrl: URL, startAt: Int) {
+final class ResultDataConverter {
+    func toCSVFormat(from resultDatas: [AnalyzeDataStore.ResultData], startAt: Int) -> String {
         guard !resultDatas.isEmpty else { fatalError() }
         var outputString = ""
-        
         // ヘッダー作成
         outputString += ",wandaringAt,stopAt,"
         for count in 0 ..< resultDatas[0].boundingBoxes.count {
@@ -34,20 +28,6 @@ final class CSVHandler {
             outputString += "\(index + 1),\(wandaringAt),\(stopAt),\(joinedString),\n"
         }
         
-        let fileName = makeCSVFileName()
-        let url = outputUrl.appendingPathComponent(fileName)
-        write(data: outputString, to: url)
-    }
-    
-    private func makeCSVFileName() -> String {
-        "location_\(Date.nowString()).csv"
-    }
-    
-    private func write(data: String, to outputUrl: URL) {
-        do {
-            try data.write(to: outputUrl, atomically: true, encoding: String.Encoding.utf8)
-        } catch {
-            fatalError(error.localizedDescription)
-        }
+        return outputString
     }
 }

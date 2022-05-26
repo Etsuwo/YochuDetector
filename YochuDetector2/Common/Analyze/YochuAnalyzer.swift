@@ -79,7 +79,8 @@ final class YochuAnalyzer {
             }
         }
         analyze()
-        CSVHandler().write(resultDatas: dataStore.resultDatas, to: OneTimeDataStore.shared.outputUrl!, startAt: oneTimeDataStore.experimentStartAt)
+        let output = ResultDataConverter().toCSVFormat(from: dataStore.resultDatas, startAt: oneTimeDataStore.experimentStartAt)
+        CSVHandler().write(output: output, to: OneTimeDataStore.shared.outputUrl!)
         endPublisher.send()
     }
     
