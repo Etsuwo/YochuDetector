@@ -18,7 +18,7 @@ final class SelectSourceViewModel {
     
     private(set) var viewState = ViewState()
     private let panelHandler = OpenPanelHandler()
-    private let dataStore = AnalyzeSettingStore.shared
+    private let dataStore = OneTimeDataStore.shared
     
     init() {
         viewState.inputDirectory = dataStore.inputUrl?.absoluteString ?? ""

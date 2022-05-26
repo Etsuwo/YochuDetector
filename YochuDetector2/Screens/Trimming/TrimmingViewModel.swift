@@ -27,7 +27,7 @@ final class TrimmingViewModel {
         @Published var isHiddenProgressView = true
     }
     
-    private let dataStore = AnalyzeSettingStore.shared
+    private let dataStore = OneTimeDataStore.shared
     private let analyzer = YochuAnalyzer.shared
     private var cancellables = Set<AnyCancellable>()
     private var urls: [URL] = []

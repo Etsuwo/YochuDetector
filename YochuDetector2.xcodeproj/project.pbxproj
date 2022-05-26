@@ -27,9 +27,9 @@
 		5AAF6D402816DDED002634CD /* UserDefaultsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAF6D3F2816DDED002634CD /* UserDefaultsHandler.swift */; };
 		5AB5C75F27A7D99E0046EF1D /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C75E27A7D99E0046EF1D /* ResultView.swift */; };
 		5AB5EB4E27C53F700018AB20 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5EB4D27C53F700018AB20 /* Array+Extension.swift */; };
-		5AB5EB5027C542790018AB20 /* AnalyzerSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5EB4F27C542790018AB20 /* AnalyzerSetting.swift */; };
+		5AB5EB5027C542790018AB20 /* PermanentDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5EB4F27C542790018AB20 /* PermanentDataStore.swift */; };
 		5ABEF6A327A4E78F00B1B5F9 /* TrimmingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABEF6A227A4E78F00B1B5F9 /* TrimmingViewModel.swift */; };
-		5ABEF6A527A4E82A00B1B5F9 /* AnalyzeSettingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABEF6A427A4E82A00B1B5F9 /* AnalyzeSettingStore.swift */; };
+		5ABEF6A527A4E82A00B1B5F9 /* OneTimeDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABEF6A427A4E82A00B1B5F9 /* OneTimeDataStore.swift */; };
 		5ABEF6A727A4F21000B1B5F9 /* NSImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABEF6A627A4F21000B1B5F9 /* NSImage+Extension.swift */; };
 		5ABEF6B227A525D200B1B5F9 /* EditableRectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABEF6B127A525D200B1B5F9 /* EditableRectangleView.swift */; };
 		5ABF6C8F27A8FAF9001B8FDE /* CIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABF6C8E27A8FAF9001B8FDE /* CIImage+Extension.swift */; };
@@ -88,9 +88,9 @@
 		5AAF6D3F2816DDED002634CD /* UserDefaultsHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHandler.swift; sourceTree = "<group>"; };
 		5AB5C75E27A7D99E0046EF1D /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		5AB5EB4D27C53F700018AB20 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
-		5AB5EB4F27C542790018AB20 /* AnalyzerSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzerSetting.swift; sourceTree = "<group>"; };
+		5AB5EB4F27C542790018AB20 /* PermanentDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermanentDataStore.swift; sourceTree = "<group>"; };
 		5ABEF6A227A4E78F00B1B5F9 /* TrimmingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrimmingViewModel.swift; sourceTree = "<group>"; };
-		5ABEF6A427A4E82A00B1B5F9 /* AnalyzeSettingStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzeSettingStore.swift; sourceTree = "<group>"; };
+		5ABEF6A427A4E82A00B1B5F9 /* OneTimeDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneTimeDataStore.swift; sourceTree = "<group>"; };
 		5ABEF6A627A4F21000B1B5F9 /* NSImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Extension.swift"; sourceTree = "<group>"; };
 		5ABEF6B127A525D200B1B5F9 /* EditableRectangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableRectangleView.swift; sourceTree = "<group>"; };
 		5ABF6C8E27A8FAF9001B8FDE /* CIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CIImage+Extension.swift"; sourceTree = "<group>"; };
@@ -165,8 +165,6 @@
 			children = (
 				5A8DFA9327A669DB0053636F /* YOLO.swift */,
 				5A6B0D1927C474760098E47C /* YochuAnalyzer.swift */,
-				5AB5EB4F27C542790018AB20 /* AnalyzerSetting.swift */,
-				5AE3EFCA27EFF6AA005C416A /* AnalyzeDataStore.swift */,
 				5AA1E3CB27F0A0EB006E9D3C /* CSVHandler.swift */,
 				5AE0B98D28082D7700442E13 /* AreaExtractor.swift */,
 			);
@@ -188,6 +186,16 @@
 				5A8E0D93280CFC3D00A1BAFD /* AreaExtractorTest.swift */,
 			);
 			path = YochuDetector2Tests;
+			sourceTree = "<group>";
+		};
+		5AAE04AF283F8E3900F95149 /* DataStore */ = {
+			isa = PBXGroup;
+			children = (
+				5ABEF6A427A4E82A00B1B5F9 /* OneTimeDataStore.swift */,
+				5AB5EB4F27C542790018AB20 /* PermanentDataStore.swift */,
+				5AE3EFCA27EFF6AA005C416A /* AnalyzeDataStore.swift */,
+			);
+			path = DataStore;
 			sourceTree = "<group>";
 		};
 		5AAF6D382816AE17002634CD /* Settings */ = {
@@ -251,11 +259,11 @@
 		5AC2BAD027A267BB00C0B88A /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				5AAE04AF283F8E3900F95149 /* DataStore */,
 				5AC331B027C72C32002B2BAE /* File */,
 				5A6B0D1C27C4ADCC0098E47C /* Analyze */,
 				5A6B0D1B27C4ADBA0098E47C /* UI */,
 				5AC2BAD227A26C3300C0B88A /* NotificationName.swift */,
-				5ABEF6A427A4E82A00B1B5F9 /* AnalyzeSettingStore.swift */,
 				5AAF6D3F2816DDED002634CD /* UserDefaultsHandler.swift */,
 			);
 			path = Common;
@@ -468,7 +476,7 @@
 			files = (
 				5A4D72C027FEEC090024A09C /* Yolov5.mlmodel in Sources */,
 				5ABEF6B227A525D200B1B5F9 /* EditableRectangleView.swift in Sources */,
-				5AB5EB5027C542790018AB20 /* AnalyzerSetting.swift in Sources */,
+				5AB5EB5027C542790018AB20 /* PermanentDataStore.swift in Sources */,
 				5AC2BAC927A2667300C0B88A /* RootView.swift in Sources */,
 				5A8DFA9427A669DB0053636F /* YOLO.swift in Sources */,
 				5AAF6D3A2816AE2E002634CD /* SettingsView.swift in Sources */,
@@ -498,7 +506,7 @@
 				5AB5C75F27A7D99E0046EF1D /* ResultView.swift in Sources */,
 				5A5C35E0283F53B100F72536 /* CGRect+Extension.swift in Sources */,
 				5A5C35DE283F450F00F72536 /* Double+Extension.swift in Sources */,
-				5ABEF6A527A4E82A00B1B5F9 /* AnalyzeSettingStore.swift in Sources */,
+				5ABEF6A527A4E82A00B1B5F9 /* OneTimeDataStore.swift in Sources */,
 				5AE3EFCB27EFF6AA005C416A /* AnalyzeDataStore.swift in Sources */,
 				5ABEF6A327A4E78F00B1B5F9 /* TrimmingViewModel.swift in Sources */,
 				5AF4F43D279F08C1001041CB /* String+Extension.swift in Sources */,

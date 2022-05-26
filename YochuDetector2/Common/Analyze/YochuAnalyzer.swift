@@ -21,8 +21,8 @@ final class YochuAnalyzer {
     private let dataStore = AnalyzeDataStore()
     let endPublisher = PassthroughSubject<Void, Never>()
     let progressPublisher = PassthroughSubject<Double, Never>()
-    let analyzeSettingSotre = AnalyzeSettingStore.shared
-    var setting: AnalyzerSetting { analyzeSettingSotre.analyzerSetting }
+    private let oneTimeDataStore = OneTimeDataStore.shared
+    private let permanentDataStore = PermanentDataStore()
     
     // 作業用
     func crop(with urls: [URL], rect: CGRect) {
@@ -30,14 +30,14 @@ final class YochuAnalyzer {
             let nsImage = NSImage.withOptionalURL(url: url)
             let cropImage = nsImage.crop(to: rect)
             //let extractedImage = AreaExtractor().extractFeed(from: cropImage)
-            imageSaver.save(image: cropImage, fileName: url.lastPathComponent, to: AnalyzeSettingStore.shared.outputUrl!)
+            imageSaver.save(image: cropImage, fileName: url.lastPathComponent, to: OneTimeDataStore.shared.outputUrl!)
             progressPublisher.send(Double(index + 1))
         }
         endPublisher.send()
     }
     
     func extract(with urls: [URL]) {
-            let output = AnalyzeSettingStore.shared.outputUrl?.appendingPathComponent("extract")
+            let output = OneTimeDataStore.shared.outputUrl?.appendingPathComponent("extract")
             try! FileManager.default.createDirectory(at: output!, withIntermediateDirectories: true, attributes: nil)
             for (index ,url) in urls.enumerated() {
                 autoreleasepool {
@@ -57,7 +57,7 @@ final class YochuAnalyzer {
             autoreleasepool {
                 let nsImage = NSImage.withOptionalURL(url: url)
                 let croppedImage = nsImage.crop(to: rect)
-                let sourceImage = areaExtractor.extractFeed(from: croppedImage, binaryThreshold: Double(setting.binaryThreshold))
+                let sourceImage = areaExtractor.extractFeed(from: croppedImage, binaryThreshold: Double(permanentDataStore.binaryThreshold))
                 guard let ciImage = sourceImage.ciImage else { return }
                 yolo.predict(image: ciImage) { [weak self, weak croppedImage] observations in
                     guard let strongSelf = self,
@@ -71,7 +71,7 @@ final class YochuAnalyzer {
                         strongCroppedImage.addBoundingRectangle(with: rect)
                         modifiedBoundingBoxes.append(rect)
                     }
-                    let outputURL = strongSelf.imageSaver.save(image: strongCroppedImage, fileName: url.lastPathComponent, to: AnalyzeSettingStore.shared.outputUrl!)
+                    let outputURL = strongSelf.imageSaver.save(image: strongCroppedImage, fileName: url.lastPathComponent, to: OneTimeDataStore.shared.outputUrl!)
                     let separatedBoudingBoxes = strongSelf.assignBoundingBoxes(imageWidth: strongCroppedImage.size.width, boundingBoxes: modifiedBoundingBoxes, numberOfTarget: numOfTarget)
                     strongSelf.dataStore.register(imageURL: outputURL, boudingBoxes: separatedBoudingBoxes)
                 }
@@ -79,7 +79,7 @@ final class YochuAnalyzer {
             }
         }
         analyze()
-        CSVHandler().write(resultDatas: dataStore.resultDatas, to: AnalyzeSettingStore.shared.outputUrl!, startAt: analyzeSettingSotre.experimentStartAt)
+        CSVHandler().write(resultDatas: dataStore.resultDatas, to: OneTimeDataStore.shared.outputUrl!, startAt: oneTimeDataStore.experimentStartAt)
         endPublisher.send()
     }
     
@@ -114,7 +114,7 @@ final class YochuAnalyzer {
         let detectedDatas = dataStore.trnseposeActivitiesData
         for (index, detectedData) in detectedDatas.enumerated() {
             let startAt = analyzeWandaring(detectedData: detectedData)
-            let stopAt = analyzeStop(detectedData: detectedData, stopThreshold: setting.stopThreshold, buffer: CGFloat(setting.stopRectBuffer), interval: setting.interval, experimentStartAt: analyzeSettingSotre.experimentStartAt)
+            let stopAt = analyzeStop(detectedData: detectedData, stopThreshold: permanentDataStore.stopThreshold, buffer: CGFloat(permanentDataStore.stopRectBuffer), interval: permanentDataStore.interval, experimentStartAt: oneTimeDataStore.experimentStartAt)
             dataStore.register(wadaringAt: startAt, stopAt: stopAt, boundingBoxes: detectedData)
         }
     }
@@ -123,29 +123,29 @@ final class YochuAnalyzer {
     /// - Parameter detectedData: 幼虫一匹分の行動データ配列
     /// - Returns: ワンダリング行動のスタート時間（単位は分）、してなかったらnil
     private func analyzeWandaring(detectedData: [CGRect?]) -> Int? {
-        let experimentHours = detectedData.count / setting.oneHour
+        let experimentHours = detectedData.count / permanentDataStore.oneHour
         var preSectionTotal = 0
         var firstSectionTotal = 0
         var secondSectionTotal = 0
         
         for hour in 0..<experimentHours {
-            let start = hour * setting.oneHour
+            let start = hour * permanentDataStore.oneHour
             preSectionTotal = firstSectionTotal
             firstSectionTotal = secondSectionTotal
-            let secondSection = detectedData[start ..< start + setting.oneHour]
+            let secondSection = detectedData[start ..< start + permanentDataStore.oneHour]
             secondSectionTotal = secondSection.reduce(into: 0) {
                 $0 += $1 != nil ? 1 : 0
             }
-            if firstSectionTotal >= setting.wandaringThreshold,
-               secondSectionTotal >= setting.wandaringThreshold {
-                return calcWandaringStart(preSectionTotal, firstSectionTotal, preStart: (hour - 2) * 60, experimentStartAt: analyzeSettingSotre.experimentStartAt)
+            if firstSectionTotal >= permanentDataStore.wandaringThreshold,
+               secondSectionTotal >= permanentDataStore.wandaringThreshold {
+                return calcWandaringStart(preSectionTotal, firstSectionTotal, preStart: (hour - 2) * 60, experimentStartAt: oneTimeDataStore.experimentStartAt)
             }
         }
         return nil
     }
     
     private func calcWandaringStart(_ preSectionTotal: Int, _ firstSectionTotal: Int, preStart: Int, experimentStartAt: Int) -> Int {
-        (setting.wandaringThreshold - preSectionTotal) * (60 / (firstSectionTotal - preSectionTotal)) + preStart + experimentStartAt
+        (permanentDataStore.wandaringThreshold - preSectionTotal) * (60 / (firstSectionTotal - preSectionTotal)) + preStart + experimentStartAt
     }
     
     /// ワンダリング行動の停止時間の算出
