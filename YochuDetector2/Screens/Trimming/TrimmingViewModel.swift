@@ -21,6 +21,7 @@ final class TrimmingViewModel {
         @Published var cropViewIsHidden = false
         @Published var croppedViewIsHidden = true
         @Published var numOfTargetInSection = "1"
+        @Published var experimentStartAt = "0"
         @Published var currentProgressValue = 0.0
         @Published var totalProgressValue = 0.0
         @Published var isHiddenProgressView = true
@@ -40,6 +41,7 @@ final class TrimmingViewModel {
         loadImage()
         viewState.url = urls.first
         bind()
+        viewState.experimentStartAt = "\(dataStore.experimentStartAt)"
     }
     
     private func bind() {
@@ -91,7 +93,11 @@ final class TrimmingViewModel {
     }
     
     func onTapGoButton() {
-        guard let numOfTarget = Int(viewState.numOfTargetInSection) else { return } // TODO: エラー処理
+        guard let numOfTarget = Int(viewState.numOfTargetInSection),
+              let experimentStartAt = Int(viewState.experimentStartAt) else {
+            return
+        } // TODO: エラー処理
+        dataStore.experimentStartAt = experimentStartAt
         viewState.isHiddenProgressView = false
         DispatchQueue.global().async { [weak self] in
             guard let strongSelf = self else { return }

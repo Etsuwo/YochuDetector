@@ -21,7 +21,8 @@ final class YochuAnalyzer {
     private let dataStore = AnalyzeDataStore()
     let endPublisher = PassthroughSubject<Void, Never>()
     let progressPublisher = PassthroughSubject<Double, Never>()
-    var setting: AnalyzerSetting { AnalyzeSettingStore.shared.analyzerSetting }
+    let analyzeSettingSotre = AnalyzeSettingStore.shared
+    var setting: AnalyzerSetting { analyzeSettingSotre.analyzerSetting }
     
     // 作業用
     func crop(with urls: [URL], rect: CGRect) {
@@ -78,7 +79,7 @@ final class YochuAnalyzer {
             }
         }
         analyze()
-        CSVHandler().write(resultDatas: dataStore.resultDatas, to: AnalyzeSettingStore.shared.outputUrl!)
+        CSVHandler().write(resultDatas: dataStore.resultDatas, to: AnalyzeSettingStore.shared.outputUrl!, startAt: analyzeSettingSotre.experimentStartAt)
         endPublisher.send()
     }
     
@@ -113,7 +114,7 @@ final class YochuAnalyzer {
         let detectedDatas = dataStore.trnseposeActivitiesData
         for (index, detectedData) in detectedDatas.enumerated() {
             let startAt = analyzeWandaring(detectedData: detectedData)
-            let stopAt = analyzeStop(detectedData: detectedData, stopThreshold: setting.stopThreshold, buffer: CGFloat(setting.stopRectBuffer), interval: setting.interval)
+            let stopAt = analyzeStop(detectedData: detectedData, stopThreshold: setting.stopThreshold, buffer: CGFloat(setting.stopRectBuffer), interval: setting.interval, experimentStartAt: analyzeSettingSotre.experimentStartAt)
             dataStore.register(wadaringAt: startAt, stopAt: stopAt, boundingBoxes: detectedData)
         }
     }
@@ -137,14 +138,14 @@ final class YochuAnalyzer {
             }
             if firstSectionTotal >= setting.wandaringThreshold,
                secondSectionTotal >= setting.wandaringThreshold {
-                return calcWandaringStart(preSectionTotal, firstSectionTotal, preStart: (hour - 2) * 60)
+                return calcWandaringStart(preSectionTotal, firstSectionTotal, preStart: (hour - 2) * 60, experimentStartAt: analyzeSettingSotre.experimentStartAt)
             }
         }
         return nil
     }
     
-    private func calcWandaringStart(_ preSectionTotal: Int, _ firstSectionTotal: Int, preStart: Int) -> Int {
-        (setting.wandaringThreshold - preSectionTotal) * (60 / (firstSectionTotal - preSectionTotal)) + preStart
+    private func calcWandaringStart(_ preSectionTotal: Int, _ firstSectionTotal: Int, preStart: Int, experimentStartAt: Int) -> Int {
+        (setting.wandaringThreshold - preSectionTotal) * (60 / (firstSectionTotal - preSectionTotal)) + preStart + experimentStartAt
     }
     
     /// ワンダリング行動の停止時間の算出
@@ -185,7 +186,7 @@ final class YochuAnalyzer {
     ///   - buffer: 許容誤差
     ///   - interval: 何分ごとに画像が撮影されているか
     /// - Returns: 止まってたら停止した時間(分)、止まってないならnil
-    private func analyzeStop(detectedData: [CGRect?], stopThreshold: Int, buffer: CGFloat, interval: Int) -> Int? {
+    private func analyzeStop(detectedData: [CGRect?], stopThreshold: Int, buffer: CGFloat, interval: Int, experimentStartAt: Int) -> Int? {
         let reverseData: [CGRect?] = detectedData.reversed()
         var stopFlag = false
         var currentIndex = 0
@@ -201,7 +202,7 @@ final class YochuAnalyzer {
             }
             break // 動いた or 検知できてない
         }
-        let stopAt = (detectedData.endIndex - currentIndex) * interval
+        let stopAt = (detectedData.endIndex - currentIndex) * interval + experimentStartAt
         return stopFlag ? stopAt : nil
     }
 }

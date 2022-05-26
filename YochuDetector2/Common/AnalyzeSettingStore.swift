@@ -14,5 +14,6 @@ final class AnalyzeSettingStore {
     
     var inputUrl: URL?
     var outputUrl: URL?
+    var experimentStartAt: Int = 0 // 実験開始時間、アプリ落としたら消える
     var analyzerSetting: AnalyzerSetting = AnalyzerSetting()
 }

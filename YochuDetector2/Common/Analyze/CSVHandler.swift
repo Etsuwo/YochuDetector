@@ -13,14 +13,14 @@ final class CSVHandler {
     /// - Parameters:
     ///   - resultDatas: 解析結果データの配列
     ///   - outputUrl: csvの出力URL
-    func write(resultDatas: [AnalyzeDataStore.ResultData], to outputUrl: URL) {
+    func write(resultDatas: [AnalyzeDataStore.ResultData], to outputUrl: URL, startAt: Int) {
         guard !resultDatas.isEmpty else { fatalError() }
         var outputString = ""
         
         // ヘッダー作成
         outputString += ",wandaringAt,stopAt,"
         for count in 0 ..< resultDatas[0].boundingBoxes.count {
-            outputString += "\(DateComponentsFormatter.headerString(from: Double(count * 2 * 60))),"
+            outputString += "\(DateComponentsFormatter.headerString(from: Double((count * 2 + startAt) * 60))),"
         }
         outputString += "\n"
         
