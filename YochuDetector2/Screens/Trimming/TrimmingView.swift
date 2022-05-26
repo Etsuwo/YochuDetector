@@ -16,6 +16,10 @@ struct TrimmingView: View {
     private var cropView: CropView {
         CropView(image: image)
     }
+    private var croppedView: CroppedView {
+        CroppedView(separatedCount: $viewState.numOfTargetInSection, croppedImage: viewState.croppedImage)
+    }
+    
     @ObservedObject private var viewState: TrimmingViewModel.ViewState
     
     init() {
@@ -36,9 +40,7 @@ struct TrimmingView: View {
                                 viewModel.updateCropViewSize(size: $0)
                             })
                             .isHidden(viewState.cropViewIsHidden)
-                        Image(nsImage: viewState.croppedImage)
-                            .resizable()
-                            .scaledToFit()
+                        croppedView
                             .isHidden(viewState.croppedViewIsHidden)
                     }
                 }
@@ -66,14 +68,14 @@ struct TrimmingView: View {
                         HStack {
                             Text("試験官の数")
                                 .frame(width: 100)
-                            TextField("1以上を入力してね", text: $viewState.numOfTargetInSection)
+                            TextField("1以上を入力してね", value: $viewState.numOfTargetInSection, formatter: NumberFormatter())
                         }
                         Spacer()
                             .frame(height: 8)
                         HStack {
                             Text("スタート(分)")
                                 .frame(width: 100)
-                            TextField("単位は分だよ、0以上を入力してね", text: $viewState.experimentStartAt)
+                            TextField("単位は分だよ、0以上を入力してね", value: $viewState.experimentStartAt, formatter: NumberFormatter())
                         }
                     }
                     Spacer()

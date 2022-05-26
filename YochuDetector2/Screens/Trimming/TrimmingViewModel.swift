@@ -20,8 +20,8 @@ final class TrimmingViewModel {
         @Published var croppedImage = NSImage()
         @Published var cropViewIsHidden = false
         @Published var croppedViewIsHidden = true
-        @Published var numOfTargetInSection = "1"
-        @Published var experimentStartAt = "0"
+        @Published var numOfTargetInSection = 1
+        @Published var experimentStartAt = 0
         @Published var currentProgressValue = 0.0
         @Published var totalProgressValue = 0.0
         @Published var isHiddenProgressView = true
@@ -41,7 +41,7 @@ final class TrimmingViewModel {
         loadImage()
         viewState.url = urls.first
         bind()
-        viewState.experimentStartAt = "\(dataStore.experimentStartAt)"
+        viewState.experimentStartAt = dataStore.experimentStartAt
     }
     
     private func bind() {
@@ -93,15 +93,11 @@ final class TrimmingViewModel {
     }
     
     func onTapGoButton() {
-        guard let numOfTarget = Int(viewState.numOfTargetInSection),
-              let experimentStartAt = Int(viewState.experimentStartAt) else {
-            return
-        } // TODO: エラー処理
-        dataStore.experimentStartAt = experimentStartAt
+        dataStore.experimentStartAt = viewState.experimentStartAt
         viewState.isHiddenProgressView = false
         DispatchQueue.global().async { [weak self] in
             guard let strongSelf = self else { return }
-            strongSelf.analyzer.start(with: strongSelf.urls, rect: strongSelf.modifiedRect, numOfTarget: numOfTarget)
+            strongSelf.analyzer.start(with: strongSelf.urls, rect: strongSelf.modifiedRect, numOfTarget: strongSelf.viewState.numOfTargetInSection)
             //strongSelf.analyzer.crop(with: strongSelf.urls, rect: strongSelf.modifiedRect)
             //strongSelf.analyzer.extract(with: strongSelf.urls)
         }
