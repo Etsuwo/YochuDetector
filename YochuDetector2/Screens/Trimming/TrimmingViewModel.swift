@@ -25,6 +25,14 @@ final class TrimmingViewModel {
         @Published var currentProgressValue = 0.0
         @Published var totalProgressValue = 0.0
         @Published var isHiddenProgressView = true
+        @Published var registeredDatas: [CroppedData] = []
+    }
+    
+    struct CroppedData: Identifiable {
+        let id = UUID()
+        let numOfTargetInSection: Int
+        let croppedRect: CGRect
+        let croppedIcon: NSImage
     }
     
     private let dataStore = OneTimeDataStore.shared
@@ -48,13 +56,6 @@ final class TrimmingViewModel {
         analyzer.progressPublisher
             .receive(on: DispatchQueue.main)
             .assign(to: &viewState.$currentProgressValue)
-        analyzer.endPublisher
-            .receive(on: DispatchQueue.main)
-            .sink(receiveValue: {[weak self] in
-                self?.viewState.isHiddenProgressView = true
-                NotificationCenter.default.post(name: .transitionResult, object: nil)
-            })
-            .store(in: &cancellables)
     }
     
     private func loadImage() {
@@ -74,6 +75,13 @@ final class TrimmingViewModel {
     
     func updateCropViewSize(size: CGSize) {
         cropViewSize = size
+    }
+    
+    func onTapRegisterButton() {
+        let data = CroppedData(numOfTargetInSection: viewState.numOfTargetInSection, croppedRect: modifiedRect, croppedIcon: viewState.croppedImage)
+        viewState.registeredDatas.append(data)
+        viewState.cropViewIsHidden = false
+        viewState.croppedViewIsHidden = true
     }
     
     func onTapTrimButton(image: NSImage) {
@@ -97,9 +105,13 @@ final class TrimmingViewModel {
         viewState.isHiddenProgressView = false
         DispatchQueue.global().async { [weak self] in
             guard let strongSelf = self else { return }
-            strongSelf.analyzer.start(with: strongSelf.urls, rect: strongSelf.modifiedRect, numOfTarget: strongSelf.viewState.numOfTargetInSection)
-            //strongSelf.analyzer.crop(with: strongSelf.urls, rect: strongSelf.modifiedRect)
-            //strongSelf.analyzer.extract(with: strongSelf.urls)
+            for (index, data) in strongSelf.viewState.registeredDatas.enumerated() {
+                strongSelf.analyzer.start(with: strongSelf.urls, rect: data.croppedRect, numOfTarget: data.numOfTargetInSection, outputSuffix: index)
+            }
+            DispatchQueue.main.async {
+                self?.viewState.isHiddenProgressView = true
+                NotificationCenter.default.post(name: .transitionResult, object: nil)
+            }
         }
     }
     

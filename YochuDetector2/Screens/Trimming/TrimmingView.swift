@@ -45,6 +45,9 @@ struct TrimmingView: View {
                     }
                 }
                 Spacer()
+                RegisteredAreaView(registerdDatas: $viewState.registeredDatas)
+                    .isHidden(viewState.registeredDatas.isEmpty)
+                    .padding(.horizontal)
                 HStack {
                     Spacer()
                     Button(action: {
@@ -59,6 +62,12 @@ struct TrimmingView: View {
                         Text("戻す")
                     })
                         .isHidden(viewState.croppedViewIsHidden)
+                    Button(action: {
+                        viewModel.onTapRegisterButton()
+                    }, label: {
+                        Text("解析範囲を登録")
+                    })
+                    .isHidden(viewState.croppedViewIsHidden)
                     Spacer()
                 }
                 .padding()
@@ -94,7 +103,7 @@ struct TrimmingView: View {
                             }, label: {
                                 Text("解析開始")
                             })
-                            .disabled(viewState.croppedViewIsHidden)
+                            .disabled(viewState.registeredDatas.isEmpty)
                             Spacer()
                                 .frame(width: 24)
                         }
