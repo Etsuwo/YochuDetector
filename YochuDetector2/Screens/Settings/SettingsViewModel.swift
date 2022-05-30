@@ -18,7 +18,7 @@ final class SettingsViewModel {
         @Published var showAlert: Bool = false
         
         init() {
-            let setting = AnalyzeSettingStore.shared.analyzerSetting
+            let setting = PermanentDataStore()
             analyzeScoreThreshold = "\(setting.confidenceThreshold)"
             stopThreshold = "\(setting.stopMinute)"
             stopAllowableError = "\(setting.stopRectBuffer)"
@@ -63,6 +63,6 @@ final class SettingsViewModel {
               (1...100).contains(binaryThreshold) else {
             throw NSError()
         }
-        AnalyzeSettingStore.shared.analyzerSetting.update(interval: shootInterval, wandaringMinute: wandaringThreshold, stopMinute: stopThreshold, stopRectBuffer: stopAllowableError, confidenceThreshold: analyzeScoreThreshold, binaryThreshold: binaryThreshold)
+        PermanentDataStore().update(interval: shootInterval, wandaringMinute: wandaringThreshold, stopMinute: stopThreshold, stopRectBuffer: stopAllowableError, confidenceThreshold: analyzeScoreThreshold, binaryThreshold: binaryThreshold)
     }
 }

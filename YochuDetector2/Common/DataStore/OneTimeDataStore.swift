@@ -8,11 +8,13 @@
 import Foundation
 import AppKit
 
-final class AnalyzeSettingStore {
-    static let shared = AnalyzeSettingStore()
+
+/// アプリ落としたら消える設定
+final class OneTimeDataStore {
+    static let shared = OneTimeDataStore()
     private init() {}
     
     var inputUrl: URL?
     var outputUrl: URL?
-    var analyzerSetting: AnalyzerSetting = AnalyzerSetting()
+    var experimentStartAt: Int = 0
 }

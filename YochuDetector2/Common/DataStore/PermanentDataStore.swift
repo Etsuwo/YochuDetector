@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class AnalyzerSetting {
+final class PermanentDataStore {
     
     private let userDefaultsHandler = UserDefaultsHandler()
     
