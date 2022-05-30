@@ -26,6 +26,7 @@ struct RegisteredAreaCell: View {
                     .resizable()
                     .scaledToFill()
                     .frame(width: 50, height: 50)
+                    .clipped()
                 Text("num: \(numOfTarget)")
                 if isHover {
                     Image(systemName: "xmark.circle.fill")
