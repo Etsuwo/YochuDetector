@@ -11,20 +11,15 @@ import CoreImage
 import Vision
 import AppKit
 
-protocol TrimmingViewState: UnInteractiveLoadingViewState, ObservableObject {}
-
 final class TrimmingViewModel {
     
-    final class ViewState: TrimmingViewState {
+    final class ViewState: ObservableObject {
         @Published var url: URL?
         @Published var croppedImage = NSImage()
         @Published var cropViewIsHidden = false
         @Published var croppedViewIsHidden = true
         @Published var numOfTargetInSection = 1
         @Published var experimentStartAt = 0
-        @Published var currentProgressValue = 0.0
-        @Published var totalProgressValue = 0.0
-        @Published var isHiddenProgressView = true
         @Published var registeredDatas: [CroppedData] = []
     }
     
@@ -36,7 +31,6 @@ final class TrimmingViewModel {
     }
     
     private let dataStore = OneTimeDataStore.shared
-    private let analyzer = YochuAnalyzer.shared
     private var cancellables = Set<AnyCancellable>()
     private var urls: [URL] = []
     private var cropRect = CGRect()
@@ -48,14 +42,7 @@ final class TrimmingViewModel {
     init() {
         loadImage()
         viewState.url = urls.first
-        bind()
         viewState.experimentStartAt = dataStore.experimentStartAt
-    }
-    
-    private func bind() {
-        analyzer.progressPublisher
-            .receive(on: DispatchQueue.main)
-            .assign(to: &viewState.$currentProgressValue)
     }
     
     private func loadImage() {
@@ -63,7 +50,6 @@ final class TrimmingViewModel {
         do {
             urls = try FileManager.default.contentsOfDirectory(at: inputUrl, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
             urls.sort(by: { $0.absoluteString.localizedStandardCompare($1.absoluteString) == ComparisonResult.orderedAscending })
-            viewState.totalProgressValue = Double(urls.count)
         } catch {
             print(error.localizedDescription)
         }
@@ -102,17 +88,9 @@ final class TrimmingViewModel {
     
     func onTapGoButton() {
         dataStore.experimentStartAt = viewState.experimentStartAt
-        viewState.isHiddenProgressView = false
-        DispatchQueue.global().async { [weak self] in
-            guard let strongSelf = self else { return }
-            for (index, data) in strongSelf.viewState.registeredDatas.enumerated() {
-                strongSelf.analyzer.start(with: strongSelf.urls, rect: data.croppedRect, numOfTarget: data.numOfTargetInSection, outputSuffix: index)
-            }
-            DispatchQueue.main.async {
-                self?.viewState.isHiddenProgressView = true
-                NotificationCenter.default.post(name: .transitionResult, object: nil)
-            }
-        }
+        dataStore.imageUrls = urls
+        dataStore.analyzeDatas = viewState.registeredDatas.map { ($0.numOfTargetInSection, $0.croppedRect) }
+        NotificationCenter.default.post(name: .transitionLoading, object: nil)
     }
     
     func onTapBackToTopButton() {

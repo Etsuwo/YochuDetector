@@ -127,8 +127,6 @@ struct TrimmingView: View {
                 .padding(.top, 24)
                 Spacer()
             }
-            UnInteractiveLoadingView(viewState: viewState)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
 }
