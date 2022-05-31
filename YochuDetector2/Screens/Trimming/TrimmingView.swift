@@ -103,7 +103,7 @@ struct TrimmingView: View {
                             }, label: {
                                 Text("解析開始")
                             })
-                            .disabled(viewState.registeredDatas.isEmpty)
+                            .disabled(viewState.registeredDatas.isEmpty || viewState.isDisableGoButton)
                             Spacer()
                                 .frame(width: 24)
                         }

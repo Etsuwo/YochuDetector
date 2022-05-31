@@ -21,6 +21,7 @@ final class TrimmingViewModel {
         @Published var numOfTargetInSection = 1
         @Published var experimentStartAt = 0
         @Published var registeredDatas: [CroppedData] = []
+        @Published var isDisableGoButton = false
     }
     
     struct CroppedData: Identifiable {
@@ -87,6 +88,7 @@ final class TrimmingViewModel {
     }
     
     func onTapGoButton() {
+        viewState.isDisableGoButton = true
         dataStore.experimentStartAt = viewState.experimentStartAt
         dataStore.imageUrls = urls
         dataStore.analyzeDatas = viewState.registeredDatas.map { ($0.numOfTargetInSection, $0.croppedRect) }
