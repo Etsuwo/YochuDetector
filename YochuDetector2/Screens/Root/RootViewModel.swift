@@ -41,12 +41,18 @@ final class RootViewModel {
                 self?.viewState.displayView = .settings
             })
             .store(in: &cancellables)
+        NotificationCenter.Publisher(center: .default, name: .transitionLoading)
+            .sink(receiveValue: { [weak self] _ in
+                self?.viewState.displayView = .loading
+            })
+            .store(in: &cancellables)
     }
 }
 
 enum ViewType {
     case selectSource
     case trimming
+    case loading
     case result
     case settings
 }

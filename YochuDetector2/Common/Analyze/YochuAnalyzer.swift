@@ -17,6 +17,7 @@ final class YochuAnalyzer {
     private let ciContext = CIContext()
     private let yolo = YOLO()
     private let imageSaver = ImageSaver()
+    private let directoryHandler = DirectoryHandler()
     private let areaExtractor = AreaExtractor()
     private let dataStore = AnalyzeDataStore()
     let endPublisher = PassthroughSubject<Void, Never>()
@@ -51,8 +52,9 @@ final class YochuAnalyzer {
         endPublisher.send()
     }
     
-    func start(with urls: [URL], rect: CGRect, numOfTarget: Int) {
+    func start(with urls: [URL], rect: CGRect, numOfTarget: Int, outputSuffix: Int) {
         dataStore.flash()
+        let outputDirectoryURL = directoryHandler.createDirectory(directoryName: "output_\(outputSuffix)", to: oneTimeDataStore.outputUrl!)
         for (index, url) in urls.enumerated() {
             autoreleasepool {
                 let nsImage = NSImage.withOptionalURL(url: url)
@@ -71,7 +73,7 @@ final class YochuAnalyzer {
                         strongCroppedImage.addBoundingRectangle(with: rect)
                         modifiedBoundingBoxes.append(rect)
                     }
-                    let outputURL = strongSelf.imageSaver.save(image: strongCroppedImage, fileName: url.lastPathComponent, to: OneTimeDataStore.shared.outputUrl!)
+                    let outputURL = strongSelf.imageSaver.save(image: strongCroppedImage, fileName: url.lastPathComponent, to: outputDirectoryURL)
                     let separatedBoudingBoxes = strongSelf.assignBoundingBoxes(imageWidth: strongCroppedImage.size.width, boundingBoxes: modifiedBoundingBoxes, numberOfTarget: numOfTarget)
                     strongSelf.dataStore.register(imageURL: outputURL, boudingBoxes: separatedBoudingBoxes)
                 }
@@ -80,8 +82,7 @@ final class YochuAnalyzer {
         }
         analyze()
         let output = ResultDataConverter().toCSVFormat(from: dataStore.resultDatas, startAt: oneTimeDataStore.experimentStartAt)
-        CSVHandler().write(output: output, to: OneTimeDataStore.shared.outputUrl!)
-        endPublisher.send()
+        CSVHandler().write(output: output, to: outputDirectoryURL)
     }
     
     /// 検出した矩形がどの試験管のものか解析する

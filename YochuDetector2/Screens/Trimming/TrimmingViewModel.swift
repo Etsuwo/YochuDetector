@@ -11,24 +11,27 @@ import CoreImage
 import Vision
 import AppKit
 
-protocol TrimmingViewState: UnInteractiveLoadingViewState, ObservableObject {}
-
 final class TrimmingViewModel {
     
-    final class ViewState: TrimmingViewState {
+    final class ViewState: ObservableObject {
         @Published var url: URL?
         @Published var croppedImage = NSImage()
         @Published var cropViewIsHidden = false
         @Published var croppedViewIsHidden = true
         @Published var numOfTargetInSection = 1
         @Published var experimentStartAt = 0
-        @Published var currentProgressValue = 0.0
-        @Published var totalProgressValue = 0.0
-        @Published var isHiddenProgressView = true
+        @Published var registeredDatas: [CroppedData] = []
+        @Published var isDisableGoButton = false
+    }
+    
+    struct CroppedData: Identifiable {
+        let id = UUID()
+        let numOfTargetInSection: Int
+        let croppedRect: CGRect
+        let croppedIcon: NSImage
     }
     
     private let dataStore = OneTimeDataStore.shared
-    private let analyzer = YochuAnalyzer.shared
     private var cancellables = Set<AnyCancellable>()
     private var urls: [URL] = []
     private var cropRect = CGRect()
@@ -40,21 +43,7 @@ final class TrimmingViewModel {
     init() {
         loadImage()
         viewState.url = urls.first
-        bind()
         viewState.experimentStartAt = dataStore.experimentStartAt
-    }
-    
-    private func bind() {
-        analyzer.progressPublisher
-            .receive(on: DispatchQueue.main)
-            .assign(to: &viewState.$currentProgressValue)
-        analyzer.endPublisher
-            .receive(on: DispatchQueue.main)
-            .sink(receiveValue: {[weak self] in
-                self?.viewState.isHiddenProgressView = true
-                NotificationCenter.default.post(name: .transitionResult, object: nil)
-            })
-            .store(in: &cancellables)
     }
     
     private func loadImage() {
@@ -62,7 +51,6 @@ final class TrimmingViewModel {
         do {
             urls = try FileManager.default.contentsOfDirectory(at: inputUrl, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
             urls.sort(by: { $0.absoluteString.localizedStandardCompare($1.absoluteString) == ComparisonResult.orderedAscending })
-            viewState.totalProgressValue = Double(urls.count)
         } catch {
             print(error.localizedDescription)
         }
@@ -74,6 +62,13 @@ final class TrimmingViewModel {
     
     func updateCropViewSize(size: CGSize) {
         cropViewSize = size
+    }
+    
+    func onTapRegisterButton() {
+        let data = CroppedData(numOfTargetInSection: viewState.numOfTargetInSection, croppedRect: modifiedRect, croppedIcon: viewState.croppedImage)
+        viewState.registeredDatas.append(data)
+        viewState.cropViewIsHidden = false
+        viewState.croppedViewIsHidden = true
     }
     
     func onTapTrimButton(image: NSImage) {
@@ -93,14 +88,11 @@ final class TrimmingViewModel {
     }
     
     func onTapGoButton() {
+        viewState.isDisableGoButton = true
         dataStore.experimentStartAt = viewState.experimentStartAt
-        viewState.isHiddenProgressView = false
-        DispatchQueue.global().async { [weak self] in
-            guard let strongSelf = self else { return }
-            strongSelf.analyzer.start(with: strongSelf.urls, rect: strongSelf.modifiedRect, numOfTarget: strongSelf.viewState.numOfTargetInSection)
-            //strongSelf.analyzer.crop(with: strongSelf.urls, rect: strongSelf.modifiedRect)
-            //strongSelf.analyzer.extract(with: strongSelf.urls)
-        }
+        dataStore.imageUrls = urls
+        dataStore.analyzeDatas = viewState.registeredDatas.map { ($0.numOfTargetInSection, $0.croppedRect) }
+        NotificationCenter.default.post(name: .transitionLoading, object: nil)
     }
     
     func onTapBackToTopButton() {

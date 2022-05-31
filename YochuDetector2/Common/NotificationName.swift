@@ -11,6 +11,7 @@ enum NotificationName: String {
     case transitionResult
     case transitionSelectSource
     case transitionSettings
+    case transitionLoading
 }
 
 extension Notification.Name {
@@ -18,6 +19,7 @@ extension Notification.Name {
     static let transitionResult = NotificationName.transitionResult.name
     static let transitionSelectSource = NotificationName.transitionSelectSource.name
     static let transitionSettings = NotificationName.transitionSettings.name
+    static let transitionLoading = NotificationName.transitionLoading.name
 }
 
 extension NotificationName {

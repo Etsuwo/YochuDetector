@@ -16,5 +16,7 @@ final class OneTimeDataStore {
     
     var inputUrl: URL?
     var outputUrl: URL?
+    var imageUrls: [URL] = []
     var experimentStartAt: Int = 0
+    var analyzeDatas: [(Int, CGRect)] = []
 }

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5A16766627CBAFA9009A8B70 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A16766527CBAFA9009A8B70 /* ImageSaver.swift */; };
-		5A2E40412807DD4F00E7903C /* UnInteractiveLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E40402807DD4F00E7903C /* UnInteractiveLoadingView.swift */; };
+		5A2E40412807DD4F00E7903C /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E40402807DD4F00E7903C /* LoadingView.swift */; };
 		5A3C635127F1D7EB00C86812 /* DateComponentsFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3C635027F1D7EB00C86812 /* DateComponentsFormatter+Extension.swift */; };
 		5A4D72C027FEEC090024A09C /* Yolov5.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D72BF27FEEC090024A09C /* Yolov5.mlmodel */; };
 		5A5C35DE283F450F00F72536 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5C35DD283F450F00F72536 /* Double+Extension.swift */; };
@@ -28,6 +28,7 @@
 		5AAF6D3C2816AE44002634CD /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAF6D3B2816AE44002634CD /* SettingsViewModel.swift */; };
 		5AAF6D3E2816C22A002634CD /* SettingField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAF6D3D2816C22A002634CD /* SettingField.swift */; };
 		5AAF6D402816DDED002634CD /* UserDefaultsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAF6D3F2816DDED002634CD /* UserDefaultsHandler.swift */; };
+		5AB56DD12845AE250052325A /* LoadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB56DD02845AE250052325A /* LoadingViewModel.swift */; };
 		5AB5C75F27A7D99E0046EF1D /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5C75E27A7D99E0046EF1D /* ResultView.swift */; };
 		5AB5EB4E27C53F700018AB20 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5EB4D27C53F700018AB20 /* Array+Extension.swift */; };
 		5AB5EB5027C542790018AB20 /* PermanentDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5EB4F27C542790018AB20 /* PermanentDataStore.swift */; };
@@ -41,6 +42,9 @@
 		5AC2BAD327A26C3300C0B88A /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC2BAD227A26C3300C0B88A /* NotificationName.swift */; };
 		5AC331AB27C72121002B2BAE /* ResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC331AA27C72121002B2BAE /* ResultViewModel.swift */; };
 		5AC331AF27C72537002B2BAE /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC331AE27C72537002B2BAE /* ViewModel.swift */; };
+		5AD498E92844F09400CC1A1A /* RegisteredAreaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD498E82844F09400CC1A1A /* RegisteredAreaCell.swift */; };
+		5AD498EB2844FBD600CC1A1A /* RegisteredAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD498EA2844FBD600CC1A1A /* RegisteredAreaView.swift */; };
+		5AD498ED28450EAE00CC1A1A /* DirectoryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD498EC28450EAE00CC1A1A /* DirectoryHandler.swift */; };
 		5AD4F0F0279B0923008BD0A0 /* YochuDetector2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD4F0EF279B0923008BD0A0 /* YochuDetector2App.swift */; };
 		5AD4F0F2279B0923008BD0A0 /* SelectSourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD4F0F1279B0923008BD0A0 /* SelectSourceView.swift */; };
 		5AD4F0F4279B0925008BD0A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AD4F0F3279B0925008BD0A0 /* Assets.xcassets */; };
@@ -71,7 +75,7 @@
 
 /* Begin PBXFileReference section */
 		5A16766527CBAFA9009A8B70 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
-		5A2E40402807DD4F00E7903C /* UnInteractiveLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnInteractiveLoadingView.swift; sourceTree = "<group>"; };
+		5A2E40402807DD4F00E7903C /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		5A3C635027F1D7EB00C86812 /* DateComponentsFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateComponentsFormatter+Extension.swift"; sourceTree = "<group>"; };
 		5A4D72BF27FEEC090024A09C /* Yolov5.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Yolov5.mlmodel; sourceTree = "<group>"; };
 		5A5C35DD283F450F00F72536 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
@@ -92,6 +96,7 @@
 		5AAF6D3B2816AE44002634CD /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		5AAF6D3D2816C22A002634CD /* SettingField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingField.swift; sourceTree = "<group>"; };
 		5AAF6D3F2816DDED002634CD /* UserDefaultsHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHandler.swift; sourceTree = "<group>"; };
+		5AB56DD02845AE250052325A /* LoadingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewModel.swift; sourceTree = "<group>"; };
 		5AB5C75E27A7D99E0046EF1D /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		5AB5EB4D27C53F700018AB20 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		5AB5EB4F27C542790018AB20 /* PermanentDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermanentDataStore.swift; sourceTree = "<group>"; };
@@ -105,6 +110,9 @@
 		5AC2BAD227A26C3300C0B88A /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		5AC331AA27C72121002B2BAE /* ResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewModel.swift; sourceTree = "<group>"; };
 		5AC331AE27C72537002B2BAE /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		5AD498E82844F09400CC1A1A /* RegisteredAreaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisteredAreaCell.swift; sourceTree = "<group>"; };
+		5AD498EA2844FBD600CC1A1A /* RegisteredAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisteredAreaView.swift; sourceTree = "<group>"; };
+		5AD498EC28450EAE00CC1A1A /* DirectoryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryHandler.swift; sourceTree = "<group>"; };
 		5AD4F0EC279B0923008BD0A0 /* YochuDetector2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YochuDetector2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AD4F0EF279B0923008BD0A0 /* YochuDetector2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YochuDetector2App.swift; sourceTree = "<group>"; };
 		5AD4F0F1279B0923008BD0A0 /* SelectSourceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSourceView.swift; sourceTree = "<group>"; };
@@ -161,7 +169,6 @@
 			children = (
 				5A98541627A629C200A5AC40 /* CropView.swift */,
 				5ABEF6B127A525D200B1B5F9 /* EditableRectangleView.swift */,
-				5A2E40402807DD4F00E7903C /* UnInteractiveLoadingView.swift */,
 				5AAE04B2283F9CF300F95149 /* SeparateHelperView.swift */,
 				5AAE04B6283FA9F000F95149 /* CroppedView.swift */,
 			);
@@ -216,6 +223,15 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		5AB56DCF2845AE100052325A /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				5A2E40402807DD4F00E7903C /* LoadingView.swift */,
+				5AB56DD02845AE250052325A /* LoadingViewModel.swift */,
+			);
+			path = Loading;
+			sourceTree = "<group>";
+		};
 		5AB5C75D27A7D9800046EF1D /* Result */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +244,7 @@
 		5AC2BACC27A2677700C0B88A /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				5AB56DCF2845AE100052325A /* Loading */,
 				5AAF6D382816AE17002634CD /* Settings */,
 				5AB5C75D27A7D9800046EF1D /* Result */,
 				5AC2BACF27A267A900C0B88A /* Trimming */,
@@ -258,6 +275,7 @@
 		5AC2BACF27A267A900C0B88A /* Trimming */ = {
 			isa = PBXGroup;
 			children = (
+				5AD498E72844F07000CC1A1A /* View */,
 				5AF4F43E279F09B8001041CB /* TrimmingView.swift */,
 				5ABEF6A227A4E78F00B1B5F9 /* TrimmingViewModel.swift */,
 			);
@@ -299,8 +317,18 @@
 				5AF4F43A279F0222001041CB /* OpenPanelHandler.swift */,
 				5A16766527CBAFA9009A8B70 /* ImageSaver.swift */,
 				5AA1E3CB27F0A0EB006E9D3C /* CSVHandler.swift */,
+				5AD498EC28450EAE00CC1A1A /* DirectoryHandler.swift */,
 			);
 			path = File;
+			sourceTree = "<group>";
+		};
+		5AD498E72844F07000CC1A1A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5AD498E82844F09400CC1A1A /* RegisteredAreaCell.swift */,
+				5AD498EA2844FBD600CC1A1A /* RegisteredAreaView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		5AD4F0E3279B0923008BD0A0 = {
@@ -484,15 +512,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A4D72C027FEEC090024A09C /* Yolov5.mlmodel in Sources */,
+				5AD498EB2844FBD600CC1A1A /* RegisteredAreaView.swift in Sources */,
 				5ABEF6B227A525D200B1B5F9 /* EditableRectangleView.swift in Sources */,
 				5AB5EB5027C542790018AB20 /* PermanentDataStore.swift in Sources */,
 				5AC2BAC927A2667300C0B88A /* RootView.swift in Sources */,
 				5AAE04B3283F9CF300F95149 /* SeparateHelperView.swift in Sources */,
 				5A8DFA9427A669DB0053636F /* YOLO.swift in Sources */,
+				5AD498ED28450EAE00CC1A1A /* DirectoryHandler.swift in Sources */,
 				5AAF6D3A2816AE2E002634CD /* SettingsView.swift in Sources */,
 				5AC331AF27C72537002B2BAE /* ViewModel.swift in Sources */,
 				5A8DFA9227A65BC30053636F /* Yolov3.mlmodel in Sources */,
 				5AB5EB4E27C53F700018AB20 /* Array+Extension.swift in Sources */,
+				5AD498E92844F09400CC1A1A /* RegisteredAreaCell.swift in Sources */,
 				5AD4F0F2279B0923008BD0A0 /* SelectSourceView.swift in Sources */,
 				5AA1E3CC27F0A0EB006E9D3C /* CSVHandler.swift in Sources */,
 				5A6B0D1A27C474760098E47C /* YochuAnalyzer.swift in Sources */,
@@ -503,12 +534,13 @@
 				5AF4F43F279F09B8001041CB /* TrimmingView.swift in Sources */,
 				5ABEF6A727A4F21000B1B5F9 /* NSImage+Extension.swift in Sources */,
 				5AE0B98E28082D7700442E13 /* AreaExtractor.swift in Sources */,
+				5AB56DD12845AE250052325A /* LoadingViewModel.swift in Sources */,
 				5ABF6C8F27A8FAF9001B8FDE /* CIImage+Extension.swift in Sources */,
 				5A62254827BDE15E00B1122F /* Hidden.swift in Sources */,
 				5AAE04B1283F910F00F95149 /* ResultDataConverter.swift in Sources */,
 				5AAF6D3C2816AE44002634CD /* SettingsViewModel.swift in Sources */,
 				5AF4F43B279F0222001041CB /* OpenPanelHandler.swift in Sources */,
-				5A2E40412807DD4F00E7903C /* UnInteractiveLoadingView.swift in Sources */,
+				5A2E40412807DD4F00E7903C /* LoadingView.swift in Sources */,
 				5AAE04B7283FA9F000F95149 /* CroppedView.swift in Sources */,
 				5A3C635127F1D7EB00C86812 /* DateComponentsFormatter+Extension.swift in Sources */,
 				5AA1E3CE27F0ABA3006E9D3C /* Date+Extension.swift in Sources */,
