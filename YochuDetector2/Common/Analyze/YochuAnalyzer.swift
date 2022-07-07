@@ -116,7 +116,7 @@ final class YochuAnalyzer {
         let detectedDatas = dataStore.trnseposeActivitiesData
         for detectedData in detectedDatas {
             let startAt = analyzeWandaring(detectedData: detectedData)
-            let stopAt = analyzeStop(detectedData: detectedData, stopThreshold: permanentDataStore.stopThreshold, buffer: CGFloat(permanentDataStore.stopRectBuffer), interval: permanentDataStore.interval, experimentStartAt: oneTimeDataStore.experimentStartAt)
+            let stopAt = analyzeStopFromBackward(detectedData: detectedData, stopThreshold: permanentDataStore.stopThreshold, buffer: CGFloat(permanentDataStore.stopRectBuffer), interval: permanentDataStore.interval, experimentStartAt: oneTimeDataStore.experimentStartAt)
             dataStore.register(wadaringAt: startAt, stopAt: stopAt, boundingBoxes: detectedData)
         }
     }
@@ -157,7 +157,7 @@ final class YochuAnalyzer {
     ///   - buffer: 許容誤差
     ///   - interval: 何分ごとに画像が撮影されているか
     /// - Returns: 止まってたら停止した時間(分)、止まってないならnil
-    private func analyzeStop(detectedData: [CGRect?], stopThreshold: Int, buffer: CGFloat, interval: Int, experimentStartAt: Int) -> Int? {
+    private func analyzeStopFromBackward(detectedData: [CGRect?], stopThreshold: Int, buffer: CGFloat, interval: Int, experimentStartAt: Int) -> Int? {
         let reverseData: [CGRect?] = detectedData.reversed()
         var stopFlag = false
         var currentIndex = 0
@@ -180,5 +180,38 @@ final class YochuAnalyzer {
         }
         let stopAt = (detectedData.endIndex - currentIndex) * interval + experimentStartAt
         return stopFlag ? stopAt : nil
+    }
+    
+    /// ワンダリング行動の停止時間の算出、前から座標を確認する
+    /// - Parameters:
+    ///   - detectedData: 幼虫一匹分の行動データの配列
+    ///   - stopThreshold: 停止時間の閾値
+    ///   - buffer: 許容誤差
+    ///   - interval: 何分ごとに画像が撮影されているか
+    /// - Returns: 止まってたら停止した時間(分)、止まってないならnil
+    private func analyzeStopFromForward(detectedData: [CGRect?], stopThreshold: Int, buffer: CGFloat, interval: Int, experimentStartAt: Int) -> Int? {
+        for (index, rect) in detectedData.enumerated() {
+            if index + stopThreshold > detectedData.count {
+                break // データを全部見切った
+            }
+            
+            if let rect = rect {
+                for count in 1...stopThreshold {
+                    if count == stopThreshold {
+                        return index * interval + experimentStartAt // 止まってる
+                    }
+                    if let compareRect = detectedData[index + count] {
+                        if compareRect.isSameCenter(at: rect, buffer: buffer) {
+                            continue // 同じ座標
+                        } else {
+                            break // 動いた
+                        }
+                    } else {
+                        continue // 検知漏れをスルー
+                    }
+                }
+            }
+        }
+        return nil // 止まってない
     }
 }
