@@ -12,11 +12,12 @@ import opencv2
 final class AreaExtractor {
     func extractFeed(from image: NSImage, binaryThreshold: Double = 20) -> NSImage {
         let mat = Mat(nsImage: image)
-        let resultMat = Mat()
+        let resultMat = Mat(nsImage: image)
         var channels: [Mat] = []
         let areaThreshold = image.size.height * image.size.width * 0.05
         
-        Imgproc.cvtColor(src: mat, dst: resultMat, code: .COLOR_BGR2HSV)
+        Imgproc.rectangle(img: resultMat, pt1: Point2i(x: 0, y: 0), pt2: Point2i(x: resultMat.size().width, y: resultMat.size().height / 2), color: Scalar(0, 0, 0), thickness: -1)
+        Imgproc.cvtColor(src: resultMat, dst: resultMat, code: .COLOR_BGR2HSV)
         Imgproc.GaussianBlur(src: resultMat, dst: resultMat, ksize: Size2i(width: 9, height: 9), sigmaX: 0)
         Core.split(m: resultMat, mv: &channels)
         Imgproc.threshold(src: channels[1], dst: resultMat, thresh: binaryThreshold, maxval: 255, type: ThresholdTypes.THRESH_BINARY)
@@ -29,7 +30,7 @@ final class AreaExtractor {
                 Imgproc.fillPoly(img: mat, pts: [contour], color: Scalar(0))
             }
         }
-        
+
         // 直接MatからtoNSImage()使うとメモリリークする
         let cgImage = mat.toCGImage()
         let nsImage = NSImage(cgImage: cgImage, size: image.size)

@@ -37,14 +37,14 @@ final class YochuAnalyzer {
         endPublisher.send()
     }
     
-    func extract(with urls: [URL]) {
+    func extract(with urls: [URL], rect: CGRect) {
             let output = OneTimeDataStore.shared.outputUrl?.appendingPathComponent("extract")
             try! FileManager.default.createDirectory(at: output!, withIntermediateDirectories: true, attributes: nil)
             for (index ,url) in urls.enumerated() {
                 autoreleasepool {
                     let nsImage = NSImage.withOptionalURL(url: url)
-                    //let cropImage = nsImage.crop(to: rect)
-                    let extractedImage = AreaExtractor().extractFeed(from: nsImage, binaryThreshold: 20)
+                    let cropImage = nsImage.crop(to: rect)
+                    let extractedImage = AreaExtractor().extractFeed(from: cropImage, binaryThreshold: 20)
                     imageSaver.save(image: extractedImage, fileName: url.lastPathComponent, to: output!)
                     progressPublisher.send(Double(index + 1))
                 }

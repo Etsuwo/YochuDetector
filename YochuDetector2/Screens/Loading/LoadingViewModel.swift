@@ -51,6 +51,7 @@ final class LoadingViewModel {
                         strongSelf.viewState.currentProgressValue = Double(0)
                     }
                     strongSelf.analyzer.start(with: strongSelf.dataStore.imageUrls, rect: rect, numOfTarget: numOfTarget, outputSuffix: index)
+//                    strongSelf.analyzer.extract(with: strongSelf.dataStore.imageUrls, rect: rect)
     
             }
             DispatchQueue.main.sync {
