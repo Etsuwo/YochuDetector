@@ -164,14 +164,19 @@ final class YochuAnalyzer {
         guard let lastElement = reverseData.first,
               let lastRect = lastElement else { return nil } // 最終座標なし
         for (index, rect) in reverseData.enumerated() {
-            if let rect = rect, rect.isSameCenter(at: lastRect, buffer: buffer) {
-                if index + 1 > stopThreshold {
-                    stopFlag = true
-                    currentIndex = index
-                } // 一定時間経過で停止してると判定
-                continue // 止まってる
+            if let rect = rect {
+                if rect.isSameCenter(at: lastRect, buffer: buffer) {
+                    if index + 1 > stopThreshold {
+                        stopFlag = true
+                        currentIndex = index
+                    } // 一定時間経過で停止してると判定
+                    continue // 止まってる
+                } else {
+                    break // 動いた
+                }
+            } else {
+                continue // 検知漏れは一旦スルー
             }
-            break // 動いた or 検知できてない
         }
         let stopAt = (detectedData.endIndex - currentIndex) * interval + experimentStartAt
         return stopFlag ? stopAt : nil
