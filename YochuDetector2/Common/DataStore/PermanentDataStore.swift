@@ -31,6 +31,10 @@ final class PermanentDataStore {
         userDefaultsHandler.getValue(key: .binaryThreshold)
     }
     
+    var stopAnalyzeMethod: StopAnalyzeMethod {
+        StopAnalyzeMethod.init(rawValue: userDefaultsHandler.getValue(key: .stopAnalyzeMethod)) ?? StopAnalyzeMethod.forward
+    }
+    
     var oneHour: Int {
         60 / interval
     }
@@ -43,10 +47,11 @@ final class PermanentDataStore {
         stopMinute / interval
     }
     
-    func update(interval: Int, wandaringMinute: Int, stopMinute: Int, stopRectBuffer: Int, confidenceThreshold: Int, binaryThreshold: Int) {
+    func update(interval: Int, wandaringMinute: Int, stopMinute: Int, stopRectBuffer: Int, confidenceThreshold: Int, binaryThreshold: Int, stopAnalyzeMethod: StopAnalyzeMethod) {
         let values = [interval, wandaringMinute, stopMinute, stopRectBuffer, confidenceThreshold, binaryThreshold]
-        for (index, key) in UserDefaults.KeyString.allCases.enumerated() {
+        for (index, key) in UserDefaults.IntKeyString.allCases.enumerated() {
             userDefaultsHandler.setValue(value: values[index], key: key)
         }
+        userDefaultsHandler.setValue(value: stopAnalyzeMethod.rawValue, key: UserDefaults.StringKeyString.stopAnalyzeMethod)
     }
 }

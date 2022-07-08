@@ -116,7 +116,13 @@ final class YochuAnalyzer {
         let detectedDatas = dataStore.trnseposeActivitiesData
         for detectedData in detectedDatas {
             let startAt = analyzeWandaring(detectedData: detectedData)
-            let stopAt = analyzeStopFromBackward(detectedData: detectedData, stopThreshold: permanentDataStore.stopThreshold, buffer: CGFloat(permanentDataStore.stopRectBuffer), interval: permanentDataStore.interval, experimentStartAt: oneTimeDataStore.experimentStartAt)
+            var stopAt: Int? = nil
+            switch permanentDataStore.stopAnalyzeMethod {
+            case .forward:
+                stopAt = analyzeStopFromForward(detectedData: detectedData, stopThreshold: permanentDataStore.stopThreshold, buffer: CGFloat(permanentDataStore.stopRectBuffer), interval: permanentDataStore.interval, experimentStartAt: oneTimeDataStore.experimentStartAt)
+            case .backward:
+                stopAt = analyzeStopFromBackward(detectedData: detectedData, stopThreshold: permanentDataStore.stopThreshold, buffer: CGFloat(permanentDataStore.stopRectBuffer), interval: permanentDataStore.interval, experimentStartAt: oneTimeDataStore.experimentStartAt)
+            }
             dataStore.register(wadaringAt: startAt, stopAt: stopAt, boundingBoxes: detectedData)
         }
     }

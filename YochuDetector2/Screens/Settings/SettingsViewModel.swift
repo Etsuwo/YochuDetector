@@ -16,6 +16,7 @@ final class SettingsViewModel {
         @Published var wandaringThreshold: String
         @Published var binaryThreshold: String
         @Published var showAlert: Bool = false
+        @Published var stopAnalyzeMethod: String
         
         init() {
             let setting = PermanentDataStore()
@@ -25,6 +26,7 @@ final class SettingsViewModel {
             shootInterval = "\(setting.interval)"
             wandaringThreshold = "\(setting.wandaringMinute)"
             binaryThreshold = "\(setting.binaryThreshold)"
+            stopAnalyzeMethod = setting.stopAnalyzeMethod.rawValue
         }
     }
     
@@ -60,9 +62,11 @@ final class SettingsViewModel {
               let wandaringThreshold = Int(viewState.wandaringThreshold),
               wandaringThreshold >= 1,
               let binaryThreshold = Int(viewState.binaryThreshold),
-              (1...100).contains(binaryThreshold) else {
+              (1...100).contains(binaryThreshold),
+              let stopAnalyzeMethod = StopAnalyzeMethod.init(rawValue: viewState.stopAnalyzeMethod)
+        else {
             throw NSError()
         }
-        PermanentDataStore().update(interval: shootInterval, wandaringMinute: wandaringThreshold, stopMinute: stopThreshold, stopRectBuffer: stopAllowableError, confidenceThreshold: analyzeScoreThreshold, binaryThreshold: binaryThreshold)
+        PermanentDataStore().update(interval: shootInterval, wandaringMinute: wandaringThreshold, stopMinute: stopThreshold, stopRectBuffer: stopAllowableError, confidenceThreshold: analyzeScoreThreshold, binaryThreshold: binaryThreshold, stopAnalyzeMethod: stopAnalyzeMethod)
     }
 }
