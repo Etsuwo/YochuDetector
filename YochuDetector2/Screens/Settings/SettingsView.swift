@@ -19,11 +19,11 @@ struct SettingsView: View {
     var body: some View {
         VStack {
             Spacer()
-            SettingField(
-                title: "検出スコアの閾値",
-                placeholder: "Input Value between 1 to 100, default is 50",
-                value: $viewState.analyzeScoreThreshold
-            )
+//            SettingField(
+//                title: "検出スコアの閾値",
+//                placeholder: "Input Value between 1 to 100, default is 50",
+//                value: $viewState.analyzeScoreThreshold
+//            )
             
             SettingField(
                 title: "幼虫の停止判定時間(分)",
@@ -59,6 +59,18 @@ struct SettingsView: View {
                 value: $viewState.binaryThreshold
             )
             .padding(.top)
+            
+            Picker(
+                "停止判定の方法",
+                selection: $viewState.stopAnalyzeMethod,
+                content: {
+                    ForEach(StopAnalyzeMethod.allCases) { method in
+                        Text(method.rawValue)
+                    }
+                }
+            )
+            .padding(.top)
+            .frame(width: 300)
             
             HStack {
                 Spacer()

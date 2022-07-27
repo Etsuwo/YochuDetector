@@ -50,6 +50,7 @@ struct SelectSourceView: View {
             }
             Spacer()
             HStack {
+                Text("v1")
                 Spacer()
                 Button(action: {
                     viewModel.onTapNextButton()

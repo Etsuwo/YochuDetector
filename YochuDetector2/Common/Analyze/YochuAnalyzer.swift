@@ -116,7 +116,13 @@ final class YochuAnalyzer {
         let detectedDatas = dataStore.trnseposeActivitiesData
         for detectedData in detectedDatas {
             let startAt = analyzeWandaring(detectedData: detectedData)
-            let stopAt = analyzeStop(detectedData: detectedData, stopThreshold: permanentDataStore.stopThreshold, buffer: CGFloat(permanentDataStore.stopRectBuffer), interval: permanentDataStore.interval, experimentStartAt: oneTimeDataStore.experimentStartAt)
+            var stopAt: Int? = nil
+            switch permanentDataStore.stopAnalyzeMethod {
+            case .forward:
+                stopAt = analyzeStopFromForward(detectedData: detectedData, stopThreshold: permanentDataStore.stopThreshold, buffer: CGFloat(permanentDataStore.stopRectBuffer), interval: permanentDataStore.interval, experimentStartAt: oneTimeDataStore.experimentStartAt)
+            case .backward:
+                stopAt = analyzeStopFromBackward(detectedData: detectedData, stopThreshold: permanentDataStore.stopThreshold, buffer: CGFloat(permanentDataStore.stopRectBuffer), interval: permanentDataStore.interval, experimentStartAt: oneTimeDataStore.experimentStartAt)
+            }
             dataStore.register(wadaringAt: startAt, stopAt: stopAt, boundingBoxes: detectedData)
         }
     }
@@ -157,23 +163,77 @@ final class YochuAnalyzer {
     ///   - buffer: 許容誤差
     ///   - interval: 何分ごとに画像が撮影されているか
     /// - Returns: 止まってたら停止した時間(分)、止まってないならnil
-    private func analyzeStop(detectedData: [CGRect?], stopThreshold: Int, buffer: CGFloat, interval: Int, experimentStartAt: Int) -> Int? {
+    private func analyzeStopFromBackward(detectedData: [CGRect?], stopThreshold: Int, buffer: CGFloat, interval: Int, experimentStartAt: Int) -> Int? {
         let reverseData: [CGRect?] = detectedData.reversed()
         var stopFlag = false
+        var nilFlag = false
         var currentIndex = 0
         guard let lastElement = reverseData.first,
               let lastRect = lastElement else { return nil } // 最終座標なし
         for (index, rect) in reverseData.enumerated() {
-            if let rect = rect, rect.isSameCenter(at: lastRect, buffer: buffer) {
-                if index + 1 > stopThreshold {
-                    stopFlag = true
-                    currentIndex = index
-                } // 一定時間経過で停止してると判定
-                continue // 止まってる
+            if let rect = rect {
+                if rect.isSameCenter(at: lastRect, buffer: buffer) {
+                    if index + 1 > stopThreshold {
+                        stopFlag = true
+                        currentIndex = index
+                    } // 一定時間経過で停止してると判定
+                    nilFlag = false
+                    continue // 止まってる
+                } else {
+                    break // 動いた
+                }
+            } else {
+                if nilFlag {
+                    break // 二連続nil
+                } else {
+                    nilFlag = true
+                    continue // 一度なら検知漏れをスルー
+                }
             }
-            break // 動いた or 検知できてない
         }
         let stopAt = (detectedData.endIndex - currentIndex) * interval + experimentStartAt
         return stopFlag ? stopAt : nil
+    }
+    
+    /// ワンダリング行動の停止時間の算出、前から座標を確認する
+    /// - Parameters:
+    ///   - detectedData: 幼虫一匹分の行動データの配列
+    ///   - stopThreshold: 停止時間の閾値
+    ///   - buffer: 許容誤差
+    ///   - interval: 何分ごとに画像が撮影されているか
+    /// - Returns: 止まってたら停止した時間(分)、止まってないならnil
+    private func analyzeStopFromForward(detectedData: [CGRect?], stopThreshold: Int, buffer: CGFloat, interval: Int, experimentStartAt: Int) -> Int? {
+        var nilFlag = false
+        for (index, rect) in detectedData.enumerated() {
+            if index + stopThreshold > detectedData.count {
+                break // データを全部見切った
+            }
+            
+            if let rect = rect {
+                for count in 1...stopThreshold {
+                    if count == stopThreshold {
+                        return index * interval + experimentStartAt // 止まってる
+                    }
+                    if let compareRect = detectedData[index + count] {
+                        nilFlag = false
+                        if compareRect.isSameCenter(at: rect, buffer: buffer) {
+                            
+                            continue // 同じ座標
+                        } else {
+                            break // 動いた
+                        }
+                    } else {
+                        if nilFlag {
+                            nilFlag = false
+                            break // ２度は許さん
+                        } else {
+                            nilFlag = true
+                            continue // 一度なら検知漏れをスルー
+                        }
+                    }
+                }
+            }
+        }
+        return nil // 止まってない
     }
 }
