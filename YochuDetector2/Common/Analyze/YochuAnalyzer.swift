@@ -166,6 +166,7 @@ final class YochuAnalyzer {
     private func analyzeStopFromBackward(detectedData: [CGRect?], stopThreshold: Int, buffer: CGFloat, interval: Int, experimentStartAt: Int) -> Int? {
         let reverseData: [CGRect?] = detectedData.reversed()
         var stopFlag = false
+        var nilFlag = false
         var currentIndex = 0
         guard let lastElement = reverseData.first,
               let lastRect = lastElement else { return nil } // 最終座標なし
@@ -176,12 +177,18 @@ final class YochuAnalyzer {
                         stopFlag = true
                         currentIndex = index
                     } // 一定時間経過で停止してると判定
+                    nilFlag = false
                     continue // 止まってる
                 } else {
                     break // 動いた
                 }
             } else {
-                continue // 検知漏れは一旦スルー
+                if nilFlag {
+                    break // 二連続nil
+                } else {
+                    nilFlag = true
+                    continue // 一度なら検知漏れをスルー
+                }
             }
         }
         let stopAt = (detectedData.endIndex - currentIndex) * interval + experimentStartAt
@@ -196,6 +203,7 @@ final class YochuAnalyzer {
     ///   - interval: 何分ごとに画像が撮影されているか
     /// - Returns: 止まってたら停止した時間(分)、止まってないならnil
     private func analyzeStopFromForward(detectedData: [CGRect?], stopThreshold: Int, buffer: CGFloat, interval: Int, experimentStartAt: Int) -> Int? {
+        var nilFlag = false
         for (index, rect) in detectedData.enumerated() {
             if index + stopThreshold > detectedData.count {
                 break // データを全部見切った
@@ -207,13 +215,21 @@ final class YochuAnalyzer {
                         return index * interval + experimentStartAt // 止まってる
                     }
                     if let compareRect = detectedData[index + count] {
+                        nilFlag = false
                         if compareRect.isSameCenter(at: rect, buffer: buffer) {
+                            
                             continue // 同じ座標
                         } else {
                             break // 動いた
                         }
                     } else {
-                        continue // 検知漏れをスルー
+                        if nilFlag {
+                            nilFlag = false
+                            break // ２度は許さん
+                        } else {
+                            nilFlag = true
+                            continue // 一度なら検知漏れをスルー
+                        }
                     }
                 }
             }
