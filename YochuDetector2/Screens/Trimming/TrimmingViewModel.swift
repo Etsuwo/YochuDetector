@@ -29,6 +29,7 @@ final class TrimmingViewModel {
         let numOfTargetInSection: Int
         let croppedRect: CGRect
         let croppedIcon: NSImage
+        let startAt: Int
     }
     
     private let dataStore = OneTimeDataStore.shared
@@ -43,7 +44,6 @@ final class TrimmingViewModel {
     init() {
         loadImage()
         viewState.url = urls.first
-        viewState.experimentStartAt = dataStore.experimentStartAt
     }
     
     private func loadImage() {
@@ -65,7 +65,12 @@ final class TrimmingViewModel {
     }
     
     func onTapRegisterButton() {
-        let data = CroppedData(numOfTargetInSection: viewState.numOfTargetInSection, croppedRect: modifiedRect, croppedIcon: viewState.croppedImage)
+        let data = CroppedData(
+            numOfTargetInSection: viewState.numOfTargetInSection,
+            croppedRect: modifiedRect,
+            croppedIcon: viewState.croppedImage,
+            startAt: viewState.experimentStartAt
+        )
         viewState.registeredDatas.append(data)
         viewState.cropViewIsHidden = false
         viewState.croppedViewIsHidden = true
@@ -89,9 +94,14 @@ final class TrimmingViewModel {
     
     func onTapGoButton() {
         viewState.isDisableGoButton = true
-        dataStore.experimentStartAt = viewState.experimentStartAt
         dataStore.imageUrls = urls
-        dataStore.analyzeDatas = viewState.registeredDatas.map { ($0.numOfTargetInSection, $0.croppedRect) }
+        dataStore.analyzeDatas = viewState.registeredDatas.map {
+            OneTimeDataStore.SectionData(
+                startAt: $0.startAt,
+                numOfTarget: $0.numOfTargetInSection,
+                croppedRect: $0.croppedRect
+            )
+        }
         NotificationCenter.default.post(name: .transitionLoading, object: nil)
     }
     

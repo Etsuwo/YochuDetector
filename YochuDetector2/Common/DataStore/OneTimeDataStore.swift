@@ -17,6 +17,11 @@ final class OneTimeDataStore {
     var inputUrl: URL?
     var outputUrl: URL?
     var imageUrls: [URL] = []
-    var experimentStartAt: Int = 0
-    var analyzeDatas: [(Int, CGRect)] = []
+    var analyzeDatas: [SectionData] = []
+    
+    struct SectionData {
+        let startAt: Int
+        let numOfTarget: Int
+        let croppedRect: CGRect
+    }
 }

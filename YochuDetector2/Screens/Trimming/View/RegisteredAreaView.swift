@@ -15,7 +15,11 @@ struct RegisteredAreaView: View {
         ScrollView(.horizontal) {
             HStack {
                 ForEach(registerdDatas, id: \.id, content: { data in
-                    RegisteredAreaCell(numOfTarget: data.numOfTargetInSection, image: data.croppedIcon, onTappedbutton: {
+                    RegisteredAreaCell(
+                        numOfTarget: data.numOfTargetInSection,
+                        startAt: data.startAt,
+                        image: data.croppedIcon,
+                        onTappedbutton: {
                         registerdDatas.removeAll(where: { $0.id == data.id })
                     })
                 })
