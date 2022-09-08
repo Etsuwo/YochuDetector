@@ -45,12 +45,12 @@ final class LoadingViewModel {
     func startAnlyzer() {
             DispatchQueue.global().async { [weak self] in
             guard let strongSelf = self else { return }
-                for (index, (numOfTarget, rect)) in strongSelf.dataStore.analyzeDatas.enumerated() {
+                for (index, data) in strongSelf.dataStore.analyzeDatas.enumerated() {
                     DispatchQueue.main.sync {
                         strongSelf.viewState.currentDataSetsCount = index
                         strongSelf.viewState.currentProgressValue = Double(0)
                     }
-                    strongSelf.analyzer.start(with: strongSelf.dataStore.imageUrls, rect: rect, numOfTarget: numOfTarget, outputSuffix: index)
+                    strongSelf.analyzer.start(with: strongSelf.dataStore.imageUrls, rect: data.croppedRect, numOfTarget: data.numOfTarget, outputSuffix: index, startAt: data.startAt)
 //                    strongSelf.analyzer.extract(with: strongSelf.dataStore.imageUrls, rect: rect)
     
             }

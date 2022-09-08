@@ -52,7 +52,7 @@ final class YochuAnalyzer {
         endPublisher.send()
     }
     
-    func start(with urls: [URL], rect: CGRect, numOfTarget: Int, outputSuffix: Int) {
+    func start(with urls: [URL], rect: CGRect, numOfTarget: Int, outputSuffix: Int, startAt: Int) {
         dataStore.flash()
         let outputDirectoryURL = directoryHandler.createDirectory(directoryName: "output_\(outputSuffix)", to: oneTimeDataStore.outputUrl!)
         for (index, url) in urls.enumerated() {
@@ -80,8 +80,8 @@ final class YochuAnalyzer {
                 progressPublisher.send(Double(index + 1))
             }
         }
-        analyze()
-        let output = ResultDataConverter().toCSVFormat(from: dataStore.resultDatas, startAt: oneTimeDataStore.experimentStartAt)
+        analyze(experimentStartAt: startAt)
+        let output = ResultDataConverter().toCSVFormat(from: dataStore.resultDatas, startAt: startAt)
         CSVHandler().write(output: output, to: outputDirectoryURL)
     }
     
@@ -112,16 +112,16 @@ final class YochuAnalyzer {
         return activityList
     }
     
-    private func analyze() {
+    private func analyze(experimentStartAt: Int) {
         let detectedDatas = dataStore.trnseposeActivitiesData
         for detectedData in detectedDatas {
-            let startAt = analyzeWandaring(detectedData: detectedData)
+            let startAt = analyzeWandaring(detectedData: detectedData, startAt: experimentStartAt)
             var stopAt: Int? = nil
             switch permanentDataStore.stopAnalyzeMethod {
             case .forward:
-                stopAt = analyzeStopFromForward(detectedData: detectedData, stopThreshold: permanentDataStore.stopThreshold, buffer: CGFloat(permanentDataStore.stopRectBuffer), interval: permanentDataStore.interval, experimentStartAt: oneTimeDataStore.experimentStartAt)
+                stopAt = analyzeStopFromForward(detectedData: detectedData, stopThreshold: permanentDataStore.stopThreshold, buffer: CGFloat(permanentDataStore.stopRectBuffer), interval: permanentDataStore.interval, experimentStartAt: experimentStartAt)
             case .backward:
-                stopAt = analyzeStopFromBackward(detectedData: detectedData, stopThreshold: permanentDataStore.stopThreshold, buffer: CGFloat(permanentDataStore.stopRectBuffer), interval: permanentDataStore.interval, experimentStartAt: oneTimeDataStore.experimentStartAt)
+                stopAt = analyzeStopFromBackward(detectedData: detectedData, stopThreshold: permanentDataStore.stopThreshold, buffer: CGFloat(permanentDataStore.stopRectBuffer), interval: permanentDataStore.interval, experimentStartAt: experimentStartAt)
             }
             dataStore.register(wadaringAt: startAt, stopAt: stopAt, boundingBoxes: detectedData)
         }
@@ -130,7 +130,7 @@ final class YochuAnalyzer {
     /// ワンダリング行動の検出
     /// - Parameter detectedData: 幼虫一匹分の行動データ配列
     /// - Returns: ワンダリング行動のスタート時間（単位は分）、してなかったらnil
-    private func analyzeWandaring(detectedData: [CGRect?]) -> Int? {
+    private func analyzeWandaring(detectedData: [CGRect?], startAt: Int) -> Int? {
         let experimentHours = detectedData.count / permanentDataStore.oneHour
         var preSectionTotal = 0
         var firstSectionTotal = 0
@@ -146,7 +146,7 @@ final class YochuAnalyzer {
             }
             if firstSectionTotal >= permanentDataStore.wandaringThreshold,
                secondSectionTotal >= permanentDataStore.wandaringThreshold {
-                return calcWandaringStart(preSectionTotal, firstSectionTotal, preStart: (hour - 2) * 60, experimentStartAt: oneTimeDataStore.experimentStartAt)
+                return calcWandaringStart(preSectionTotal, firstSectionTotal, preStart: (hour - 2) * 60, experimentStartAt: startAt)
             }
         }
         return nil
