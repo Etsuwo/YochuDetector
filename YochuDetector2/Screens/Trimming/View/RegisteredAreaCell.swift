@@ -12,6 +12,7 @@ struct RegisteredAreaCell: View {
     @State private var isHover = false
     
     let numOfTarget: Int
+    let startAt: Int
     let image: NSImage
     let onTappedbutton: () -> Void
     
@@ -27,7 +28,10 @@ struct RegisteredAreaCell: View {
                     .scaledToFill()
                     .frame(width: 50, height: 50)
                     .clipped()
-                Text("試験管: \(numOfTarget)")
+                VStack {
+                    Text("試験管: \(numOfTarget)")
+                    Text("スタート: \(startAt)分")
+                }
                 if isHover {
                     Image(systemName: "xmark.circle.fill")
                         .resizable()
@@ -41,15 +45,15 @@ struct RegisteredAreaCell: View {
                 
             }
         }
-        .frame(width: isHover ? 140 : 120, height: 50)
+        .frame(height: 50)
         .onHover(perform: { isHovered in
             isHover = isHovered
         })
     }
 }
 
-struct RegisteredAreaView_Previews: PreviewProvider {
-    static var previews: some View {
-        RegisteredAreaCell(numOfTarget: 5, image: NSImage(), onTappedbutton: {})
-    }
-}
+//struct RegisteredAreaView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RegisteredAreaCell(numOfTarget: 5, image: NSImage(), onTappedbutton: {})
+//    }
+//}
