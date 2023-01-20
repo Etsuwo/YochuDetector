@@ -30,8 +30,8 @@ final class YochuAnalyzer {
         for (index ,url) in urls.enumerated() {
             let nsImage = NSImage.withOptionalURL(url: url)
             let cropImage = nsImage.crop(to: rect)
-            //let extractedImage = AreaExtractor().extractFeed(from: cropImage)
-            imageSaver.save(image: cropImage, fileName: url.lastPathComponent, to: OneTimeDataStore.shared.outputUrl!)
+            let extractedImage = AreaExtractor().extractFeed(from: cropImage)
+            imageSaver.save(image: extractedImage, fileName: url.lastPathComponent, to: OneTimeDataStore.shared.outputUrl!)
             progressPublisher.send(Double(index + 1))
         }
         endPublisher.send()

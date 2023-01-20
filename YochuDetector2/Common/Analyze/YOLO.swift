@@ -18,7 +18,7 @@ class YOLO {
     let confidenceThreshold: Float = 0.1
     let iouThreshold: Float = 0.2
 
-    private let model = try! VNCoreMLModel(for: Yolov5().model)
+    private let model = try! VNCoreMLModel(for: yolov5_20230120().model)
     
     func predict(image: CIImage, completion: @escaping ([VNRecognizedObjectObservation]) -> Void) {
         let request = VNCoreMLRequest(model: model) { request, error in
